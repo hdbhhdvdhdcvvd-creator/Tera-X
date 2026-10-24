@@ -32,6 +32,18 @@ button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:14px;bac
 .tabs{display:flex;gap:6px;margin-bottom:8px}.tabs b{flex:1;text-align:center;padding:8px;border-radius:10px;background:#e8efe9;font-size:.85rem}.tabs b.on{background:#2a9d5c;color:#fff}
 .acc{margin-top:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.85rem}.acc button{padding:6px 10px;border-radius:8px;border:0;background:#e8efe9;font-weight:700}
 .gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;padding:10px;border:1px solid #ccc;border-radius:10px;background:#fff;color:#222;font-weight:700;font-size:.9rem}
+#splash{position:fixed;inset:0;z-index:5000;background:radial-gradient(circle at 50% 35%,#0a2145,#010711 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:#fff;transition:opacity .5s}
+#splash img{width:min(68vw,280px);height:auto;border-radius:50%;box-shadow:0 0 44px rgba(30,144,255,.5)}
+#splash h1{margin:6px 0 0;font-size:1.6rem;letter-spacing:.5px}#splash h1 span{color:#52d68a}
+.sbw{width:min(70vw,300px);height:8px;background:rgba(255,255,255,.16);border-radius:99px;overflow:hidden}
+#sbar{height:100%;width:0;background:linear-gradient(90deg,#1e90ff,#ffc83d);border-radius:99px}
+#stx{font-size:.9rem;opacity:.85;min-height:1.2em}
+.sdev{position:absolute;bottom:calc(22px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;font-size:.85rem}
+.sh{opacity:.6;margin-bottom:6px;letter-spacing:1.5px;text-transform:uppercase;font-size:.7rem}
+.sa{display:flex;align-items:center;justify-content:center;gap:7px;color:#fff;text-decoration:none;margin:5px 0}.sa b{font-weight:700}.sa i{font-style:normal;opacity:.75}
+#splash img{width:min(68vw,280px);height:min(68vw,280px);object-fit:cover;display:block;-webkit-animation:spin 6s linear infinite;animation:spin 6s linear infinite}
+@-webkit-keyframes spin{from{-webkit-transform:rotate(0deg)}to{-webkit-transform:rotate(360deg)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 #prof{display:none;position:absolute;z-index:1003;left:8px;right:8px;bottom:calc(76px + env(safe-area-inset-bottom,0px));background:#fff;color:#0f2a1d;border-radius:16px;padding:14px;box-shadow:0 2px 14px rgba(0,0,0,.45);max-height:72%;overflow:auto}
 .ph{display:flex;align-items:center;gap:12px}.av{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1.7rem;overflow:hidden;flex:none;box-shadow:0 1px 6px rgba(0,0,0,.35)}.av img{width:100%;height:100%;object-fit:cover}
 .pn{font-weight:800;font-size:1.15rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.pn button{padding:4px 9px;font-size:.8rem;box-shadow:none;background:#e8efe9;color:#0f2a1d;border-radius:8px}
@@ -42,6 +54,7 @@ button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:14px;bac
 </style>
 </head>
 <body>
+<div id="splash"><img src="icon-512.png" alt="Tera X.kg"><h1>Tera X<span>.kg</span></h1><div class="sbw"><div id="sbar"></div></div><div id="stx">Жүктөлүп жатат…</div><div class="sdev"><div class="sh">Авторлор</div><div id="sauth"></div></div></div>
 <div id="map"></div>
 <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="igg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fdf497"/><stop offset=".3" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset="1" stop-color="#285AEB"/></linearGradient><symbol id="igs" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igg)"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="#fff"/></symbol></defs></svg>
 <a class="ig" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#igs"/></svg>@madalbaev_001</a>
@@ -60,6 +73,14 @@ button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:14px;bac
 // === Көп оюнчулуу режим үчүн Firebase ачкычтарын ушул жерге жаз (бош болсо — жалгыз оюн) ===
 const FB={apiKey:"AIzaSyDKy9LWh-JL-sYeCv8I8mHFrcaD1lmBzsU",authDomain:"terra-x-b9234.firebaseapp.com",projectId:"terra-x-b9234",storageBucket:"terra-x-b9234.firebasestorage.app",messagingSenderId:"973466064325",appId:"1:973466064325:web:66124545f7ec5f000ee7ac"};
 const $=id=>document.getElementById(id);
+// башталгыч жүктөө экраны (убактысын өзгөртүү үчүн LOAD_MS санын алмаштыр, 10000 = 10 секунд)
+const LOAD_MS=10000;
+// авторлор тизмеси: [аты, instagram аты] — жаңысын кошуу үчүн ушул тизмеге жаз
+const AUTHORS=[['Мадалбаев Дастан','madalbaev_001']];
+$('sauth').innerHTML=AUTHORS.map(a=>'<a class="sa" href="https://instagram.com/'+a[1]+'" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#igs"/></svg><b>'+a[0]+'</b><i>@'+a[1]+'</i></a>').join('');
+(()=>{const sp=$('splash'),bar=$('sbar'),tx=$('stx'),t0=Date.now(),steps=[[0,'Жүктөлүп жатат…'],[25,'Карта даярдалууда…'],[55,'Сервер менен байланыш…'],[85,'Дээрлик даяр…']];
+const iv=setInterval(()=>{const p=Math.min(100,(Date.now()-t0)/LOAD_MS*100);bar.style.width=p+'%';let t=steps[0][1];steps.forEach(x=>{if(p>=x[0])t=x[1]});tx.textContent=t+' '+Math.floor(p)+'%';
+ if(p>=100){clearInterval(iv);tx.textContent='Даяр! 🚀';sp.style.opacity='0';setTimeout(()=>sp.remove(),500)}},100)})();
 let uid=localStorage.uid||(localStorage.uid='u'+Math.random().toString(36).slice(2,10));
 let hue=localStorage.hue!=null?Number(localStorage.hue):(localStorage.hue=Math.floor(Math.random()*360));
 let name=localStorage.nm||'',fs=null,auth=null;
@@ -77,7 +98,7 @@ const trailLine=L.polyline([],{color,weight:6,opacity:.9}).addTo(map);
 const me=L.circleMarker([0,0],{radius:9,color:'#fff',weight:3,fillColor:color,fillOpacity:1});
 const startMark=L.circle([0,0],{radius:20,color,dashArray:'6 6',fill:false});
 let total=Number(localStorage.td)||0,pd={},tab='a';
-const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v5</div>';
+const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v8</div>';
 const IGLINK=DEV+'<a class="ig2" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#igs"/></svg>@madalbaev_001</a>';
 let first=true,zones=JSON.parse(localStorage.zones||'{}'),zl=[],trail=[],dist=0,watch=null,lock=null,lastT=0,follow=true,pm={},timer=null,cur=null;
 const mpl=lat=>[111320*Math.cos(lat*Math.PI/180),110574];
