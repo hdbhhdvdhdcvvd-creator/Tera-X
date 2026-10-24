@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tera X.kg">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0f2a1d">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" id="ico" href="icon-192.png">
+<title>Tera X.kg</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+html,body{margin:0;height:100%;font-family:system-ui,sans-serif}
+#map{position:absolute;inset:0}
+.top{position:absolute;z-index:1000;left:0;right:0;top:0;padding:calc(8px + env(safe-area-inset-top,0px)) 8px 8px;background:linear-gradient(#0f2a1dee,#0f2a1d00);pointer-events:none}
+.brand{color:#fff;font-weight:800;font-size:1.15rem;text-align:center;margin-bottom:6px;letter-spacing:.5px}.brand span{color:#52d68a}
+.hud{display:flex;gap:6px}
+.hud div{flex:1;background:rgba(255,255,255,.95);color:#0f2a1d;border-radius:12px;padding:6px 4px;font-weight:800;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.25)}
+.hud small{display:block;font-weight:500;font-size:.62rem;opacity:.7}
+.bar{position:absolute;z-index:1000;left:8px;right:8px;bottom:calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:8px}
+button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:14px;background:#2a9d5c;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+#go{flex:3}#lb{flex:1;background:#f2b705}#ly{flex:1;background:#1d6fb8}#rs{flex:1;background:#d62828}
+#msg{position:absolute;z-index:1000;left:8px;right:8px;bottom:calc(76px + env(safe-area-inset-bottom,0px));background:rgba(15,42,29,.88);color:#fff;border-radius:12px;padding:8px 10px;font-size:.85rem}
+#board{display:none;position:absolute;z-index:1001;left:8px;right:8px;bottom:calc(76px + env(safe-area-inset-bottom,0px));background:#fff;color:#0f2a1d;border-radius:14px;padding:10px 14px;box-shadow:0 2px 12px rgba(0,0,0,.4);max-height:50%;overflow:auto}
+#board h3{margin:0 0 6px}#board p{display:flex;justify-content:space-between;margin:4px 0}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.ig{position:absolute;z-index:1002;right:8px;top:calc(8px + env(safe-area-inset-top,0px));display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.95);color:#0f2a1d;text-decoration:none;font-weight:700;font-size:.68rem;padding:5px 8px;border-radius:999px;box-shadow:0 1px 6px rgba(0,0,0,.25)}
+.tabs{display:flex;gap:6px;margin-bottom:8px}.tabs b{flex:1;text-align:center;padding:8px;border-radius:10px;background:#e8efe9;font-size:.85rem}.tabs b.on{background:#2a9d5c;color:#fff}
+.acc{margin-top:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.85rem}.acc button{padding:6px 10px;border-radius:8px;border:0;background:#e8efe9;font-weight:700}
+.gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;padding:10px;border:1px solid #ccc;border-radius:10px;background:#fff;color:#222;font-weight:700;font-size:.9rem}
+#prof{display:none;position:absolute;z-index:1003;left:8px;right:8px;bottom:calc(76px + env(safe-area-inset-bottom,0px));background:#fff;color:#0f2a1d;border-radius:16px;padding:14px;box-shadow:0 2px 14px rgba(0,0,0,.45);max-height:72%;overflow:auto}
+.ph{display:flex;align-items:center;gap:12px}.av{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1.7rem;overflow:hidden;flex:none;box-shadow:0 1px 6px rgba(0,0,0,.35)}.av img{width:100%;height:100%;object-fit:cover}
+.pn{font-weight:800;font-size:1.15rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.pn button{padding:4px 9px;font-size:.8rem;box-shadow:none;background:#e8efe9;color:#0f2a1d;border-radius:8px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.stats div{background:#f1f6f2;border-radius:12px;padding:10px;text-align:center;font-weight:800;font-size:1.05rem}.stats small{display:block;font-weight:500;font-size:.68rem;opacity:.7}
+.sw{display:flex;gap:9px;flex-wrap:wrap;margin:6px 0 2px}.sw i{width:30px;height:30px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px #bbb}.sw i.on{box-shadow:0 0 0 3px #0f2a1d}
+#pf{flex:1;background:#7b4bd1}
+.ig2{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:8px;padding-top:8px;border-top:1px solid #ddd;color:#0f2a1d;text-decoration:none;font-weight:700;font-size:.85rem}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="igg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fdf497"/><stop offset=".3" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset="1" stop-color="#285AEB"/></linearGradient><symbol id="igs" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igg)"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="#fff"/></symbol></defs></svg>
+<a class="ig" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#igs"/></svg>@madalbaev_001</a>
+<div class="top"><div class="brand">Tera X<span>.kg</span></div>
+<div class="hud"><div><span id="sp">0.0</span><small>км/ч</small></div><div><span id="di">0</span><small>м жол</small></div><div><span id="tot">0</span><small>упай (м²)</small></div><div><span id="rk">–</span><small>рейтинг</small></div></div></div>
+<div id="board"></div>
+<div id="prof"></div>
+<div id="msg">«Баштоо» бас да, сыртка чыгып жүр.</div>
+<div class="bar"><button id="go">▶ Баштоо</button><button id="ly">🛰️</button><button id="pf">👤</button><button id="lb">🏆</button><button id="rs">↺</button></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script>
+// === Көп оюнчулуу режим үчүн Firebase ачкычтарын ушул жерге жаз (бош болсо — жалгыз оюн) ===
+const FB={apiKey:"AIzaSyDKy9LWh-JL-sYeCv8I8mHFrcaD1lmBzsU",authDomain:"terra-x-b9234.firebaseapp.com",projectId:"terra-x-b9234",storageBucket:"terra-x-b9234.firebasestorage.app",messagingSenderId:"973466064325",appId:"1:973466064325:web:66124545f7ec5f000ee7ac"};
+const $=id=>document.getElementById(id);
+let uid=localStorage.uid||(localStorage.uid='u'+Math.random().toString(36).slice(2,10));
+let hue=localStorage.hue!=null?Number(localStorage.hue):(localStorage.hue=Math.floor(Math.random()*360));
+let name=localStorage.nm||'',fs=null,auth=null;
+try{if(FB.projectId){firebase.initializeApp(FB);fs=firebase.firestore();try{auth=firebase.auth()}catch(e){auth=null}}}catch(e){fs=null}
+// иконка
+(()=>{const c=document.createElement('canvas');c.width=c.height=180;const g=c.getContext('2d');const gr=g.createLinearGradient(0,0,180,180);gr.addColorStop(0,'#0f2a1d');gr.addColorStop(1,'#2a9d5c');g.fillStyle=gr;g.fillRect(0,0,180,180);g.fillStyle='#fff';g.font='bold 92px system-ui';g.textAlign='center';g.fillText('TX',90,112);g.fillStyle='#52d68a';g.font='bold 26px system-ui';g.fillText('.kg',90,150);$('ico').href=c.toDataURL('image/png')})();
+const color=`hsl(${hue},75%,45%)`;
+const map=L.map('map',{zoomControl:false}).setView([42.8746,74.5698],16);
+const E='https://server.arcgisonline.com/ArcGIS/rest/services/';
+const base=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'});
+const sat=L.layerGroup([L.tileLayer(E+'World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Tiles © Esri'}),L.tileLayer(E+'Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',{maxZoom:19}),L.tileLayer(E+'Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',{maxZoom:19})]);
+let satOn=localStorage.sat=='1';(satOn?sat:base).addTo(map);
+$('ly').onclick=()=>{map.removeLayer(satOn?sat:base);satOn=!satOn;(satOn?sat:base).addTo(map);localStorage.sat=satOn?'1':'0';$('ly').textContent=satOn?'🗺️':'🛰️'};
+$('ly').textContent=satOn?'🗺️':'🛰️';
+const trailLine=L.polyline([],{color,weight:6,opacity:.9}).addTo(map);
+const me=L.circleMarker([0,0],{radius:9,color:'#fff',weight:3,fillColor:color,fillOpacity:1});
+const startMark=L.circle([0,0],{radius:20,color,dashArray:'6 6',fill:false});
+let total=Number(localStorage.td)||0,pd={},tab='a';
+const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b></div>';
+const IGLINK=DEV+'<a class="ig2" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#igs"/></svg>@madalbaev_001</a>';
+let first=true,zones=JSON.parse(localStorage.zones||'{}'),zl=[],trail=[],dist=0,watch=null,lock=null,lastT=0,follow=true,pm={},timer=null,cur=null;
+const mpl=lat=>[111320*Math.cos(lat*Math.PI/180),110574];
+const d=(a,b)=>{const k=mpl(a[0]);return Math.hypot((a[1]-b[1])*k[0],(a[0]-b[0])*k[1])};
+function area(p){const k=mpl(p[0][0]),m=p.map(q=>[q[1]*k[0],q[0]*k[1]]);let s=0;for(let i=0;i<m.length;i++){const a=m[i],b=m[(i+1)%m.length];s+=a[0]*b[1]-b[0]*a[1]}return Math.abs(s/2)}
+const pairs=z=>{const r=[];for(let i=0;i<z.pts.length;i+=2)r.push([z.pts[i],z.pts[i+1]]);return r};
+function inP(x,y,q){let c=false;for(let i=0,j=q.length-1;i<q.length;j=i++)if((q[i][0]>y)!=(q[j][0]>y)&&x<(q[j][1]-q[i][1])*(y-q[i][0])/(q[j][0]-q[i][0])+q[i][1])c=!c;return c}
+// ким канча жерге ээ (кийинки аймак мурункусун басып калат)
+function scores(){const zs=Object.values(zones).sort((a,b)=>a.t-b.t),P=zs.map(pairs),sc={};
+zs.forEach((z,i)=>{const q=P[i],la=q.map(p=>p[0]),lo=q.map(p=>p[1]),a0=Math.min(...la),a1=Math.max(...la),b0=Math.min(...lo),b1=Math.max(...lo),k=mpl(a0);
+const st=Math.max(3,Math.max((a1-a0)*k[1],(b1-b0)*k[0])/60),da=st/k[1],db=st/k[0];let n=0;
+for(let y=a0+da/2;y<a1;y+=da)for(let x=b0+db/2;x<b1;x+=db){if(!inP(y,x,q))continue;let cov=false;for(let j=i+1;j<P.length;j++)if(inP(y,x,P[j])){cov=true;break}if(!cov)n++}
+const s=sc[z.uid]=sc[z.uid]||{name:z.name||'Оюнчу',hue:z.hue,a:0};s.a+=n*st*st});return sc}
+function render(){zl.forEach(l=>l.remove());
+zl=Object.values(zones).sort((a,b)=>a.t-b.t).map(z=>L.polygon(pairs(z),{color:`hsl(${z.hue},75%,40%)`,fillColor:`hsl(${z.hue},75%,50%)`,fillOpacity:.45,weight:2}).addTo(map));
+const sc=scores(),list=Object.entries(sc).sort((a,b)=>b[1].a-a[1].a);
+$('tot').textContent=Math.round(sc[uid]?sc[uid].a:0);const r=list.findIndex(e=>e[0]==uid);$('rk').textContent=r<0?'–':'#'+(r+1);
+drawBoard(list);if($('prof').style.display=='block')drawProf()}
+const fmt=m=>m>=1000?(m/1000).toFixed(2)+' км':Math.round(m)+' м';
+const row=(i,id,nm,h,v)=>`<p><span><i class="dot" style="background:hsl(${Number(h)||0},75%,45%)"></i>${i+1}. ${(nm+'').replace(/[<>&]/g,'')}${id==uid?' (сен)':''}</span><b>${v}</b></p>`;
+function lenList(){const m=Object.assign({},pd);m[uid]={name:name||'Оюнчу',hue,td:total};return Object.entries(m).map(([id,v])=>({id,name:v.name||'Оюнчу',hue:v.hue,td:v.td||0})).filter(v=>v.td>0).sort((a,b)=>b.td-a.td)}
+function drawBoard(list){let rows;
+if(tab=='a')rows=list.slice(0,10).map((e,i)=>row(i,e[0],e[1].name,e[1].hue,Math.round(e[1].a)+' м²'));
+else rows=lenList().slice(0,10).map((e,i)=>row(i,e.id,e.name,e.hue,fmt(e.td)));
+$('board').innerHTML='<div class="tabs"><b class="'+(tab=='a'?'on':'')+'" onclick="setTab(\'a\')">📐 Аймак</b><b class="'+(tab=='l'?'on':'')+'" onclick="setTab(\'l\')">📏 Жол</b></div>'+(rows.join('')||'<p>Азырынча маалымат жок</p>')+accHTML()+IGLINK}
+function setTab(t){tab=t;render()}
+function msg(t){$('msg').textContent=t}
+function save(id,z){zones[id]=z;if(fs)fs.collection('zones').doc(id).set(z).catch(()=>msg('Серверге жазылган жок'));else{const m={};Object.entries(zones).forEach(([k,v])=>{if(v.uid==uid)m[k]=v});localStorage.zones=JSON.stringify(m)}render()}
+function onFix(e){
+const c=e.coords,p=[c.latitude,c.longitude],now=Date.now();cur=p;
+me.setLatLng(p).addTo(map);if(first){first=false;follow=true;map.setView(p,18)}
+if(c.accuracy>25){msg('GPS сигналы начар ('+Math.round(c.accuracy)+' м), ачык жерге чык…');return}
+let spd=c.speed;
+if(trail.length){const prev=trail[trail.length-1],dd=d(prev,p);if(dd<Math.max(6,c.accuracy*.6))return;
+if(spd==null)spd=dd/Math.max(.5,(now-lastT)/1000);dist+=dd;total+=dd;localStorage.td=Math.round(total)}
+lastT=now;$('sp').textContent=((spd||0)*3.6).toFixed(1);$('di').textContent=Math.round(dist);
+trail.push(p);trailLine.setLatLngs(trail);me.setLatLng(p).addTo(map);
+if(trail.length===1)startMark.setLatLng(p).addTo(map);
+if(follow)map.panTo(p,{animate:true});
+for(let i=0;i<trail.length-8;i++){
+ if(d(trail[i],p)<20){const pts=trail.slice(i);let len=0;for(let j=1;j<pts.length;j++)len+=d(pts[j-1],pts[j]);const a=area(pts);
+  if(len>=80&&a>=300){save(uid+'_'+now,{uid,name,hue,t:now,pts:pts.flat()});
+   msg('🎉 Аймак кошулду: '+Math.round(a)+' м²');if(navigator.vibrate)navigator.vibrate([200,100,200]);
+   trail=[p];dist=0;trailLine.setLatLngs(trail);startMark.setLatLng(p)}
+  break}}}
+async function wake(){try{lock=await navigator.wakeLock.request('screen')}catch(e){}}
+// башка оюнчулар
+function live(){if(!fs)return;
+fs.collection('zones').onSnapshot(s=>{s.docChanges().forEach(c=>{if(c.type==='removed')delete zones[c.doc.id];else zones[c.doc.id]=c.doc.data()});render()},()=>msg('Сервер менен байланыш жок'));
+fs.collection('players').onSnapshot(s=>{s.forEach(doc=>{const v=doc.data(),id=doc.id;pd[id]={name:v.name,hue:v.hue,td:v.td||0};if(id==uid)return;
+ const on=Date.now()-v.t<60000;if(pm[id]){pm[id].remove();delete pm[id]}
+ if(on)pm[id]=L.circleMarker([v.lat,v.lon],{radius:8,color:'#fff',weight:2,fillColor:`hsl(${v.hue},75%,45%)`,fillOpacity:1}).bindTooltip(v.name||'Оюнчу').addTo(map)});if($('board').style.display=='block'&&tab=='l')render()})}
+function ping(){if(fs&&cur)fs.collection('players').doc(uid).set({name,hue,lat:cur[0],lon:cur[1],td:Math.round(total),t:Date.now()}).catch(()=>{})}
+$('go').onclick=()=>{
+if(watch!=null){navigator.geolocation.clearWatch(watch);watch=null;clearInterval(timer);$('go').textContent='▶ Баштоо';msg('Токтотулду.');return}
+if(!navigator.geolocation){msg('Бул браузерде GPS жок.');return}
+if(!name){name=(prompt('Сенин атың?','')||'Оюнчу').slice(0,16);localStorage.nm=name}
+trail=[];dist=0;first=true;trailLine.setLatLngs([]);wake();
+navigator.geolocation.getCurrentPosition(e=>{if(first){first=false;follow=true;cur=[e.coords.latitude,e.coords.longitude];me.setLatLng(cur).addTo(map);map.setView(cur,18)}},()=>{},{enableHighAccuracy:true,timeout:15000});
+watch=navigator.geolocation.watchPosition(onFix,e=>msg('GPS ката: '+e.message),{enableHighAccuracy:true,maximumAge:0,timeout:20000});
+timer=setInterval(ping,5000);
+$('go').textContent='■ Токтотуу';msg(fs?'Жүр! Башкалар да картада көрүнөт.':'Жүр! Баштаган жериңе кайтып келсең аймак сеники болот.')};
+$('lb').onclick=()=>{const b=$('board');$('prof').style.display='none';b.style.display=b.style.display=='block'?'none':'block';if(b.style.display=='block')render()};
+$('rs').onclick=()=>{if(confirm('Өз аймактарың өчсүнбү?')){Object.keys(zones).forEach(k=>{if(zones[k].uid==uid){if(fs)fs.collection('zones').doc(k).delete();delete zones[k]}});localStorage.zones='{}';render()}};
+map.on('dragstart',()=>follow=false);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&watch!=null)wake()});
+
+// === Google аккаунт менен байланыштыруу ===
+const GSVG='<svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>';
+const esc=t=>(t+'').replace(/[<>&"]/g,'');
+function accHTML(){if(!auth)return'';const u=auth.currentUser;
+if(u&&!u.isAnonymous)return '<div class="acc"><span>👤 '+esc(u.displayName||u.email||'Google')+'</span><button onclick="gout()">Чыгуу</button></div>';
+return '<button class="gbtn" onclick="glink()">'+GSVG+' Google менен байланыштыр</button><small style="display:block;text-align:center;color:#666;margin-top:4px">Аймактарың жана жолуң жоголбойт</small>'}
+let lastUid=uid,lastAnon=true;
+async function migrate(a,b){if(!fs||!a||a==b)return;try{const q=await fs.collection('zones').where('uid','==',a).get();const bt=fs.batch();q.forEach(d=>bt.update(d.ref,{uid:b}));await bt.commit();fs.collection('players').doc(a).delete().catch(()=>{})}catch(e){}}
+function initAuth(){if(!auth)return;
+auth.getRedirectResult().then(r=>{if(r&&r.user)msg('✅ Google аккаунт байланышты')}).catch(async e=>{
+ if(e.code=='auth/credential-already-in-use'&&e.credential){try{await auth.signInWithCredential(e.credential);msg('✅ Эски аккаунтуңа кирдиң')}catch(x){msg('Google ката: '+(x.code||x.message))}}
+ else if(e.code&&e.code!='auth/popup-closed-by-user')msg('Google ката: '+e.code)});
+auth.onAuthStateChanged(async u=>{
+ if(!u){try{await auth.signInAnonymously()}catch(e){}return}
+ const merge=lastAnon&&lastUid&&lastUid!=u.uid;
+ if(merge)await migrate(lastUid,u.uid);
+ uid=u.uid;localStorage.uid=uid;lastUid=uid;lastAnon=u.isAnonymous;
+ if(!u.isAnonymous&&!name&&u.displayName){name=u.displayName.slice(0,16);localStorage.nm=name}
+ try{const d=await fs.collection('players').doc(uid).get();const r=d.exists?(d.data().td||0):0;total=merge?Math.max(total,r):r;localStorage.td=Math.round(total)}catch(e){}
+ render()})}
+async function glink(){if(!auth)return;const pr=new firebase.auth.GoogleAuthProvider();msg('Google барагына өтүп жатат…');
+try{const u=auth.currentUser;if(u&&u.isAnonymous)await u.linkWithRedirect(pr);else await auth.signInWithRedirect(pr)}
+catch(e){msg('Google ката: '+(e.code||e.message))}}
+async function gout(){if(auth){await auth.signOut();msg('Чыктың. Жаңы коноктук аккаунт ачылды.')}}
+
+// === Оюнчунун профили ===
+const HUES=[0,25,50,120,170,200,260,310];
+async function updMine(f){Object.values(zones).forEach(z=>{if(z.uid==uid)Object.assign(z,f)});
+ if(fs){try{const q=await fs.collection('zones').where('uid','==',uid).get();const bt=fs.batch();q.forEach(x=>bt.update(x.ref,f));await bt.commit();fs.collection('players').doc(uid).set(f,{merge:true}).catch(()=>{})}catch(e){}}
+ else{const m={};Object.entries(zones).forEach(([k,v])=>{if(v.uid==uid)m[k]=v});localStorage.zones=JSON.stringify(m)}
+ render()}
+function renameMe(){const n=prompt('Жаңы ат',name);if(n&&n.trim()){name=n.trim().slice(0,16);localStorage.nm=name;updMine({name})}}
+function setHue(h){hue=h;localStorage.hue=h;updMine({hue:h})}
+function drawProf(){
+ const sc=scores(),list=Object.entries(sc).sort((a,b)=>b[1].a-a[1].a),r=list.findIndex(e=>e[0]==uid),my=Object.values(zones).filter(z=>z.uid==uid);
+ let best=0;my.forEach(z=>{try{best=Math.max(best,area(pairs(z)))}catch(e){}});
+ const u=auth&&auth.currentUser,photo=u&&!u.isAnonymous&&u.photoURL;
+ const av=photo?'<img src="'+esc(u.photoURL)+'" referrerpolicy="no-referrer" alt="">':esc((name||'?').charAt(0).toUpperCase());
+ $('prof').innerHTML=
+ '<div class="ph"><div class="av" style="background:hsl('+hue+',75%,45%)">'+av+'</div><div><div class="pn">'+esc(name||'Оюнчу')+' <button onclick="renameMe()">✏️</button></div><small style="opacity:.65">'+(u&&!u.isAnonymous?esc(u.email||'Google аккаунт'):'Коноктук аккаунт')+'</small></div></div>'+
+ '<div class="stats"><div>'+Math.round(sc[uid]?sc[uid].a:0)+' м²<small>жалпы аймак</small></div><div>'+(r<0?'–':'#'+(r+1))+'<small>рейтинг</small></div><div>'+fmt(total)+'<small>жалпы жол</small></div><div>'+my.length+'<small>аймак саны</small></div><div style="grid-column:span 2">'+Math.round(best)+' м²<small>эң чоң аймагым</small></div></div>'+
+ '<div style="margin-top:12px;font-weight:700;font-size:.85rem">🎨 Түсүм</div><div class="sw">'+HUES.map(h=>'<i class="'+(h==hue?'on':'')+'" style="background:hsl('+h+',75%,45%)" onclick="setHue('+h+')"></i>').join('')+'</div>'+
+ accHTML()+DEV+
+ '<button class="gbtn" style="background:#e8efe9;border:0" onclick="$(\'prof\').style.display=\'none\'">Жабуу</button>'}
+$('pf').onclick=()=>{const p=$('prof');if(p.style.display=='block')p.style.display='none';else{$('board').style.display='none';drawProf();p.style.display='block'}};
+render();live();initAuth();
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
+const zv=Object.values(zones);if(zv.length)map.fitBounds(L.latLngBounds(zv.flatMap(pairs)));
+</script>
+</body>
+</html>

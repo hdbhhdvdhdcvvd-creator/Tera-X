@@ -1,0 +1,25 @@
+{
+ "name": "Tera X.kg",
+ "short_name": "Tera X",
+ "description": "GPS аймак басып алуу оюну",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#010711",
+ "theme_color": "#010711",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  }
+ ]
+}
