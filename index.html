@@ -64,7 +64,6 @@ let hue=localStorage.hue!=null?Number(localStorage.hue):(localStorage.hue=Math.f
 let name=localStorage.nm||'',fs=null,auth=null;
 try{if(FB.projectId){firebase.initializeApp(FB);fs=firebase.firestore();try{auth=firebase.auth()}catch(e){auth=null}}}catch(e){fs=null}
 // иконка
-(()=>{const c=document.createElement('canvas');c.width=c.height=180;const g=c.getContext('2d');const gr=g.createLinearGradient(0,0,180,180);gr.addColorStop(0,'#0f2a1d');gr.addColorStop(1,'#2a9d5c');g.fillStyle=gr;g.fillRect(0,0,180,180);g.fillStyle='#fff';g.font='bold 92px system-ui';g.textAlign='center';g.fillText('TX',90,112);g.fillStyle='#52d68a';g.font='bold 26px system-ui';g.fillText('.kg',90,150);$('ico').href=c.toDataURL('image/png')})();
 const color=`hsl(${hue},75%,45%)`;
 const map=L.map('map',{zoomControl:false}).setView([42.8746,74.5698],16);
 const E='https://server.arcgisonline.com/ArcGIS/rest/services/';
@@ -77,7 +76,7 @@ const trailLine=L.polyline([],{color,weight:6,opacity:.9}).addTo(map);
 const me=L.circleMarker([0,0],{radius:9,color:'#fff',weight:3,fillColor:color,fillOpacity:1});
 const startMark=L.circle([0,0],{radius:20,color,dashArray:'6 6',fill:false});
 let total=Number(localStorage.td)||0,pd={},tab='a';
-const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b></div>';
+const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v4</div>';
 const IGLINK=DEV+'<a class="ig2" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#igs"/></svg>@madalbaev_001</a>';
 let first=true,zones=JSON.parse(localStorage.zones||'{}'),zl=[],trail=[],dist=0,watch=null,lock=null,lastT=0,follow=true,pm={},timer=null,cur=null;
 const mpl=lat=>[111320*Math.cos(lat*Math.PI/180),110574];
@@ -165,9 +164,16 @@ auth.onAuthStateChanged(async u=>{
  if(!u.isAnonymous&&!name&&u.displayName){name=u.displayName.slice(0,16);localStorage.nm=name}
  try{const d=await fs.collection('players').doc(uid).get();const r=d.exists?(d.data().td||0):0;total=merge?Math.max(total,r):r;localStorage.td=Math.round(total)}catch(e){}
  render()})}
-async function glink(){if(!auth)return;const pr=new firebase.auth.GoogleAuthProvider();msg('Google барагына өтүп жатат…');
-try{const u=auth.currentUser;if(u&&u.isAnonymous)await u.linkWithRedirect(pr);else await auth.signInWithRedirect(pr)}
-catch(e){msg('Google ката: '+(e.code||e.message))}}
+async function glink(){if(!auth){msg('Firebase Auth жок: интернетти текшер');return}const pr=new firebase.auth.GoogleAuthProvider();msg('Google терезесин ачып жатам…');
+try{const u=auth.currentUser;
+ if(u&&u.isAnonymous)await u.linkWithPopup(pr);else await auth.signInWithPopup(pr);
+ const c=auth.currentUser;if(c&&!name&&c.displayName){name=c.displayName.slice(0,16);localStorage.nm=name}
+ lastAnon=false;msg('✅ Google аккаунт байланышты');render()
+}catch(e){
+ if(e.code=='auth/credential-already-in-use'&&e.credential){try{await auth.signInWithCredential(e.credential);msg('✅ Эски аккаунтуңа кирдиң')}catch(x){msg('Google ката: '+(x.code||x.message))}}
+ else if(e.code=='auth/popup-blocked'||e.code=='auth/operation-not-supported-in-this-environment'){msg('Терезе ачылган жок, башка жол менен аракет…');
+  try{const u=auth.currentUser;if(u&&u.isAnonymous)await u.linkWithRedirect(pr);else await auth.signInWithRedirect(pr)}catch(x){msg('Google ката: '+(x.code||x.message))}}
+ else if(e.code!='auth/popup-closed-by-user'&&e.code!='auth/cancelled-popup-request')msg('Google ката: '+(e.code||e.message))}}
 async function gout(){if(auth){await auth.signOut();msg('Чыктың. Жаңы коноктук аккаунт ачылды.')}}
 
 // === Оюнчунун профили ===
