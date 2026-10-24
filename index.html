@@ -55,6 +55,7 @@ button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:14px;bac
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/polygon-clipping@0.15.3/dist/polygon-clipping.umd.min.js"></script>
 <script>
 // === Көп оюнчулуу режим үчүн Firebase ачкычтарын ушул жерге жаз (бош болсо — жалгыз оюн) ===
 const FB={apiKey:"AIzaSyDKy9LWh-JL-sYeCv8I8mHFrcaD1lmBzsU",authDomain:"terra-x-b9234.firebaseapp.com",projectId:"terra-x-b9234",storageBucket:"terra-x-b9234.firebasestorage.app",messagingSenderId:"973466064325",appId:"1:973466064325:web:66124545f7ec5f000ee7ac"};
@@ -76,7 +77,7 @@ const trailLine=L.polyline([],{color,weight:6,opacity:.9}).addTo(map);
 const me=L.circleMarker([0,0],{radius:9,color:'#fff',weight:3,fillColor:color,fillOpacity:1});
 const startMark=L.circle([0,0],{radius:20,color,dashArray:'6 6',fill:false});
 let total=Number(localStorage.td)||0,pd={},tab='a';
-const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v4</div>';
+const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v5</div>';
 const IGLINK=DEV+'<a class="ig2" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#igs"/></svg>@madalbaev_001</a>';
 let first=true,zones=JSON.parse(localStorage.zones||'{}'),zl=[],trail=[],dist=0,watch=null,lock=null,lastT=0,follow=true,pm={},timer=null,cur=null;
 const mpl=lat=>[111320*Math.cos(lat*Math.PI/180),110574];
@@ -84,14 +85,43 @@ const d=(a,b)=>{const k=mpl(a[0]);return Math.hypot((a[1]-b[1])*k[0],(a[0]-b[0])
 function area(p){const k=mpl(p[0][0]),m=p.map(q=>[q[1]*k[0],q[0]*k[1]]);let s=0;for(let i=0;i<m.length;i++){const a=m[i],b=m[(i+1)%m.length];s+=a[0]*b[1]-b[0]*a[1]}return Math.abs(s/2)}
 const pairs=z=>{const r=[];for(let i=0;i<z.pts.length;i+=2)r.push([z.pts[i],z.pts[i+1]]);return r};
 function inP(x,y,q){let c=false;for(let i=0,j=q.length-1;i<q.length;j=i++)if((q[i][0]>y)!=(q[j][0]>y)&&x<(q[j][1]-q[i][1])*(y-q[i][0])/(q[j][0]-q[i][0])+q[i][1])c=!c;return c}
-// ким канча жерге ээ (кийинки аймак мурункусун басып калат)
-function scores(){const zs=Object.values(zones).sort((a,b)=>a.t-b.t),P=zs.map(pairs),sc={};
+// ким канча жерге ээ — аймактарды так геометрия менен бириктирүү (polygon-clipping)
+function scoresOld(){const zs=Object.values(zones).sort((a,b)=>a.t-b.t),P=zs.map(pairs),sc={};
 zs.forEach((z,i)=>{const q=P[i],la=q.map(p=>p[0]),lo=q.map(p=>p[1]),a0=Math.min(...la),a1=Math.max(...la),b0=Math.min(...lo),b1=Math.max(...lo),k=mpl(a0);
 const st=Math.max(3,Math.max((a1-a0)*k[1],(b1-b0)*k[0])/60),da=st/k[1],db=st/k[0];let n=0;
-for(let y=a0+da/2;y<a1;y+=da)for(let x=b0+db/2;x<b1;x+=db){if(!inP(y,x,q))continue;let cov=false;for(let j=i+1;j<P.length;j++)if(inP(y,x,P[j])){cov=true;break}if(!cov)n++}
+for(let y=a0+da/2;y<a1;y+=da)for(let x=b0+db/2;x<b1;x+=db){if(!inP(x,y,q))continue;let cov=false;for(let j=i+1;j<P.length;j++)if(inP(x,y,P[j])){cov=true;break}if(!cov)n++}
 const s=sc[z.uid]=sc[z.uid]||{name:z.name||'Оюнчу',hue:z.hue,a:0};s.a+=n*st*st});return sc}
-function render(){zl.forEach(l=>l.remove());
-zl=Object.values(zones).sort((a,b)=>a.t-b.t).map(z=>L.polygon(pairs(z),{color:`hsl(${z.hue},75%,40%)`,fillColor:`hsl(${z.hue},75%,50%)`,fillOpacity:.45,weight:2}).addTo(map));
+const PCL=()=>window.polygonClipping;
+let cache=null,cacheSig='';
+const geomOf=z=>{const q=pairs(z);if(q.length<3)return null;const r=q.map(p=>[p[1],p[0]]);r.push(r[0]);return [r]};
+function ringA(r){const k=mpl(r[0][1]);let s=0;for(let i=0;i<r.length;i++){const a=r[i],b=r[(i+1)%r.length];s+=a[0]*k[0]*b[1]*k[1]-b[0]*k[0]*a[1]*k[1]}return Math.abs(s/2)}
+const areaMP=mp=>mp.reduce((t,poly)=>t+ringA(poly[0])-poly.slice(1).reduce((h,r)=>h+ringA(r),0),0);
+// кийинки аймак мурункусун басып калат; ар бир оюнчунун аймагы бир бүтүн фигура болуп биригет
+function calc(){const PC=PCL();if(!PC)return null;
+ const zs=Object.entries(zones).sort((a,b)=>a[1].t-b[1].t);
+ const sig=zs.map(e=>e[0]+'|'+e[1].t+'|'+e[1].uid+'|'+e[1].hue+'|'+e[1].name+'|'+(e[1].pts||[]).length).join(';');
+ if(cache&&sig==cacheSig)return cache;
+ const own={};let cov=null;
+ for(let i=zs.length-1;i>=0;i--){const z=zs[i][1],g=geomOf(z);if(!g)continue;
+  let vis=[g];if(cov){try{vis=PC.difference(g,cov)}catch(e){vis=[g]}}
+  try{cov=cov?PC.union(cov,g):[g]}catch(e){}
+  if(!vis||!vis.length)continue;
+  const o=own[z.uid]||(own[z.uid]={name:z.name||'Оюнчу',hue:z.hue,mp:[]});vis.forEach(v=>o.mp.push(v))}
+ for(const o of Object.values(own)){if(o.mp.length>1){try{o.mp=PC.union.apply(null,o.mp)}catch(e){}}}
+ cache={own};cacheSig=sig;return cache}
+function scores(){const c=calc();if(!c)return scoresOld();const sc={};
+ for(const[id,o]of Object.entries(c.own))sc[id]={name:o.name,hue:o.hue,a:areaMP(o.mp)};return sc}
+const terr=()=>{const c=calc(),o=c&&c.own[uid];return o&&o.mp.length?o.mp:null};
+function inR(p,r){let c=false;const x=p[1],y=p[0];for(let i=0,j=r.length-1;i<r.length;j=i++){const xi=r[i][0],yi=r[i][1],xj=r[j][0],yj=r[j][1];if((yi>y)!=(yj>y)&&x<(xj-xi)*(y-yi)/(yj-yi)+xi)c=!c}return c}
+function inMP(p,mp){for(const poly of mp){if(!inR(p,poly[0]))continue;let h=false;for(let i=1;i<poly.length;i++)if(inR(p,poly[i])){h=true;break}if(!h)return true}return false}
+function distMP(p,mp){const k=mpl(p[0]),px=p[1]*k[0],py=p[0]*k[1];let best=1e9;
+ for(const poly of mp)for(const r of poly)for(let i=0;i<r.length;i++){const a=r[i],b=r[(i+1)%r.length],ax=a[0]*k[0],ay=a[1]*k[1],dx=b[0]*k[0]-ax,dy=b[1]*k[1]-ay,l2=dx*dx+dy*dy;
+  let t=l2?((px-ax)*dx+(py-ay)*dy)/l2:0;t=Math.max(0,Math.min(1,t));best=Math.min(best,Math.hypot(px-(ax+t*dx),py-(ay+t*dy)))}
+ return best}
+function render(){zl.forEach(l=>l.remove());zl=[];const c=calc();
+if(c){Object.values(c.own).forEach(o=>{if(!o.mp.length)return;const ll=o.mp.map(poly=>poly.map(r=>r.map(q=>[q[1],q[0]])));
+ zl.push(L.polygon(ll,{color:`hsl(${o.hue},75%,40%)`,fillColor:`hsl(${o.hue},75%,50%)`,fillOpacity:.45,weight:2}).addTo(map))})}
+else{zl=Object.values(zones).sort((a,b)=>a.t-b.t).map(z=>L.polygon(pairs(z),{color:`hsl(${z.hue},75%,40%)`,fillColor:`hsl(${z.hue},75%,50%)`,fillOpacity:.45,weight:2}).addTo(map))}
 const sc=scores(),list=Object.entries(sc).sort((a,b)=>b[1].a-a[1].a);
 $('tot').textContent=Math.round(sc[uid]?sc[uid].a:0);const r=list.findIndex(e=>e[0]==uid);$('rk').textContent=r<0?'–':'#'+(r+1);
 drawBoard(list);if($('prof').style.display=='block')drawProf()}
@@ -105,6 +135,7 @@ $('board').innerHTML='<div class="tabs"><b class="'+(tab=='a'?'on':'')+'" onclic
 function setTab(t){tab=t;render()}
 function msg(t){$('msg').textContent=t}
 function save(id,z){zones[id]=z;if(fs)fs.collection('zones').doc(id).set(z).catch(()=>msg('Серверге жазылган жок'));else{const m={};Object.entries(zones).forEach(([k,v])=>{if(v.uid==uid)m[k]=v});localStorage.zones=JSON.stringify(m)}render()}
+let startNear=false,farOut=0;
 function onFix(e){
 const c=e.coords,p=[c.latitude,c.longitude],now=Date.now();cur=p;
 me.setLatLng(p).addTo(map);if(first){first=false;follow=true;map.setView(p,18)}
@@ -116,12 +147,26 @@ lastT=now;$('sp').textContent=((spd||0)*3.6).toFixed(1);$('di').textContent=Math
 trail.push(p);trailLine.setLatLngs(trail);me.setLatLng(p).addTo(map);
 if(trail.length===1)startMark.setLatLng(p).addTo(map);
 if(follow)map.panTo(p,{animate:true});
+// өз аймагыбызга канчалык жакынбыз
+const T=terr();let dT=0,nearNow=false;
+if(T){dT=inMP(p,T)?0:distMP(p,T);nearNow=dT<=15}
+if(trail.length===1){startNear=nearNow;farOut=0}else if(startNear)farOut=Math.max(farOut,dT);
+let claimed=false;
+// 1) өз жолун кесип өтсө — жабык контур
 for(let i=0;i<trail.length-8;i++){
  if(d(trail[i],p)<20){const pts=trail.slice(i);let len=0;for(let j=1;j<pts.length;j++)len+=d(pts[j-1],pts[j]);const a=area(pts);
-  if(len>=80&&a>=300){save(uid+'_'+now,{uid,name,hue,t:now,pts:pts.flat()});
+  if(len>=80&&a>=300){save(uid+'_'+now,{uid,name,hue,t:now,pts:pts.flat()});claimed=true;
    msg('🎉 Аймак кошулду: '+Math.round(a)+' м²');if(navigator.vibrate)navigator.vibrate([200,100,200]);
-   trail=[p];dist=0;trailLine.setLatLngs(trail);startMark.setLatLng(p)}
-  break}}}
+   trail=[p];dist=0;trailLine.setLatLngs(trail);startMark.setLatLng(p);startNear=true;farOut=0}
+  break}}
+// 2) өз аймагынын чек арасынан чыгып, кайра чек арага келсе — аймак кенейет
+if(!claimed&&T&&startNear&&farOut>25&&nearNow&&trail.length>8){
+ let len=0;for(let j=1;j<trail.length;j++)len+=d(trail[j-1],trail[j]);
+ const g=geomOf({pts:trail.flat()});
+ if(len>=80&&g){let add=0;try{add=areaMP(PCL().difference(g,T))}catch(e){}
+  if(add>=300){save(uid+'_'+now,{uid,name,hue,t:now,pts:trail.flat()});
+   msg('🎉 Аймак кенейди: +'+Math.round(add)+' м²');if(navigator.vibrate)navigator.vibrate([200,100,200]);
+   trail=[p];dist=0;trailLine.setLatLngs(trail);startMark.setLatLng(p);startNear=true;farOut=0}}}}
 async function wake(){try{lock=await navigator.wakeLock.request('screen')}catch(e){}}
 // башка оюнчулар
 function live(){if(!fs)return;
