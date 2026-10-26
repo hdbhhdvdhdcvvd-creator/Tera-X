@@ -44,6 +44,13 @@ button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:14px;bac
 #splash img{width:min(68vw,280px);height:min(68vw,280px);object-fit:cover;display:block;-webkit-animation:spin 6s linear infinite;animation:spin 6s linear infinite}
 @-webkit-keyframes spin{from{-webkit-transform:rotate(0deg)}to{-webkit-transform:rotate(360deg)}}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.lab{position:absolute;left:0;top:0;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;pointer-events:none}
+.lav{width:34px;height:34px;border-radius:50%;border:3px solid #fff;color:#fff;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 6px rgba(0,0,0,.5)}
+.lnm{margin-top:2px;background:rgba(0,0,0,.65);color:#fff;font-size:11px;font-weight:700;padding:1px 7px;border-radius:9px;white-space:nowrap;max-width:110px;overflow:hidden;text-overflow:ellipsis}
+.hq{position:absolute;z-index:1002;left:8px;top:calc(10px + env(safe-area-inset-top,0px));width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.95);color:#0f2a1d;font-weight:800;font-size:18px;padding:0;box-shadow:0 1px 6px rgba(0,0,0,.3)}
+#help{display:none;position:absolute;z-index:1004;left:8px;right:8px;top:calc(60px + env(safe-area-inset-top,0px));bottom:calc(80px + env(safe-area-inset-bottom,0px));overflow:auto;background:#fff;color:#0f2a1d;border-radius:16px;padding:16px;box-shadow:0 2px 14px rgba(0,0,0,.45);line-height:1.45}
+#help h3{margin:0 0 8px}#help p{margin:8px 0;font-size:.92rem}
+.fr{display:flex;gap:6px;align-items:center;margin-top:10px;font-size:.85rem;flex-wrap:wrap}.fr input{flex:1;min-width:0;padding:9px;border:1px solid #bbb;border-radius:9px;font-size:.9rem}.fr button{padding:9px 12px;border-radius:9px;border:0;background:#2a9d5c;color:#fff;font-weight:700}
 #prof{display:none;position:absolute;z-index:1003;left:8px;right:8px;bottom:calc(76px + env(safe-area-inset-bottom,0px));background:#fff;color:#0f2a1d;border-radius:16px;padding:14px;box-shadow:0 2px 14px rgba(0,0,0,.45);max-height:72%;overflow:auto}
 .ph{display:flex;align-items:center;gap:12px}.av{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1.7rem;overflow:hidden;flex:none;box-shadow:0 1px 6px rgba(0,0,0,.35)}.av img{width:100%;height:100%;object-fit:cover}
 .pn{font-weight:800;font-size:1.15rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.pn button{padding:4px 9px;font-size:.8rem;box-shadow:none;background:#e8efe9;color:#0f2a1d;border-radius:8px}
@@ -62,6 +69,16 @@ button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:14px;bac
 <div class="hud"><div><span id="sp">0.0</span><small>км/ч</small></div><div><span id="di">0</span><small>м жол</small></div><div><span id="tot">0</span><small>упай (м²)</small></div><div><span id="rk">–</span><small>рейтинг</small></div></div></div>
 <div id="board"></div>
 <div id="prof"></div>
+<div id="help"><h3>📖 Кантип ойнойм?</h3>
+<p><b>1. Баштоо.</b> «▶ Баштоо» бас, GPS'ке уруксат бер жана ачык жерде жүр. Жол жашыл сызык болуп чийилет.</p>
+<p><b>2. Аймак алуу.</b> Жолуңду жапсаң (баштаган жериңе кайтсаң же өз жолуңду кессең), ичиндеги жер сенин аймагың болот.</p>
+<p><b>3. Аймакты кенейтүү.</b> Өз аймагыңдын чек арасынан чыгып, айланып, кайра чек арага кел. Жаңы жер аймагыңа кошулат.</p>
+<p><b>4. Башкалардын жери.</b> Башка оюнчунун аймагынын үстүнөн контур жасасаң, кесилген бөлүк сеники болот.</p>
+<p><b>5. Рейтинг 🏆.</b> 📐 Аймак: ким чоң жерге ээ. 📏 Жол: ким көп жүрдү. 👥 Достор: достор менен гана жарыш.</p>
+<p><b>6. Профиль 👤.</b> Атыңды, түсүңдү өзгөрт, Google менен байланыштыр, ошондо аймактарың жоголбойт.</p>
+<p><b>7. Кеңеш.</b> GPS так иштеши үчүн ачык жерде жүр. Машинада жүрбө, тез жүрсөң чекиттер өтпөй калат.</p>
+<button class="gbtn" style="background:#e8efe9;border:0" onclick="$('help').style.display='none'">Жабуу</button></div>
+<button class="hq" onclick="const h=$('help');h.style.display=h.style.display=='block'?'none':'block'">?</button>
 <div id="msg">«Баштоо» бас да, сыртка чыгып жүр.</div>
 <div class="bar"><button id="go">▶ Баштоо</button><button id="ly">🛰️</button><button id="pf">👤</button><button id="lb">🏆</button><button id="rs">↺</button></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -98,7 +115,7 @@ const trailLine=L.polyline([],{color,weight:6,opacity:.9}).addTo(map);
 const me=L.circleMarker([0,0],{radius:9,color:'#fff',weight:3,fillColor:color,fillOpacity:1});
 const startMark=L.circle([0,0],{radius:20,color,dashArray:'6 6',fill:false});
 let total=Number(localStorage.td)||0,pd={},tab='a';
-const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v8</div>';
+const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v9</div>';
 const IGLINK=DEV+'<a class="ig2" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#igs"/></svg>@madalbaev_001</a>';
 let first=true,zones=JSON.parse(localStorage.zones||'{}'),zl=[],trail=[],dist=0,watch=null,lock=null,lastT=0,follow=true,pm={},timer=null,cur=null;
 const mpl=lat=>[111320*Math.cos(lat*Math.PI/180),110574];
@@ -139,9 +156,20 @@ function distMP(p,mp){const k=mpl(p[0]),px=p[1]*k[0],py=p[0]*k[1];let best=1e9;
  for(const poly of mp)for(const r of poly)for(let i=0;i<r.length;i++){const a=r[i],b=r[(i+1)%r.length],ax=a[0]*k[0],ay=a[1]*k[1],dx=b[0]*k[0]-ax,dy=b[1]*k[1]-ay,l2=dx*dx+dy*dy;
   let t=l2?((px-ax)*dx+(py-ay)*dy)/l2:0;t=Math.max(0,Math.min(1,t));best=Math.min(best,Math.hypot(px-(ax+t*dx),py-(ay+t*dy)))}
  return best}
-function render(){zl.forEach(l=>l.remove());zl=[];const c=calc();
+let lb=[];
+function labelPos(poly){const r=poly[0];let a=0,cx=0,cy=0;for(let i=0;i<r.length;i++){const p=r[i],q=r[(i+1)%r.length],f=p[0]*q[1]-q[0]*p[1];a+=f;cx+=(p[0]+q[0])*f;cy+=(p[1]+q[1])*f}
+ if(Math.abs(a)<1e-18)return [r[0][1],r[0][0]];a*=.5;cx/=(6*a);cy/=(6*a);
+ if(inMP([cy,cx],[poly]))return [cy,cx];
+ const xs=[];for(let i=0;i<r.length;i++){const p=r[i],q=r[(i+1)%r.length];if((p[1]>cy)!=(q[1]>cy))xs.push(p[0]+(cy-p[1])*(q[0]-p[0])/(q[1]-p[1]))}
+ xs.sort((u,v)=>u-v);let best=null,bw=-1;for(let i=0;i+1<xs.length;i+=2){const w=xs[i+1]-xs[i];if(w>bw){bw=w;best=(xs[i]+xs[i+1])/2}}
+ return best==null?[r[0][1],r[0][0]]:[cy,best]}
+function render(){zl.forEach(l=>l.remove());zl=[];lb.forEach(m=>m.remove());lb=[];const c=calc();
 if(c){Object.values(c.own).forEach(o=>{if(!o.mp.length)return;const ll=o.mp.map(poly=>poly.map(r=>r.map(q=>[q[1],q[0]])));
- zl.push(L.polygon(ll,{color:`hsl(${o.hue},75%,40%)`,fillColor:`hsl(${o.hue},75%,50%)`,fillOpacity:.45,weight:2}).addTo(map))})}
+ zl.push(L.polygon(ll,{color:`hsl(${o.hue},75%,40%)`,fillColor:`hsl(${o.hue},75%,50%)`,fillOpacity:.45,weight:2}).addTo(map));
+ // аймактын ортосуна ээсинин профили жана аты
+ let big=null,ba=0;o.mp.forEach(poly=>{const ar=ringA(poly[0])-poly.slice(1).reduce((h,r)=>h+ringA(r),0);if(ar>ba){ba=ar;big=poly}});
+ if(big&&ba>=800){try{const pos=labelPos(big),nm=esc(o.name||'Оюнчу');
+  lb.push(L.marker(pos,{interactive:false,keyboard:false,icon:L.divIcon({className:'',iconSize:[0,0],html:'<div class="lab"><div class="lav" style="background:hsl('+(Number(o.hue)||0)+',75%,45%)">'+esc(nm.charAt(0).toUpperCase())+'</div><div class="lnm">'+nm+'</div></div>'})}).addTo(map))}catch(e){}}})}
 else{zl=Object.values(zones).sort((a,b)=>a.t-b.t).map(z=>L.polygon(pairs(z),{color:`hsl(${z.hue},75%,40%)`,fillColor:`hsl(${z.hue},75%,50%)`,fillOpacity:.45,weight:2}).addTo(map))}
 const sc=scores(),list=Object.entries(sc).sort((a,b)=>b[1].a-a[1].a);
 $('tot').textContent=Math.round(sc[uid]?sc[uid].a:0);const r=list.findIndex(e=>e[0]==uid);$('rk').textContent=r<0?'–':'#'+(r+1);
@@ -149,10 +177,29 @@ drawBoard(list);if($('prof').style.display=='block')drawProf()}
 const fmt=m=>m>=1000?(m/1000).toFixed(2)+' км':Math.round(m)+' м';
 const row=(i,id,nm,h,v)=>`<p><span><i class="dot" style="background:hsl(${Number(h)||0},75%,45%)"></i>${i+1}. ${(nm+'').replace(/[<>&]/g,'')}${id==uid?' (сен)':''}</span><b>${v}</b></p>`;
 function lenList(){const m=Object.assign({},pd);m[uid]={name:name||'Оюнчу',hue,td:total};return Object.entries(m).map(([id,v])=>({id,name:v.name||'Оюнчу',hue:v.hue,td:v.td||0})).filter(v=>v.td>0).sort((a,b)=>b.td-a.td)}
+let friends=[];try{friends=JSON.parse(localStorage.fr||'[]')}catch(e){friends=[]}
+function friendRows(sc){const ids=[uid].concat(friends.filter(f=>f!=uid));
+ return ids.map(id=>{const s1=sc[id],p1=pd[id]||{};return {id,name:(s1&&s1.name)||p1.name||'Дос',hue:(s1&&s1.hue)!=null?s1.hue:(p1.hue||0),a:s1?s1.a:0,td:id==uid?total:(p1.td||0)}}).sort((x,y)=>y.a-x.a)}
 function drawBoard(list){let rows;
+if(tab=='f'&&document.activeElement&&document.activeElement.id=='fc')return;
 if(tab=='a')rows=list.slice(0,10).map((e,i)=>row(i,e[0],e[1].name,e[1].hue,Math.round(e[1].a)+' м²'));
+else if(tab=='f'){const sc={};list.forEach(e=>sc[e[0]]=e[1]);rows=friendRows(sc).map((e,i)=>row(i,e.id,e.name,e.hue,Math.round(e.a)+' м² · '+fmt(e.td)))}
 else rows=lenList().slice(0,10).map((e,i)=>row(i,e.id,e.name,e.hue,fmt(e.td)));
-$('board').innerHTML='<div class="tabs"><b class="'+(tab=='a'?'on':'')+'" onclick="setTab(\'a\')">📐 Аймак</b><b class="'+(tab=='l'?'on':'')+'" onclick="setTab(\'l\')">📏 Жол</b></div>'+(rows.join('')||'<p>Азырынча маалымат жок</p>')+accHTML()+IGLINK}
+const tb=(k,t)=>'<b class="'+(tab==k?'on':'')+'" onclick="setTab(\''+k+'\')">'+t+'</b>';
+let extra='';
+if(tab=='f')extra='<div class="fr">Менин кодум: <b>'+esc(uid.slice(0,6))+'</b> <button onclick="copyCode()">Көчүр</button></div><div class="fr"><input id="fc" placeholder="Достун коду" autocomplete="off"><button onclick="addFriend()">Кош</button></div>'+(friends.length?'<div class="fr"><button style="background:#c0392b" onclick="clearFriends()">Достор тизмесин тазалоо</button></div>':'');
+$('board').innerHTML='<div class="tabs">'+tb('a','📐 Аймак')+tb('l','📏 Жол')+tb('f','👥 Достор')+'</div>'+(rows.join('')||'<p>Азырынча маалымат жок</p>')+extra+accHTML()+IGLINK}
+function copyCode(){const c=uid.slice(0,6);try{navigator.clipboard.writeText(c);msg('Код көчүрүлдү: '+c)}catch(e){msg('Кодуң: '+c)}}
+function clearFriends(){if(confirm('Достор тизмеси тазалансынбы?')){friends=[];localStorage.fr='[]';render()}}
+async function addFriend(){const code=(($('fc')||{}).value||'').trim();if(code.length<4){msg('Достун кодун жаз (кеминде 4 тамга)');return}
+ if(!fs){msg('Интернет керек');return}
+ try{const FP=firebase.firestore.FieldPath.documentId();const q=await fs.collection('players').orderBy(FP).startAt(code).endAt(code+'\uf8ff').limit(3).get();
+  const ids=[];q.forEach(d=>ids.push(d.id));
+  if(!ids.length){msg('Мындай код табылган жок. Дос оюнду ачып «Баштоо» басышы керек.');return}
+  const id=ids[0];if(id==uid){msg('Бул өзүңдүн кодуң 🙂');return}
+  if(friends.includes(id)){msg('Бул дос мурун эле кошулган');return}
+  friends.push(id);localStorage.fr=JSON.stringify(friends);msg('✅ Дос кошулду');render()}
+ catch(e){msg('Ката: '+(e.code||e.message))}}
 function setTab(t){tab=t;render()}
 function msg(t){$('msg').textContent=t}
 function save(id,z){zones[id]=z;if(fs)fs.collection('zones').doc(id).set(z).catch(()=>msg('Серверге жазылган жок'));else{const m={};Object.entries(zones).forEach(([k,v])=>{if(v.uid==uid)m[k]=v});localStorage.zones=JSON.stringify(m)}render()}
