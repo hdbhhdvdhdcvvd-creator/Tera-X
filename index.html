@@ -142,10 +142,111 @@ button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:14px;bac
 .kg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
 .kn{overflow:hidden;background:#f1f6f2;border-radius:12px;padding:6px 4px;text-align:center;font-size:.72rem;font-weight:700;border:2px solid transparent}
 .kn.on{border-color:#2a9d5c;background:#d9f2e3}.kn small{display:block;font-weight:600;opacity:.75}.kn .skw{margin:0 auto}
+
+/* === Premium скиндер === */
+.sk-plasma .pl-g{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle,var(--l) 0,var(--c) 35%,transparent 70%);opacity:.55;animation:skpg 1.2s ease-in-out infinite alternate}
+@keyframes skpg{to{transform:scale(1.2);opacity:.9}}
+.sk-plasma svg{filter:drop-shadow(0 0 3px var(--c))}
+.sk-plasma .g1{transform-origin:22px 22px;animation:sks 5s linear infinite}.sk-plasma .g2{transform-origin:22px 22px;animation:skr 3s linear infinite}
+.sk-plasma path{fill:none;stroke:#fff;stroke-width:1.4;stroke-linejoin:round}.sk-plasma .g2 path{stroke:var(--l)}
+.sk-plasma .a1{animation:skalt .4s steps(1) infinite}.sk-plasma .a2{animation:skalt .4s steps(1) infinite reverse}
+@keyframes skalt{0%{opacity:1}50%{opacity:0}}
+.sk-plasma .pl-c{width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--l) 45%,var(--c));box-shadow:0 0 14px 4px var(--c);animation:skpc 1s ease-in-out infinite alternate}
+@keyframes skpc{to{transform:scale(1.2)}}
+.sk-phoenix svg{filter:drop-shadow(0 0 6px #ff7a00)}
+.sk-phoenix .px-g{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle,#ff7a00 0,transparent 70%);opacity:.5;animation:skfgl .9s ease-in-out infinite alternate}
+.sk-phoenix .pw{fill:url(#skgf);stroke:#fff3b0;stroke-width:.6;stroke-linejoin:round;transform-origin:22px 24px}
+.sk-phoenix .pl{animation:skpwl .42s ease-in-out infinite alternate}.sk-phoenix .pr{animation:skpwr .42s ease-in-out infinite alternate}
+@keyframes skpwl{from{transform:rotate(20deg)}to{transform:rotate(-16deg)}}@keyframes skpwr{from{transform:rotate(-20deg)}to{transform:rotate(16deg)}}
+.sk-phoenix .pt{fill:#ff5a00;transform-origin:22px 28px;animation:skfk .5s ease-in-out infinite alternate}
+.sk-phoenix .sp{inset:auto;left:12px;bottom:12px;margin:0;width:3px;height:3px;border-radius:50%;background:#ffd34d;opacity:0;animation:skspk 1.1s linear infinite}
+.sk-phoenix .s2{left:30px;animation-delay:.4s}.sk-phoenix .s3{left:21px;animation-delay:.75s}
+.sk-blackhole{perspective:160px}
+.sk-blackhole .bh-l{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle,transparent 38%,var(--c) 58%,transparent 72%);opacity:.55;animation:skpg 2s ease-in-out infinite alternate}
+.sk-blackhole .bh-d{width:46px;height:46px;border-radius:50%;background:conic-gradient(from 0deg,var(--c),#ffd27a,#fff,var(--l),var(--c));-webkit-mask:radial-gradient(circle,transparent 9px,#000 10px,#000 19px,transparent 23px);mask:radial-gradient(circle,transparent 9px,#000 10px,#000 19px,transparent 23px);animation:skbh 2.2s linear infinite;filter:drop-shadow(0 0 5px var(--c))}
+.sk-blackhole .bh-e{width:32px;height:32px;-webkit-mask:radial-gradient(circle,transparent 8px,#000 9px,#000 14px,transparent 16px);mask:radial-gradient(circle,transparent 8px,#000 9px,#000 14px,transparent 16px);animation:skbh2 1.3s linear infinite}
+@keyframes skbh{from{transform:rotateX(68deg) rotateZ(0)}to{transform:rotateX(68deg) rotateZ(360deg)}}
+@keyframes skbh2{from{transform:rotateX(68deg) rotateZ(360deg)}to{transform:rotateX(68deg) rotateZ(0)}}
+.sk-blackhole .bh-c{width:15px;height:15px;border-radius:50%;background:#000;box-shadow:0 0 0 2px rgba(255,255,255,.9),0 0 12px 3px var(--c)}
+.sk-ufo svg{overflow:visible;filter:drop-shadow(0 0 5px var(--c));animation:skuf 2.4s ease-in-out infinite alternate}
+@keyframes skuf{from{transform:translateY(-2px) rotate(-6deg)}to{transform:translateY(2px) rotate(6deg)}}
+.sk-ufo .beam{fill:var(--l);transform-origin:22px 27px;animation:skbm 1.1s ease-in-out infinite alternate}
+@keyframes skbm{from{opacity:.12;transform:scaleY(.75)}to{opacity:.6;transform:scaleY(1)}}
+.sk-ufo .dome{fill:rgba(150,240,255,.75);stroke:#fff;stroke-width:.8}
+.sk-ufo .lt{animation:skbl .9s steps(1) infinite}.sk-ufo .l1{fill:#ff4d4d}.sk-ufo .l2{fill:#ffe14d;animation-delay:.3s}.sk-ufo .l3{fill:#4dff88;animation-delay:.6s}
+@keyframes skbl{0%{opacity:1}50%{opacity:.15}}
+.sk-horns svg{filter:drop-shadow(0 0 5px #ffc83d)}
+.sk-horns .hr{transform-origin:22px 22px;animation:sks 7s linear infinite}
+.sk-horns .hr path{fill:none;stroke:url(#skgg);stroke-width:2.4;stroke-linecap:round}
+.sk-horns .hc{fill:var(--c);stroke:#ffe27a;stroke-width:1.2;transform-box:fill-box;transform-origin:center;animation:skpc 1s ease-in-out infinite alternate}
+.sk-horns .ho{width:42px;height:42px;border-radius:50%;border:2px dotted #ffc83d;box-sizing:border-box;animation:skr 9s linear infinite}
+.sk-comet .cm{width:44px;height:44px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 40%,#5fd0ff 100%);-webkit-mask:radial-gradient(circle,transparent 15px,#000 16px,#000 21px,transparent 22px);mask:radial-gradient(circle,transparent 15px,#000 16px,#000 21px,transparent 22px);animation:sks 1.8s linear infinite;filter:drop-shadow(0 0 4px #9fe3ff)}
+.sk-comet .cm b{position:absolute;left:50%;top:1px;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:#fff;box-shadow:0 0 8px 3px #9fe3ff}
+.sk-comet .cm2{width:28px;height:28px;background:conic-gradient(from 0deg,transparent 0 40%,var(--l) 100%);-webkit-mask:radial-gradient(circle,transparent 9px,#000 10px,#000 13px,transparent 14px);mask:radial-gradient(circle,transparent 9px,#000 10px,#000 13px,transparent 14px);animation:sks 1.05s linear infinite;filter:drop-shadow(0 0 4px var(--c))}
+.sk-comet .cm2 b{top:1px;width:5px;height:5px;margin-left:-2.5px;background:var(--l);box-shadow:0 0 6px 2px var(--c)}
+.sk-frost svg{filter:drop-shadow(0 0 5px #7fdcff)}
+.sk-frost .fr-g{width:40px;height:40px;border-radius:50%;background:radial-gradient(circle,rgba(127,220,255,.7) 0,transparent 68%);animation:skpg 1.6s ease-in-out infinite alternate}
+.sk-frost .fa{transform-origin:22px 22px;animation:sks 9s linear infinite}
+.sk-frost .fa path{fill:none;stroke:#eafcff;stroke-width:1.8;stroke-linecap:round}
+.sk-frost .fm{fill:var(--c);stroke:#fff;stroke-width:1}
+.sk-frost .tw{transform-box:fill-box;transform-origin:center;animation:sktwk 1.6s ease-in-out infinite}.sk-frost .tw2{animation-delay:.8s}
+.sk-crown svg{filter:drop-shadow(0 0 6px #ffc83d);animation:skflt 2s ease-in-out infinite}
+.sk-crown .sh{animation:skshn 2.4s ease-in-out infinite}
+.sk-crown .gm{transform-box:fill-box;transform-origin:center;animation:skgm 1.1s ease-in-out infinite alternate}.sk-crown .g2{animation-delay:.35s}.sk-crown .g3{animation-delay:.7s}
+@keyframes skgm{to{transform:scale(1.4);filter:brightness(1.7)}}
+.sk-crown .tw{transform-box:fill-box;transform-origin:center;animation:sktwk 1.6s ease-in-out infinite}.sk-crown .tw2{animation-delay:.8s}
+/* дүкөн: premium */
+.kn.pr{border-color:#f2b705;background:linear-gradient(135deg,#fff8e1,#fff)}
+.kn.pr.on{background:#d9f2e3;border-color:#2a9d5c}
+.vip b{white-space:nowrap}.vip{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:10px 0;padding:10px 12px;border-radius:12px;background:linear-gradient(90deg,#3a2a00,#7a5a00);color:#ffe27a;font-weight:800;font-size:.85rem}
+.kcode{display:flex;gap:8px;margin-top:10px}
+.kcode input{flex:1;min-width:0;border:2px solid #cfd8d1;border-radius:10px;padding:10px;font-size:1rem;text-transform:uppercase}
+.kcode button{background:#2a9d5c;color:#fff;border:0;border-radius:10px;padding:0 12px;font-weight:700}
+.buy{background:#e8590c;color:#fff;border:0}.buy.wa{background:#25d366}
+.big{height:110px;display:flex;align-items:center;justify-content:center}.big .skw{transform:scale(2.3)}
+/* аймак алганда салют */
+.bst{position:relative;width:0;height:0}
+.bst i{position:absolute;left:-30px;top:-30px;width:60px;height:60px;border-radius:50%;border:3px solid #ffe27a;opacity:0;animation:bsr 1.4s ease-out forwards}
+.bst i:nth-child(2){animation-delay:.2s;border-color:#fff}.bst i:nth-child(3){animation-delay:.4s;border-color:#52d68a}
+@keyframes bsr{0%{transform:scale(.2);opacity:1}100%{transform:scale(3.4);opacity:0}}
+.bst b{position:absolute;left:-3px;top:-3px;width:6px;height:6px;border-radius:50%;background:#ffe27a;opacity:0;animation:bsp 1.3s ease-out forwards}
+.bst b:nth-child(odd){background:#52d68a}.bst b:nth-child(3n){background:#fff}
+@keyframes bsp{0%{opacity:1;transform:rotate(var(--a)) translateY(0)}100%{opacity:0;transform:rotate(var(--a)) translateY(-72px) scale(.4)}}
+
+/* === Из (басып өткөн жолдун сызыгы) === */
+.tr-g,.tr-b,.tr-f{stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+@keyframes trk{to{stroke-dashoffset:var(--o)}}
+@keyframes trpl{from{opacity:.55}to{opacity:1}}
+@keyframes trgp{from{opacity:.15}to{opacity:.42}}
+@keyframes trrb{0%{stroke:#ff2d55}17%{stroke:#ffcc00}33%{stroke:#34ff6a}50%{stroke:#00e5ff}67%{stroke:#3d5afe}83%{stroke:#d500f9}100%{stroke:#ff2d55}}
+@keyframes trfb{0%{stroke:#ff3b00}50%{stroke:#ff9d00}100%{stroke:#ffd34d}}
+@keyframes trfg{from{opacity:.15;stroke-width:12px}to{opacity:.45;stroke-width:19px}}
+@keyframes trel{0%{opacity:.35}8%{opacity:.04}16%{opacity:.55}60%{opacity:.3}66%{opacity:.06}72%{opacity:.55}100%{opacity:.35}}
+@keyframes trgb{0%{stroke:#7a3cff}50%{stroke:#3d8bff}100%{stroke:#ff3dd6}}
+@keyframes trtw{0%,100%{opacity:1}50%{opacity:.25}}
+[data-trail=t_glow] .tr-g,[data-trail=t_ember] .tr-g{animation:trgp 1.3s ease-in-out infinite alternate}
+[data-trail=t_ember] .tr-f{--o:-15;animation:trk 2.2s linear infinite}
+[data-trail=t_rainbow] .tr-b{animation:trrb 3s linear infinite}
+[data-trail=t_rainbow] .tr-g{animation:trrb 3s linear infinite}
+[data-trail=t_neon] .tr-f{animation:trpl .7s ease-in-out infinite alternate}
+[data-trail=t_neon] .tr-g{animation:trgp .7s ease-in-out infinite alternate}
+[data-trail=t_flow] .tr-f{--o:-23;animation:trk 1s linear infinite}
+[data-trail=t_fire] .tr-b{animation:trfb .5s ease-in-out infinite alternate}
+[data-trail=t_fire] .tr-g{animation:trfg .3s ease-in-out infinite alternate}
+[data-trail=t_fire] .tr-f{--o:-17;animation:trk .45s linear infinite}
+[data-trail=t_electric] .tr-g{animation:trel 1.1s linear infinite}
+[data-trail=t_electric] .tr-f{--o:-32;animation:trk .4s linear infinite,trtw .22s steps(1) infinite}
+[data-trail=t_galaxy] .tr-b{animation:trgb 3s ease-in-out infinite alternate}
+[data-trail=t_galaxy] .tr-g{animation:trgp 1.6s ease-in-out infinite alternate}
+[data-trail=t_galaxy] .tr-f{--o:-15;animation:trk 3s linear infinite,trtw 1.2s ease-in-out infinite}
+[data-trail=t_gold] .tr-f{--o:-40;animation:trk 1s linear infinite}
+[data-trail=t_gold] .tr-g{animation:trgp 1.1s ease-in-out infinite alternate}
+.trv{margin:8px 0 2px}.trv svg{width:100%;height:34px;display:block;overflow:visible}
+.trb{margin:14px 0}.trb svg{height:84px}
 </style>
 </head>
 <body>
-<div id="splash"><img class="sbg" src="splash.jpg" alt="" onerror="this.style.display='none'"><img class="sfull" src="splash.jpg" alt="Tera X.kg" onerror="this.onerror=null;this.src='icon-512.png'"><div class="sshade"></div><div class="stop"><span class="schip">v11</span></div><div class="sbtm"><div id="stip"></div><div class="sbw"><div id="sbar"></div></div><div class="srow"><span id="stx">Жүктөлүп жатат…</span><b id="spc">0%</b></div><div class="sdev"><div class="sh">Авторлор</div><div id="sauth"></div></div></div></div>
+<div id="splash"><img class="sbg" src="splash.jpg" alt="" onerror="this.style.display='none'"><img class="sfull" src="splash.jpg" alt="Tera X.kg" onerror="this.onerror=null;this.src='icon-512.png'"><div class="sshade"></div><div class="stop"><span class="schip">v13</span></div><div class="sbtm"><div id="stip"></div><div class="sbw"><div id="sbar"></div></div><div class="srow"><span id="stx">Жүктөлүп жатат…</span><b id="spc">0%</b></div><div class="sdev"><div class="sh">Авторлор</div><div id="sauth"></div></div></div></div>
 <div id="map"></div>
 <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="igg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fdf497"/><stop offset=".3" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset="1" stop-color="#285AEB"/></linearGradient><symbol id="igs" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igg)"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="#fff"/></symbol></defs></svg>
 <a class="ig" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#igs"/></svg>@madalbaev_001</a>
@@ -154,7 +255,7 @@ button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:14px;bac
 <div id="board"></div>
 <div id="qp"></div>
 <div id="toast"></div>
-<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="skgd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8fbff"/><stop offset=".5" stop-color="#6fd6ff"/><stop offset="1" stop-color="#2a7fff"/></linearGradient><clipPath id="skgc"><path d="M12 10H32L40 19L22 40L4 19Z"/></clipPath></defs></svg>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="skgd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8fbff"/><stop offset=".5" stop-color="#6fd6ff"/><stop offset="1" stop-color="#2a7fff"/></linearGradient><clipPath id="skgc"><path d="M12 10H32L40 19L22 40L4 19Z"/></clipPath><clipPath id="skcc"><path d="M7 31L5 14L14 22L22 8L30 22L39 14L37 31ZM7 31H37V36H7Z"/></clipPath><linearGradient id="skgg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6b0"/><stop offset=".5" stop-color="#f6c21a"/><stop offset="1" stop-color="#a8740a"/></linearGradient><linearGradient id="skgf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe14d"/><stop offset=".5" stop-color="#ff7a00"/><stop offset="1" stop-color="#e01b00"/></linearGradient><linearGradient id="skgm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5f7fa"/><stop offset=".5" stop-color="#9aa6b2"/><stop offset="1" stop-color="#4a5560"/></linearGradient></defs></svg>
 <div id="prof"></div>
 <div id="help"><h3>📖 Кантип ойнойм?</h3>
 <p><b>1. Баштоо.</b> «▶ Баштоо» бас, GPS'ке уруксат бер жана ачык жерде жүр. Жол жашыл сызык болуп чийилет.</p>
@@ -220,8 +321,31 @@ const SKINS=[
  {id:'neon',n:'Неон',p:600,h:'<i class="nr"></i><i class="cd"></i>'},
  {id:'gold',n:'Алтын тыйын',p:700,h:'<i class="co"></i>'},
  {id:'diamond',n:'Алмаз',p:1000,h:'<svg viewBox="0 0 44 44"><path d="M12 10H32L40 19L22 40L4 19Z" fill="url(#skgd)" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/><path d="M4 19H40M12 10L17 19L22 10L27 19L32 10M17 19L22 40L27 19" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width=".9"/><g clip-path="url(#skgc)"><g class="sh"><rect x="-6" y="0" width="8" height="44" transform="skewX(-20)" fill="#fff" opacity=".8"/></g></g><path class="tw" d="'+STAR(36,8,4.5)+'" fill="#fff"/><path class="tw tw2" d="'+STAR(7,33,3.5)+'" fill="#fff"/></svg>'}];
+// === PREMIUM скиндер (чыныгы акчага сатылат) ===
+// ⚠️ PAY.secret'ти өзүңдүн сырыңа алмаштыр жана kod-generator.html ичиндеги менен бирдей кыл!
+const PAY={ig:'madalbaev_001',wa:'',vip:299,info:'Төлөм: Instagram же WhatsApp аркылуу макулдашабыз (Mbank, Элсом ж.б.).',secret:'terax-2026-sir'};
+const JAG=(r,n,amp,off)=>{let d='';for(let i=0;i<=n;i++){const a=i/n*Math.PI*2,R=r+(i%2?amp:-amp)*(0.6+0.4*Math.sin(i*2.7+off));d+=(i?'L':'M')+(22+R*Math.cos(a)).toFixed(1)+' '+(22+R*Math.sin(a)).toFixed(1)}return d+'Z'};
+const SNOWARM=[0,60,120,180,240,300].map(a=>'<g transform="rotate('+a+' 22 22)"><path d="M22 22V4M22 10L17.5 5.5M22 10L26.5 5.5M22 16L18.5 12.5M22 16L25.5 12.5"/></g>').join('');
+const HORN=[0,90,180,270].map(a=>'<path transform="rotate('+a+' 22 22)" d="M22 22C22 15 27 10 33 11C38 12 38 19 33 19C30 19 29.5 16 32 15.5"/>').join('');
+const PREM=[
+ {id:'plasma',n:'Плазма',p:0,r:49,h:'<i class="pl-g"></i><svg viewBox="0 0 44 44"><g class="g1"><path class="a1" d="'+JAG(19,22,2.6,0)+'"/><path class="a2" d="'+JAG(19,22,2.6,3.1)+'"/></g><g class="g2"><path class="a1" d="'+JAG(13,18,2.2,1.7)+'"/><path class="a2" d="'+JAG(13,18,2.2,4.4)+'"/></g></svg><i class="pl-c"></i>'},
+ {id:'comet',n:'Комета',p:0,r:59,h:'<i class="cm"><b></b></i><i class="cm cm2"><b></b></i><i class="cd"></i>'},
+ {id:'frost',n:'Кар кристаллы',p:0,r:59,h:'<i class="fr-g"></i><svg viewBox="0 0 44 44"><g class="fa">'+SNOWARM+'</g><circle class="fm" cx="22" cy="22" r="2.6"/><path class="tw" d="'+STAR(37,7,4)+'" fill="#fff"/><path class="tw tw2" d="'+STAR(7,36,3.2)+'" fill="#fff"/></svg>'},
+ {id:'horns',n:'Кошкар мүйүз',p:0,r:69,h:'<i class="ho"></i><svg viewBox="0 0 44 44"><g class="hr">'+HORN+'</g><circle class="hc" cx="22" cy="22" r="3.2"/></svg>'},
+ {id:'ufo',n:'НЛО',p:0,r:79,h:'<svg viewBox="0 0 44 44"><path class="beam" d="M17 27L9 44H35L27 27Z"/><ellipse class="dome" cx="22" cy="15" rx="7" ry="6"/><ellipse cx="22" cy="22" rx="18" ry="6" fill="url(#skgm)" stroke="#fff" stroke-width=".8"/><circle class="lt l1" cx="10" cy="22.5" r="1.7"/><circle class="lt l2" cx="22" cy="25" r="1.7"/><circle class="lt l3" cx="34" cy="22.5" r="1.7"/></svg>'},
+ {id:'phoenix',n:'Феникс',p:0,r:99,h:'<i class="px-g"></i><svg viewBox="0 0 44 44"><path class="pw pl" d="M21 22C14 11 4 9 1 14C5 14 8 16 9 20C11 18 14 19 15 22C17 21 19 22 21 26Z"/><path class="pw pr" d="M23 22C30 11 40 9 43 14C39 14 36 16 35 20C33 18 30 19 29 22C27 21 25 22 23 26Z"/><path class="pt" d="M22 26C18 32 19 38 22 43C25 38 26 32 22 26Z"/><path d="M22 11C25.5 15 26.5 21 24.5 28H19.5C17.5 21 18.5 15 22 11Z" fill="#ff9d00"/><circle cx="22" cy="12" r="3" fill="#ffe14d"/><circle cx="22.8" cy="11.4" r=".7" fill="#222"/></svg><i class="sp"></i><i class="sp s2"></i><i class="sp s3"></i>'},
+ {id:'blackhole',n:'Кара тешик',p:0,r:99,h:'<i class="bh-l"></i><i class="bh-d"></i><i class="bh-d bh-e"></i><i class="bh-c"></i>'},
+ {id:'crown',n:'Хан таажысы',p:0,r:149,h:'<svg viewBox="0 0 44 44"><path d="M7 31L5 14L14 22L22 8L30 22L39 14L37 31Z" fill="url(#skgg)" stroke="#fff3b0" stroke-width="1.2" stroke-linejoin="round"/><path d="M7 31H37V36H7Z" fill="url(#skgg)" stroke="#fff3b0" stroke-width="1.2"/><g clip-path="url(#skcc)"><g class="sh"><rect x="-6" y="0" width="8" height="44" transform="skewX(-20)" fill="#fff" opacity=".8"/></g></g><circle class="gm" cx="22" cy="8" r="2.3" fill="#ff3b5c"/><circle class="gm g2" cx="5" cy="14" r="2" fill="#3bd1ff"/><circle class="gm g3" cx="39" cy="14" r="2" fill="#4dff88"/><circle cx="22" cy="33.5" r="1.7" fill="#fff"/><path class="tw" d="'+STAR(37,4,4)+'" fill="#fff"/><path class="tw tw2" d="'+STAR(6,39,3.2)+'" fill="#fff"/></svg>'}];
+SKINS.push(...PREM);
+// ---- код тутуу: код = hash(скин + оюнчунун ID + PAY.secret). Төлөгөндөн кийин өзүң kod-generator.html менен жасайсың ----
+function h53(str,seed=0){let h1=0xdeadbeef^seed,h2=0x41c6ce57^seed;for(let i=0,ch;i<str.length;i++){ch=str.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677)}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return 4294967296*(2097151&h2)+(h1>>>0)}
+const codeFor=(id,tag)=>h53(id+'|'+tag+'|'+PAY.secret).toString(36).toUpperCase().slice(-7).padStart(7,'0');
+const tagId=()=>String(uid).slice(0,6);
+let skc={};try{skc=JSON.parse(localStorage.skc||'{}')||{}}catch(e){skc={}}
+const hasPrem=id=>{const t=tagId();return (skc[id]&&skc[id]==codeFor(id,t))||(skc.vip&&skc.vip==codeFor('vip',t))};
 let skOwn=['dot','pulse'];try{const o=JSON.parse(localStorage.sko||'null');if(Array.isArray(o))skOwn=Array.from(new Set(skOwn.concat(o))).filter(id=>SKINS.some(s=>s.id==id))}catch(e){}
-let skin=localStorage.sk||'dot';if(!skOwn.includes(skin))skin='dot';
+const skOwned=id=>{const x=SKINS.find(v=>v.id==id);return !!x&&(x.r?!!hasPrem(id):skOwn.includes(id))};
+let skin=localStorage.sk||'dot';if(!skOwned(skin))skin='dot';
 const mc=()=>'hsl('+hue+',75%,45%)';
 function skinHTML(id,col){const s=SKINS.find(x=>x.id==id)||SKINS[0],m=/hsl\(\s*([\d.]+)/.exec(col),h=m?Number(m[1]):0;
  return '<div class="sk sk-'+s.id+'" style="--c:'+col+';--l:hsl('+h+',90%,72%);--d:hsl('+h+',70%,28%)">'+s.h+'</div>'}
@@ -259,41 +383,140 @@ function gain(c,t){Q.coins+=c;Q.wc+=c;toast('💰 +'+c+' · '+t);if(navigator.vi
 function qAdd(k,v){roll();const t=dayId();
  if(Q.act!==t){Q.streak=(Q.act===dayId(new Date(Date.now()-864e5)))?Q.streak+1:1;Q.act=t;if(Q.streak%7==0)gain(100,'🔥 '+Q.streak+' күн катары менен!')}
  Q.dm[k]+=v;Q.wm[k]+=v;Q.all[k]+=v;
- QUESTS.forEach(q=>{const m=qDone(q);if(!m[q.id]&&qVal(q)>=q.n){m[q.id]=1;gain(q.c,'✅ '+q.t)}});
+ QUESTS.forEach(q=>{const m=qDone(q);if(!m[q.id]&&qVal(q)>=q.n){m[q.id]=1;gain(q.c,'✅ '+q.t);const tr=TRAILS.find(x=>x.u==q.id);if(tr)setTimeout(()=>toast('🎁 Жаңы из ачылды: '+tr.n+'!'),2400)}});
  qSave();qRender()}
 const qf=(k,x)=>k=='dist'?fmt(x):k=='area'?Math.round(x)+' м²':Math.floor(x);
 function qItem(q){const v=qVal(q),ok=qDone(q)[q.id],pc=Math.min(100,v/q.n*100);
- return '<div class="qi'+(ok?' ok':'')+'"><div class="qr"><span>'+q.t+'</span><b>'+(ok?'✅ ':'+')+q.c+' 💰</b></div><div class="qg"><i style="width:'+pc+'%"></i></div><small>'+qf(q.k,Math.min(v,q.n))+' / '+qf(q.k,q.n)+'</small></div>'}
+ return '<div class="qi'+(ok?' ok':'')+'"><div class="qr"><span>'+q.t+'</span><b>'+(ok?'✅ ':'+')+q.c+' 💰</b></div><div class="qg"><i style="width:'+pc+'%"></i></div><small>'+qf(q.k,Math.min(v,q.n))+' / '+qf(q.k,q.n)+(TRAILS.some(x=>x.u==q.id)?' · 🎁 '+TRAILS.find(x=>x.u==q.id).n+' изи':'')+'</small></div>'}
 (()=>{let sv;try{sv=JSON.parse(localStorage.sko||'[]')}catch(e){sv=[]}const OLD={run:100,flag:150,wolf:150,horse:250,rocket:300,crown:600};let r=0;
  if(Array.isArray(sv)){sv.forEach(id=>{if(OLD[id])r+=OLD[id]});if(r){Q.coins+=r;localStorage.qs=JSON.stringify(Q);localStorage.sko=JSON.stringify(sv.filter(id=>!OLD[id]));setTimeout(()=>toast('💰 Эски скиндер үчүн '+r+' тыйын кайтарылды'),10500)}}})();
 let qt='q';
 function qTab(t){qt=t;qRender()}
 function qClose(){$('qp').style.display='none'}
-function qRender(){const p=$('qp');if(p.style.display!='block')return;roll();
+function qRender(){const p=$('qp');if(p.style.display!='block')return;const ae=document.activeElement;if(ae&&ae.tagName=='INPUT'&&p.contains(ae))return;roll();
  const tb=(k,t)=>'<b class="'+(qt==k?'on':'')+'" onclick="qTab(\''+k+'\')">'+t+'</b>';
- let h='<div class="qh"><span class="qc">💰 '+Q.coins+'</span><span>🔥 '+(Q.streak||0)+' күн катары</span></div><div class="tabs">'+tb('q','🎯 Тапшырма')+tb('s','🎭 Скиндер')+'</div>';
+ let h='<div class="qh"><span class="qc">💰 '+Q.coins+'</span><span>🔥 '+(Q.streak||0)+' күн катары</span></div><div class="tabs">'+tb('q','🎯 Тапшырма')+tb('s','🎭 Скиндер')+tb('i','🛤️ Из')+'</div>';
  if(qt=='q'){
   h+='<div class="qs">📅 Бүгүн</div>'+QUESTS.filter(q=>q.p=='d').map(qItem).join('');
   h+='<div class="qs">🗓️ Бул жума</div>'+QUESTS.filter(q=>q.p=='w').map(qItem).join('');
   h+='<div class="qs">🏅 Жетишкендиктер</div>'+QUESTS.filter(q=>q.p=='a').map(qItem).join('');
   h+='<small style="display:block;opacity:.65;margin-top:8px">7 күн катары менен ойносоң +100 💰 бонус. Тез жүрсөң (32 км/ч жогору) эсептелбейт.</small>'}
- else{
-  h+='<small style="opacity:.7">Картада сени башкалар ушул чекит менен көрөт. Басып кий же сатып ал.</small><div class="kg">'+SKINS.map(s=>{const o=skOwn.includes(s.id);return '<div class="kn'+(skin==s.id?' on':'')+'" onclick="skinPick(\''+s.id+'\')"><div class="skw">'+skinHTML(s.id,mc())+'</div>'+esc(s.n)+'<small>'+(skin==s.id?'✅ кийилген':o?'Кийүү':'🔒 '+s.p+' 💰')+'</small></div>'}).join('')+'</div>'}
+ else if(qt=='b'){h+=buyHTML(qbuy)}
+ else if(qt=='i'){h+=trailShopHTML()}
+ else{h+=shopHTML()}
  h+='<button class="gbtn" style="background:#e8efe9;border:0" onclick="qClose()">Жабуу</button>';
  p.innerHTML=h}
+function skCard(s){const o=skOwned(s.id),eq=skin==s.id;
+ return '<div class="kn'+(s.r?' pr':'')+(eq?' on':'')+'" onclick="skinPick(\''+s.id+'\')"><div class="skw">'+skinHTML(s.id,mc())+'</div>'+esc(s.n)+'<small>'+(eq?'✅ кийилген':o?'Кийүү':s.r?'⭐ '+s.r+' сом':'🔒 '+s.p+' 💰')+'</small></div>'}
+const kcodeHTML=()=>'<div class="kcode"><input id="kc" placeholder="Код киргиз" maxlength="12" autocomplete="off" autocapitalize="characters"><button onclick="kActivate()">Активдештир</button></div><small style="display:block;opacity:.6;margin-top:6px">Сенин ID: <b>'+esc(tagId())+'</b></small>';
+function shopHTML(){
+ return '<small style="opacity:.7">Картада сени башкалар ушул чекит менен көрөт.</small>'
+ +'<div class="qs">💰 Тыйынга сатылат</div><div class="kg">'+SKINS.filter(x=>!x.r).map(skCard).join('')+'</div>'
+ +'<div class="qs">⭐ Premium · өзгөчө анимация</div><div class="kg">'+SKINS.filter(x=>x.r).map(skCard).join('')+'</div>'
+ +(hasPrem('vip')?'':'<div class="vip" onclick="qBuy(\'vip\')"><span>👑 VIP топтом: бардык Premium скиндер</span><b>'+PAY.vip+' сом</b></div>')
+ +kcodeHTML()}
+function buyHTML(id){const vip=id=='vip',s=vip?null:itemOf(id);if(!vip&&!(s&&s.r))return '';const price=vip?PAY.vip:s.r,tr=!vip&&isTrail(id);
+ const prev=vip?'<div class="kg" style="grid-template-columns:repeat(4,1fr)">'+SKINS.filter(x=>x.r).map(x=>'<div class="skw" style="margin:0 auto">'+skinHTML(x.id,mc())+'</div>').join('')+'</div>':tr?trPrev(id,true):'<div class="big"><div class="skw">'+skinHTML(s.id,mc())+'</div></div>';
+ return '<div style="text-align:center;font-weight:800;font-size:1.05rem;margin:6px 0">'+(vip?'👑 VIP топтом (бардык скин жана из)':'⭐ '+esc(s.n)+(tr?' · из':''))+'</div>'+prev
+ +'<div style="text-align:center;font-size:1.3rem;font-weight:900;margin:8px 0">'+price+' сом</div>'
+ +(vip?'':'<button class="gbtn" onclick="tryOn(\''+id+'\')">👁️ Сынап көрүү (15 сек)</button>')
+ +'<button class="gbtn buy" onclick="payOpen(\''+id+'\',\'ig\')">📩 Instagram аркылуу сатып алуу</button>'
+ +(PAY.wa?'<button class="gbtn buy wa" onclick="payOpen(\''+id+'\',\'wa\')">💬 WhatsApp аркылуу</button>':'')
+ +'<small style="display:block;opacity:.75;margin:8px 0">'+esc(PAY.info)+' Төлөгөндөн кийин сага код жөнөтөбүз, ал жерге киргизесиң.</small>'
+ +kcodeHTML()+'<button class="gbtn" onclick="qTab(\''+(tr?'i':'s')+'\')">← Артка</button>'}
+let qbuy=null,tryT=null;
+function qBuy(id){qbuy=id;qt='b';qRender()}
+function tryOn(id){qClose();clearTimeout(tryT);
+ if(isTrail(id)){trailSel=id;applyTrail();toast('👁️ 15 секунд: ▶ Баштоо бас да жүр, из көрүнөт');
+  tryT=setTimeout(()=>{const k=localStorage.tr,t=TRAILS.find(x=>x.id==k);trailSel=(t&&trOwned(t))?k:'t_line';applyTrail()},15000);return}
+ me.setIcon(skinIcon(id,mc()));toast(cur?'👁️ 15 секунд сынап көр':'👁️ Картада көрүү үчүн ▶ Баштоо бас');tryT=setTimeout(()=>me.setIcon(skinIcon(skin,mc())),15000)}
+function payOpen(id,ch){const vip=id=='vip',s=itemOf(id),price=vip?PAY.vip:(s&&s.r);if(!vip&&!s)return;
+ const m='Саламатсызбы! Tera X.kg оюнунан '+(vip?'VIP топтомду (бардык Premium скин жана из)':'"'+s.n+'" '+(isTrail(id)?'изин':'скинин'))+' сатып алгым келет. Баасы: '+price+' сом. Менин ID: '+tagId();
+ try{navigator.clipboard.writeText(m)}catch(e){}
+ toast('📋 Билдирүү көчүрүлдү. Жапыштырып жөнөт!');
+ window.open(ch=='wa'&&PAY.wa?'https://wa.me/'+PAY.wa+'?text='+encodeURIComponent(m):'https://ig.me/m/'+PAY.ig,'_blank')}
+function kActivate(){const el=$('kc'),v=(el&&el.value||'').trim().toUpperCase(),t=tagId();if(!v){toast('Кодду жаз');return}
+ const ids=SKINS.filter(x=>x.r).concat(TRAILS.filter(x=>x.r)).map(x=>x.id).concat('vip'),f=ids.find(id=>codeFor(id,t)==v);
+ if(!f){toast('Код туура эмес ❌ (сенин ID: '+t+')');return}
+ skc[f]=v;localStorage.skc=JSON.stringify(skc);
+ const it=itemOf(f);
+ if(it&&isTrail(f)){trailSel=f;localStorage.tr=f;applyTrail()}else if(it){skin=f;localStorage.sk=f;me.setIcon(skinIcon(skin,mc()))}
+ toast(f=='vip'?'👑 VIP ачылды! Бардык Premium скин жана из сеники':'⭐ '+it.n+' ачылды!');if(navigator.vibrate)navigator.vibrate([80,60,80]);ping();qt=(it&&isTrail(f))?'i':'s';qRender()}
+function restorePrem(d){try{const rc=d&&d.exists&&d.data().skc;if(!rc)return;const o=JSON.parse(rc);Object.keys(o).forEach(k=>{if(!skc[k])skc[k]=o[k]});localStorage.skc=JSON.stringify(skc);
+ const w=localStorage.sk;if(w&&skOwned(w)&&skin!=w){skin=w;me.setIcon(skinIcon(skin,mc()))}}catch(e){}}
+function burst(){if(!cur)return;let b='';for(let i=0;i<12;i++)b+='<b style="--a:'+(i*30)+'deg"></b>';
+ const m=L.marker(cur,{icon:L.divIcon({className:'',iconSize:[0,0],html:'<div class="bst"><i></i><i></i><i></i>'+b+'</div>'}),interactive:false,keyboard:false,zIndexOffset:900}).addTo(map);setTimeout(()=>map.removeLayer(m),2000)}
 function skinPick(id){const s=SKINS.find(x=>x.id==id);if(!s)return;
- if(!skOwn.includes(id)){
+ if(s.r&&!skOwned(id)){qBuy(id);return}
+ if(!s.r&&!skOwn.includes(id)){
   if(Q.coins<s.p){toast('Дагы '+(s.p-Q.coins)+' 💰 керек. Тапшырма аткар!');return}
   if(!confirm(s.n+' скинин '+s.p+' 💰 менен сатып аласыңбы?'))return;
   Q.coins-=s.p;skOwn.push(id);localStorage.sko=JSON.stringify(skOwn)}
  skin=id;localStorage.sk=id;me.setIcon(skinIcon(skin,mc()));qSave();ping();qRender()}
 $('qb').onclick=()=>{const p=$('qp');if(p.style.display=='block')p.style.display='none';else{$('board').style.display='none';$('prof').style.display='none';p.style.display='block';qRender()}};
 
-const trailLine=L.polyline([],{color,weight:6,opacity:.9}).addTo(map);
+// === Из (трейл) стилдери: t = тыйын (p), тапшырма (u = тапшырманын id'си), же Premium (r = сом) ===
+const TRAILS=[
+ {id:'t_line',n:'Жөнөкөй',p:0},
+ {id:'t_dash',n:'Штрих',p:120},
+ {id:'t_glow',n:'Нур',p:250},
+ {id:'t_dots',n:'Чекиттер',u:'a1'},
+ {id:'t_ember',n:'Көмүр',u:'a2'},
+ {id:'t_rainbow',n:'Радуга',u:'a3'},
+ {id:'t_neon',n:'Неон',r:39},
+ {id:'t_flow',n:'Агым',r:49},
+ {id:'t_fire',n:'Өрт',r:59},
+ {id:'t_electric',n:'Чагылган',r:59},
+ {id:'t_galaxy',n:'Космос',r:79},
+ {id:'t_gold',n:'Алтын жол',r:99}];
+function trStyle(id,c,l){const z={opacity:0,weight:0,dashArray:null};
+ const S={
+  t_line:{b:{color:c,weight:6,opacity:.9,dashArray:null},g:z,f:z},
+  t_dash:{b:{color:c,weight:5,opacity:.95,dashArray:'14 9'},g:z,f:z},
+  t_dots:{b:{color:c,weight:8,opacity:.95,dashArray:'1 12'},g:z,f:z},
+  t_glow:{b:{color:c,weight:5,opacity:1,dashArray:null},g:{color:l,weight:14,opacity:.3,dashArray:null},f:z},
+  t_ember:{b:{color:'#ff7a00',weight:5,opacity:1,dashArray:null},g:{color:'#ff4d00',weight:13,opacity:.3,dashArray:null},f:{color:'#ffe14d',weight:3,opacity:.9,dashArray:'1 14'}},
+  t_rainbow:{b:{color:'#ff2d55',weight:6,opacity:1,dashArray:null},g:{color:'#ff2d55',weight:13,opacity:.2,dashArray:null},f:z},
+  t_neon:{b:{color:c,weight:7,opacity:.9,dashArray:null},g:{color:l,weight:16,opacity:.28,dashArray:null},f:{color:'#fff',weight:2.5,opacity:1,dashArray:null}},
+  t_flow:{b:{color:c,weight:6,opacity:.85,dashArray:null},g:{color:l,weight:12,opacity:.22,dashArray:null},f:{color:'#fff',weight:5,opacity:.95,dashArray:'3 20'}},
+  t_fire:{b:{color:'#ff7a00',weight:7,opacity:1,dashArray:null},g:{color:'#ff4d00',weight:16,opacity:.3,dashArray:null},f:{color:'#fff3b0',weight:5,opacity:.95,dashArray:'1 16'}},
+  t_electric:{b:{color:'#4aa3ff',weight:5,opacity:1,dashArray:null},g:{color:'#6fd6ff',weight:14,opacity:.3,dashArray:null},f:{color:'#fff',weight:3,opacity:1,dashArray:'6 14 2 10'}},
+  t_galaxy:{b:{color:'#7a3cff',weight:6,opacity:1,dashArray:null},g:{color:'#b14dff',weight:15,opacity:.25,dashArray:null},f:{color:'#fff',weight:6,opacity:.95,dashArray:'1 14'}},
+  t_gold:{b:{color:'#f6c21a',weight:7,opacity:1,dashArray:null},g:{color:'#ffd75e',weight:15,opacity:.3,dashArray:null},f:{color:'#fff',weight:3,opacity:.95,dashArray:'10 30'}}};
+ return S[id]||S.t_line}
+let trOwn=[];try{const o=JSON.parse(localStorage.tro||'null');if(Array.isArray(o))trOwn=o}catch(e){}
+const trOwned=t=>t.r?!!hasPrem(t.id):t.u?!!(Q.an&&Q.an[t.u]):(!t.p||trOwn.includes(t.id));
+let trailSel=localStorage.tr||'t_line';{const t0=TRAILS.find(x=>x.id==trailSel);if(!t0||!trOwned(t0))trailSel='t_line'}
+const isTrail=id=>String(id).startsWith('t_');
+const itemOf=id=>SKINS.find(x=>x.id==id)||TRAILS.find(x=>x.id==id);
+function trPrev(id,big){const st=trStyle(id,mc(),'hsl('+hue+',90%,65%)'),d='M6 30Q28 4 50 21T94 11';
+ const ly=(k,c)=>{const o=st[k];return o.weight?'<path class="'+c+'" d="'+d+'" fill="none" stroke="'+o.color+'" stroke-width="'+o.weight+'" stroke-opacity="'+o.opacity+'"'+(o.dashArray?' stroke-dasharray="'+o.dashArray+'"':'')+' stroke-linecap="round"/>':''};
+ return '<div class="trv'+(big?' trb':'')+'" data-trail="'+id+'"><svg viewBox="0 0 100 36">'+ly('g','tr-g')+ly('b','tr-b')+ly('f','tr-f')+'</svg></div>'}
+function trCard(t){const o=trOwned(t),eq=trailSel==t.id,q=t.u&&QUESTS.find(x=>x.id==t.u);
+ return '<div class="kn'+(t.r?' pr':'')+(eq?' on':'')+'" onclick="trPick(\''+t.id+'\')">'+trPrev(t.id)+esc(t.n)+'<small>'+(eq?'✅ кийилген':o?'Кийүү':t.r?'⭐ '+t.r+' сом':q?'🎁 '+esc(q.t):'🔒 '+t.p+' 💰')+'</small></div>'}
+function trailShopHTML(){return '<small style="opacity:.7">Басып өткөн жолуңдун сызыгы. Картада сенин артыңдан ушундай чийилет.</small>'
+ +'<div class="qs">💰 Тыйынга жана 🎁 тапшырмага</div><div class="kg">'+TRAILS.filter(t=>!t.r).map(trCard).join('')+'</div>'
+ +'<div class="qs">⭐ Premium из · өзгөчө анимация</div><div class="kg">'+TRAILS.filter(t=>t.r).map(trCard).join('')+'</div>'
+ +(hasPrem('vip')?'':'<div class="vip" onclick="qBuy(\'vip\')"><span>👑 VIP топтом: бардык Premium скин жана из</span><b>'+PAY.vip+' сом</b></div>')
+ +kcodeHTML()}
+function trPick(id){const t=TRAILS.find(x=>x.id==id);if(!t)return;
+ if(!trOwned(t)){
+  if(t.r){qBuy(id);return}
+  if(t.u){const q=QUESTS.find(x=>x.id==t.u);toast('🎁 Ачуу үчүн: '+(q?q.t:'тапшырма аткар'));return}
+  if(Q.coins<t.p){toast('Дагы '+(t.p-Q.coins)+' 💰 керек. Тапшырма аткар!');return}
+  if(!confirm(t.n+' изин '+t.p+' 💰 менен сатып аласыңбы?'))return;
+  Q.coins-=t.p;trOwn.push(id);localStorage.tro=JSON.stringify(trOwn);qSave()}
+ trailSel=id;localStorage.tr=id;applyTrail();qRender()}
+const trailG=L.polyline([],{className:'tr-g',interactive:false,lineCap:'round',lineJoin:'round'}).addTo(map);
+const trailLine=L.polyline([],{color,weight:6,opacity:.9,className:'tr-b',interactive:false,lineCap:'round',lineJoin:'round'}).addTo(map);
+const trailF=L.polyline([],{className:'tr-f',interactive:false,lineCap:'round',lineJoin:'round'}).addTo(map);
+function applyTrail(){const st=trStyle(trailSel,mc(),'hsl('+hue+',90%,65%)');trailG.setStyle(st.g);trailLine.setStyle(st.b);trailF.setStyle(st.f);map.getContainer().setAttribute('data-trail',trailSel)}
+function setTrail(a){trailG.setLatLngs(a);trailLine.setLatLngs(a);trailF.setLatLngs(a)}
+applyTrail();
 const me=L.marker([0,0],{icon:skinIcon(skin,mc()),interactive:false,keyboard:false,zIndexOffset:1000});
 const startMark=L.circle([0,0],{radius:20,color,dashArray:'6 6',fill:false});
 let total=Number(localStorage.td)||0,pd={},tab='a';
-const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v11</div>';
+const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v13</div>';
 const IGLINK=DEV+'<a class="ig2" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#igs"/></svg>@madalbaev_001</a>';
 let first=true,zones=JSON.parse(localStorage.zones||'{}'),zl=[],trail=[],dist=0,watch=null,lock=null,lastT=0,follow=true,pm={},timer=null,cur=null;
 const mpl=lat=>[111320*Math.cos(lat*Math.PI/180),110574];
@@ -390,7 +613,7 @@ let spd=c.speed;
 if(trail.length){const prev=trail[trail.length-1],dd=d(prev,p);if(dd<Math.max(6,c.accuracy*.6))return;
 if(spd==null)spd=dd/Math.max(.5,(now-lastT)/1000);dist+=dd;total+=dd;localStorage.td=Math.round(total);if((spd||0)<9)qAdd('dist',dd)}
 lastT=now;$('sp').textContent=((spd||0)*3.6).toFixed(1);$('di').textContent=Math.round(dist);
-trail.push(p);trailLine.setLatLngs(trail);me.setLatLng(p).addTo(map);
+trail.push(p);setTrail(trail);me.setLatLng(p).addTo(map);
 if(trail.length===1)startMark.setLatLng(p).addTo(map);
 if(follow)map.panTo(p,{animate:true});
 // өз аймагыбызга канчалык жакынбыз
@@ -402,8 +625,8 @@ let claimed=false;
 for(let i=0;i<trail.length-8;i++){
  if(d(trail[i],p)<20){const pts=trail.slice(i);let len=0;for(let j=1;j<pts.length;j++)len+=d(pts[j-1],pts[j]);const a=area(pts);
   if(len>=80&&a>=300){save(uid+'_'+now,{uid,name,hue,t:now,pts:pts.flat()});claimed=true;if((spd||0)<9){qAdd('claims',1);qAdd('area',a)}
-   msg('🎉 Аймак кошулду: '+Math.round(a)+' м²');if(navigator.vibrate)navigator.vibrate([200,100,200]);
-   trail=[p];dist=0;trailLine.setLatLngs(trail);startMark.setLatLng(p);startNear=true;farOut=0}
+   msg('🎉 Аймак кошулду: '+Math.round(a)+' м²');burst();if(navigator.vibrate)navigator.vibrate([200,100,200]);
+   trail=[p];dist=0;setTrail(trail);startMark.setLatLng(p);startNear=true;farOut=0}
   break}}
 // 2) өз аймагынын чек арасынан чыгып, кайра чек арага келсе — аймак кенейет
 if(!claimed&&T&&startNear&&farOut>25&&nearNow&&trail.length>8){
@@ -411,8 +634,8 @@ if(!claimed&&T&&startNear&&farOut>25&&nearNow&&trail.length>8){
  const g=geomOf({pts:trail.flat()});
  if(len>=80&&g){let add=0;try{add=areaMP(PCL().difference(g,T))}catch(e){}
   if(add>=300){save(uid+'_'+now,{uid,name,hue,t:now,pts:trail.flat()});
-   if((spd||0)<9){qAdd('claims',1);qAdd('area',add)}msg('🎉 Аймак кенейди: +'+Math.round(add)+' м²');if(navigator.vibrate)navigator.vibrate([200,100,200]);
-   trail=[p];dist=0;trailLine.setLatLngs(trail);startMark.setLatLng(p);startNear=true;farOut=0}}}}
+   if((spd||0)<9){qAdd('claims',1);qAdd('area',add)}msg('🎉 Аймак кенейди: +'+Math.round(add)+' м²');burst();if(navigator.vibrate)navigator.vibrate([200,100,200]);
+   trail=[p];dist=0;setTrail(trail);startMark.setLatLng(p);startNear=true;farOut=0}}}}
 async function wake(){try{lock=await navigator.wakeLock.request('screen')}catch(e){}}
 // башка оюнчулар
 function live(){if(!fs)return;
@@ -420,12 +643,12 @@ fs.collection('zones').onSnapshot(s=>{s.docChanges().forEach(c=>{if(c.type==='re
 fs.collection('players').onSnapshot(s=>{s.forEach(doc=>{const v=doc.data(),id=doc.id;pd[id]={name:v.name,hue:v.hue,td:v.td||0,sk:v.sk};if(id==uid)return;
  const on=Date.now()-v.t<60000;if(pm[id]){pm[id].remove();delete pm[id]}
  if(on)pm[id]=L.marker([v.lat,v.lon],{icon:skinIcon(v.sk||'dot','hsl('+(Number(v.hue)||0)+',75%,45%)')}).bindTooltip(v.name||'Оюнчу').addTo(map)});if($('board').style.display=='block'&&tab=='l')render()})}
-function ping(){if(fs&&cur)fs.collection('players').doc(uid).set({name,hue,lat:cur[0],lon:cur[1],td:Math.round(total),t:Date.now(),sk:skin}).catch(()=>{})}
+function ping(){if(fs&&cur)fs.collection('players').doc(uid).set({name,hue,lat:cur[0],lon:cur[1],td:Math.round(total),t:Date.now(),sk:skin,skc:JSON.stringify(skc)}).catch(()=>{})}
 $('go').onclick=()=>{
 if(watch!=null){navigator.geolocation.clearWatch(watch);watch=null;clearInterval(timer);$('go').textContent='▶ Баштоо';msg('Токтотулду.');return}
 if(!navigator.geolocation){msg('Бул браузерде GPS жок.');return}
 if(!name){name=(prompt('Сенин атың?','')||'Оюнчу').slice(0,16);localStorage.nm=name}
-trail=[];dist=0;first=true;trailLine.setLatLngs([]);wake();
+trail=[];dist=0;first=true;setTrail([]);wake();
 navigator.geolocation.getCurrentPosition(e=>{if(first){first=false;follow=true;cur=[e.coords.latitude,e.coords.longitude];me.setLatLng(cur).addTo(map);map.setView(cur,18)}},()=>{},{enableHighAccuracy:true,timeout:15000});
 watch=navigator.geolocation.watchPosition(onFix,e=>msg('GPS ката: '+e.message),{enableHighAccuracy:true,maximumAge:0,timeout:20000});
 timer=setInterval(ping,5000);
@@ -453,7 +676,7 @@ auth.onAuthStateChanged(async u=>{
  if(merge)await migrate(lastUid,u.uid);
  uid=u.uid;localStorage.uid=uid;lastUid=uid;lastAnon=u.isAnonymous;
  if(!u.isAnonymous&&!name&&u.displayName){name=u.displayName.slice(0,16);localStorage.nm=name}
- try{const d=await fs.collection('players').doc(uid).get();const r=d.exists?(d.data().td||0):0;total=merge?Math.max(total,r):r;localStorage.td=Math.round(total)}catch(e){}
+ try{const d=await fs.collection('players').doc(uid).get();const r=d.exists?(d.data().td||0):0;total=merge?Math.max(total,r):r;localStorage.td=Math.round(total);restorePrem(d)}catch(e){}
  render()})}
 async function glink(){if(!auth){msg('Firebase Auth жок: интернетти текшер');return}const pr=new firebase.auth.GoogleAuthProvider();msg('Google терезесин ачып жатам…');
 try{const u=auth.currentUser;
@@ -474,7 +697,7 @@ async function updMine(f){Object.values(zones).forEach(z=>{if(z.uid==uid)Object.
  else{const m={};Object.entries(zones).forEach(([k,v])=>{if(v.uid==uid)m[k]=v});localStorage.zones=JSON.stringify(m)}
  render()}
 function renameMe(){const n=prompt('Жаңы ат',name);if(n&&n.trim()){name=n.trim().slice(0,16);localStorage.nm=name;updMine({name})}}
-function setHue(h){hue=h;localStorage.hue=h;me.setIcon(skinIcon(skin,mc()));updMine({hue:h})}
+function setHue(h){hue=h;localStorage.hue=h;me.setIcon(skinIcon(skin,mc()));applyTrail();updMine({hue:h})}
 function drawProf(){
  const sc=scores(),list=Object.entries(sc).sort((a,b)=>b[1].a-a[1].a),r=list.findIndex(e=>e[0]==uid),my=Object.values(zones).filter(z=>z.uid==uid);
  let best=0;my.forEach(z=>{try{best=Math.max(best,area(pairs(z)))}catch(e){}});
