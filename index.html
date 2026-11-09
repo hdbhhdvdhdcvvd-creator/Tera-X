@@ -32,11 +32,12 @@ button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:14px;bac
 .tabs{display:flex;gap:6px;margin-bottom:8px}.tabs b{flex:1;text-align:center;padding:8px;border-radius:10px;background:#e8efe9;font-size:.85rem}.tabs b.on{background:#2a9d5c;color:#fff}
 .acc{margin-top:10px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.85rem}.acc button{padding:6px 10px;border-radius:8px;border:0;background:#e8efe9;font-weight:700}
 .gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;padding:10px;border:1px solid #ccc;border-radius:10px;background:#fff;color:#222;font-weight:700;font-size:.9rem}
-#splash{position:fixed;inset:0;z-index:5000;overflow:hidden;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:space-between;color:#fff;padding:calc(16px + env(safe-area-inset-top,0px)) 20px calc(16px + env(safe-area-inset-bottom,0px));box-sizing:border-box;transition:opacity .6s,transform .6s}
+#splash{position:fixed;inset:0;z-index:5000;overflow:hidden;background:#05010f;display:flex;flex-direction:column;align-items:center;justify-content:space-between;color:#fff;padding:calc(16px + env(safe-area-inset-top,0px)) 20px calc(16px + env(safe-area-inset-bottom,0px));box-sizing:border-box;transition:opacity .6s,transform .6s}
 #splash.out{opacity:0;transform:scale(1.08)}
 .stop{position:relative;width:100%;display:flex;justify-content:flex-end;align-items:center;font-size:.72rem;font-weight:800;letter-spacing:2px;opacity:.85}
 .schip{background:rgba(255,226,122,.16);border:1px solid rgba(255,226,122,.55);color:#fff3c4;border-radius:99px;padding:3px 10px}
-.sfull{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.sbg{position:absolute;left:-8%;top:-8%;width:116%;height:116%;object-fit:cover;filter:blur(24px) brightness(.55) saturate(1.25)}
+.sfull{position:absolute;left:0;top:41%;width:100%;max-height:78%;object-fit:contain;display:block;transform:translateY(-50%);-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 91%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 91%,transparent 100%)}
 .sshade{position:absolute;left:0;right:0;bottom:0;height:48%;background:linear-gradient(to top,rgba(0,0,0,.9) 0,rgba(0,0,0,.55) 55%,transparent 100%)}
 .sbtm{position:relative;width:100%;max-width:420px}
 #stip{min-height:2.7em;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.85rem;line-height:1.3;background:rgba(255,255,255,.07);border:1px solid rgba(255,226,122,.3);border-radius:12px;padding:8px 12px;margin-bottom:12px;opacity:0;transition:opacity .3s}
@@ -144,7 +145,7 @@ button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:14px;bac
 </style>
 </head>
 <body>
-<div id="splash"><img class="sfull" src="splash.jpg" alt="Tera X.kg" onerror="this.onerror=null;this.src='icon-512.png'"><div class="sshade"></div><div class="stop"><span class="schip">v11</span></div><div class="sbtm"><div id="stip"></div><div class="sbw"><div id="sbar"></div></div><div class="srow"><span id="stx">Жүктөлүп жатат…</span><b id="spc">0%</b></div><div class="sdev"><div class="sh">Авторлор</div><div id="sauth"></div></div></div></div>
+<div id="splash"><img class="sbg" src="splash.jpg" alt="" onerror="this.style.display='none'"><img class="sfull" src="splash.jpg" alt="Tera X.kg" onerror="this.onerror=null;this.src='icon-512.png'"><div class="sshade"></div><div class="stop"><span class="schip">v11</span></div><div class="sbtm"><div id="stip"></div><div class="sbw"><div id="sbar"></div></div><div class="srow"><span id="stx">Жүктөлүп жатат…</span><b id="spc">0%</b></div><div class="sdev"><div class="sh">Авторлор</div><div id="sauth"></div></div></div></div>
 <div id="map"></div>
 <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="igg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fdf497"/><stop offset=".3" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset="1" stop-color="#285AEB"/></linearGradient><symbol id="igs" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igg)"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="#fff"/></symbol></defs></svg>
 <a class="ig" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#igs"/></svg>@madalbaev_001</a>
