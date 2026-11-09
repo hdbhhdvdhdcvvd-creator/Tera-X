@@ -243,10 +243,31 @@ button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:14px;bac
 [data-trail=t_gold] .tr-g{animation:trgp 1.1s ease-in-out infinite alternate}
 .trv{margin:8px 0 2px}.trv svg{width:100%;height:34px;display:block;overflow:visible}
 .trb{margin:14px 0}.trb svg{height:84px}
+
+/* аймактын чек арасындагы из */
+.zr-g,.zr-b,.zr-f{stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.lsk{transform:scale(1.35);margin-bottom:10px}
+.zr-g.trs-t_glow,.zr-g.trs-t_ember{animation:trgp 1.3s ease-in-out infinite alternate}
+.zr-f.trs-t_ember{--o:-15;animation:trk 2.2s linear infinite}
+.zr-b.trs-t_rainbow{animation:trrb 3s linear infinite}
+.zr-g.trs-t_rainbow{animation:trrb 3s linear infinite}
+.zr-f.trs-t_neon{animation:trpl .7s ease-in-out infinite alternate}
+.zr-g.trs-t_neon{animation:trgp .7s ease-in-out infinite alternate}
+.zr-f.trs-t_flow{--o:-23;animation:trk 1s linear infinite}
+.zr-b.trs-t_fire{animation:trfb .5s ease-in-out infinite alternate}
+.zr-g.trs-t_fire{animation:trfg .3s ease-in-out infinite alternate}
+.zr-f.trs-t_fire{--o:-17;animation:trk .45s linear infinite}
+.zr-g.trs-t_electric{animation:trel 1.1s linear infinite}
+.zr-f.trs-t_electric{--o:-32;animation:trk .4s linear infinite,trtw .22s steps(1) infinite}
+.zr-b.trs-t_galaxy{animation:trgb 3s ease-in-out infinite alternate}
+.zr-g.trs-t_galaxy{animation:trgp 1.6s ease-in-out infinite alternate}
+.zr-f.trs-t_galaxy{--o:-15;animation:trk 3s linear infinite,trtw 1.2s ease-in-out infinite}
+.zr-f.trs-t_gold{--o:-40;animation:trk 1s linear infinite}
+.zr-g.trs-t_gold{animation:trgp 1.1s ease-in-out infinite alternate}
 </style>
 </head>
 <body>
-<div id="splash"><img class="sbg" src="splash.jpg" alt="" onerror="this.style.display='none'"><img class="sfull" src="splash.jpg" alt="Tera X.kg" onerror="this.onerror=null;this.src='icon-512.png'"><div class="sshade"></div><div class="stop"><span class="schip">v13</span></div><div class="sbtm"><div id="stip"></div><div class="sbw"><div id="sbar"></div></div><div class="srow"><span id="stx">Жүктөлүп жатат…</span><b id="spc">0%</b></div><div class="sdev"><div class="sh">Авторлор</div><div id="sauth"></div></div></div></div>
+<div id="splash"><img class="sbg" src="splash.jpg" alt="" onerror="this.style.display='none'"><img class="sfull" src="splash.jpg" alt="Tera X.kg" onerror="this.onerror=null;this.src='icon-512.png'"><div class="sshade"></div><div class="stop"><span class="schip">v14</span></div><div class="sbtm"><div id="stip"></div><div class="sbw"><div id="sbar"></div></div><div class="srow"><span id="stx">Жүктөлүп жатат…</span><b id="spc">0%</b></div><div class="sdev"><div class="sh">Авторлор</div><div id="sauth"></div></div></div></div>
 <div id="map"></div>
 <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="igg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fdf497"/><stop offset=".3" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset="1" stop-color="#285AEB"/></linearGradient><symbol id="igs" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igg)"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="#fff"/></symbol></defs></svg>
 <a class="ig" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#igs"/></svg>@madalbaev_001</a>
@@ -441,7 +462,7 @@ function kActivate(){const el=$('kc'),v=(el&&el.value||'').trim().toUpperCase(),
  skc[f]=v;localStorage.skc=JSON.stringify(skc);
  const it=itemOf(f);
  if(it&&isTrail(f)){trailSel=f;localStorage.tr=f;applyTrail()}else if(it){skin=f;localStorage.sk=f;me.setIcon(skinIcon(skin,mc()))}
- toast(f=='vip'?'👑 VIP ачылды! Бардык Premium скин жана из сеники':'⭐ '+it.n+' ачылды!');if(navigator.vibrate)navigator.vibrate([80,60,80]);ping();qt=(it&&isTrail(f))?'i':'s';qRender()}
+ toast(f=='vip'?'👑 VIP ачылды! Бардык Premium скин жана из сеники':'⭐ '+it.n+' ачылды!');if(navigator.vibrate)navigator.vibrate([80,60,80]);ping();render();qt=(it&&isTrail(f))?'i':'s';qRender()}
 function restorePrem(d){try{const rc=d&&d.exists&&d.data().skc;if(!rc)return;const o=JSON.parse(rc);Object.keys(o).forEach(k=>{if(!skc[k])skc[k]=o[k]});localStorage.skc=JSON.stringify(skc);
  const w=localStorage.sk;if(w&&skOwned(w)&&skin!=w){skin=w;me.setIcon(skinIcon(skin,mc()))}}catch(e){}}
 function burst(){if(!cur)return;let b='';for(let i=0;i<12;i++)b+='<b style="--a:'+(i*30)+'deg"></b>';
@@ -452,7 +473,7 @@ function skinPick(id){const s=SKINS.find(x=>x.id==id);if(!s)return;
   if(Q.coins<s.p){toast('Дагы '+(s.p-Q.coins)+' 💰 керек. Тапшырма аткар!');return}
   if(!confirm(s.n+' скинин '+s.p+' 💰 менен сатып аласыңбы?'))return;
   Q.coins-=s.p;skOwn.push(id);localStorage.sko=JSON.stringify(skOwn)}
- skin=id;localStorage.sk=id;me.setIcon(skinIcon(skin,mc()));qSave();ping();qRender()}
+ skin=id;localStorage.sk=id;me.setIcon(skinIcon(skin,mc()));qSave();ping();render();qRender()}
 $('qb').onclick=()=>{const p=$('qp');if(p.style.display=='block')p.style.display='none';else{$('board').style.display='none';$('prof').style.display='none';p.style.display='block';qRender()}};
 
 // === Из (трейл) стилдери: t = тыйын (p), тапшырма (u = тапшырманын id'си), же Premium (r = сом) ===
@@ -506,7 +527,7 @@ function trPick(id){const t=TRAILS.find(x=>x.id==id);if(!t)return;
   if(Q.coins<t.p){toast('Дагы '+(t.p-Q.coins)+' 💰 керек. Тапшырма аткар!');return}
   if(!confirm(t.n+' изин '+t.p+' 💰 менен сатып аласыңбы?'))return;
   Q.coins-=t.p;trOwn.push(id);localStorage.tro=JSON.stringify(trOwn);qSave()}
- trailSel=id;localStorage.tr=id;applyTrail();qRender()}
+ trailSel=id;localStorage.tr=id;applyTrail();ping();render();qRender()}
 const trailG=L.polyline([],{className:'tr-g',interactive:false,lineCap:'round',lineJoin:'round'}).addTo(map);
 const trailLine=L.polyline([],{color,weight:6,opacity:.9,className:'tr-b',interactive:false,lineCap:'round',lineJoin:'round'}).addTo(map);
 const trailF=L.polyline([],{className:'tr-f',interactive:false,lineCap:'round',lineJoin:'round'}).addTo(map);
@@ -516,7 +537,7 @@ applyTrail();
 const me=L.marker([0,0],{icon:skinIcon(skin,mc()),interactive:false,keyboard:false,zIndexOffset:1000});
 const startMark=L.circle([0,0],{radius:20,color,dashArray:'6 6',fill:false});
 let total=Number(localStorage.td)||0,pd={},tab='a';
-const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v13</div>';
+const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v14</div>';
 const IGLINK=DEV+'<a class="ig2" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#igs"/></svg>@madalbaev_001</a>';
 let first=true,zones=JSON.parse(localStorage.zones||'{}'),zl=[],trail=[],dist=0,watch=null,lock=null,lastT=0,follow=true,pm={},timer=null,cur=null;
 const mpl=lat=>[111320*Math.cos(lat*Math.PI/180),110574];
@@ -564,13 +585,22 @@ function labelPos(poly){const r=poly[0];let a=0,cx=0,cy=0;for(let i=0;i<r.length
  const xs=[];for(let i=0;i<r.length;i++){const p=r[i],q=r[(i+1)%r.length];if((p[1]>cy)!=(q[1]>cy))xs.push(p[0]+(cy-p[1])*(q[0]-p[0])/(q[1]-p[1]))}
  xs.sort((u,v)=>u-v);let best=null,bw=-1;for(let i=0;i+1<xs.length;i+=2){const w=xs[i+1]-xs[i];if(w>bw){bw=w;best=(xs[i]+xs[i+1])/2}}
  return best==null?[r[0][1],r[0][0]]:[cy,best]}
+const pdSig=()=>Object.keys(pd).map(k=>k+(pd[k].sk||'')+(pd[k].tr||'')).join('|');
+function zoneLayers(ll,hue,tid){const h=Number(hue)||0,st=trStyle(tid,'hsl('+h+',75%,45%)','hsl('+h+',90%,65%)'),plain=!tid||tid=='t_line',out=[];
+ out.push(L.polygon(ll,{color:'hsl('+h+',75%,40%)',fillColor:'hsl('+h+',75%,50%)',fillOpacity:.45,weight:plain?2:0,interactive:false}).addTo(map));
+ if(!plain)[['g','zr-g'],['b','zr-b'],['f','zr-f']].forEach(e=>{const o=st[e[0]];if(!o.weight)return;out.push(L.polygon(ll,Object.assign({},o,{weight:Math.max(1.5,o.weight*.55),fill:false,interactive:false,lineCap:'round',lineJoin:'round',className:e[1]+' trs-'+tid})).addTo(map))});
+ return out}
+function labHTML(o,nm,sid){const h=Number(o.hue)||0,col='hsl('+h+',75%,45%)';
+ const av=(sid&&sid!='dot')?'<div class="skw lsk">'+skinHTML(sid,col)+'</div>':'<div class="lav" style="background:'+col+'">'+esc(nm.charAt(0).toUpperCase())+'</div>';
+ return '<div class="lab">'+av+'<div class="lnm">'+nm+'</div></div>'}
 function render(){zl.forEach(l=>l.remove());zl=[];lb.forEach(m=>m.remove());lb=[];const c=calc();
-if(c){Object.values(c.own).forEach(o=>{if(!o.mp.length)return;const ll=o.mp.map(poly=>poly.map(r=>r.map(q=>[q[1],q[0]])));
- zl.push(L.polygon(ll,{color:`hsl(${o.hue},75%,40%)`,fillColor:`hsl(${o.hue},75%,50%)`,fillOpacity:.45,weight:2}).addTo(map));
+if(c){Object.entries(c.own).forEach(([ou,o])=>{if(!o.mp.length)return;const ll=o.mp.map(poly=>poly.map(r=>r.map(q=>[q[1],q[0]])));
+ const sid=ou==uid?skin:((pd[ou]&&pd[ou].sk)||'dot'),tid=ou==uid?trailSel:((pd[ou]&&pd[ou].tr)||'t_line');
+ zoneLayers(ll,o.hue,tid).forEach(x=>zl.push(x));
  // аймактын ортосуна ээсинин профили жана аты
  let big=null,ba=0;o.mp.forEach(poly=>{const ar=ringA(poly[0])-poly.slice(1).reduce((h,r)=>h+ringA(r),0);if(ar>ba){ba=ar;big=poly}});
  if(big&&ba>=800){try{const pos=labelPos(big),nm=esc(o.name||'Оюнчу');
-  lb.push(L.marker(pos,{interactive:false,keyboard:false,icon:L.divIcon({className:'',iconSize:[0,0],html:'<div class="lab"><div class="lav" style="background:hsl('+(Number(o.hue)||0)+',75%,45%)">'+esc(nm.charAt(0).toUpperCase())+'</div><div class="lnm">'+nm+'</div></div>'})}).addTo(map))}catch(e){}}})}
+  lb.push(L.marker(pos,{interactive:false,keyboard:false,icon:L.divIcon({className:'',iconSize:[0,0],html:labHTML(o,nm,sid)})}).addTo(map))}catch(e){}}})}
 else{zl=Object.values(zones).sort((a,b)=>a.t-b.t).map(z=>L.polygon(pairs(z),{color:`hsl(${z.hue},75%,40%)`,fillColor:`hsl(${z.hue},75%,50%)`,fillOpacity:.45,weight:2}).addTo(map))}
 const sc=scores(),list=Object.entries(sc).sort((a,b)=>b[1].a-a[1].a);
 $('tot').textContent=Math.round(sc[uid]?sc[uid].a:0);const r=list.findIndex(e=>e[0]==uid);$('rk').textContent=r<0?'–':'#'+(r+1);
@@ -640,10 +670,10 @@ async function wake(){try{lock=await navigator.wakeLock.request('screen')}catch(
 // башка оюнчулар
 function live(){if(!fs)return;
 fs.collection('zones').onSnapshot(s=>{s.docChanges().forEach(c=>{if(c.type==='removed')delete zones[c.doc.id];else zones[c.doc.id]=c.doc.data()});render()},()=>msg('Сервер менен байланыш жок'));
-fs.collection('players').onSnapshot(s=>{s.forEach(doc=>{const v=doc.data(),id=doc.id;pd[id]={name:v.name,hue:v.hue,td:v.td||0,sk:v.sk};if(id==uid)return;
+fs.collection('players').onSnapshot(s=>{const b4=pdSig();s.forEach(doc=>{const v=doc.data(),id=doc.id;pd[id]={name:v.name,hue:v.hue,td:v.td||0,sk:v.sk,tr:v.tr};if(id==uid)return;
  const on=Date.now()-v.t<60000;if(pm[id]){pm[id].remove();delete pm[id]}
- if(on)pm[id]=L.marker([v.lat,v.lon],{icon:skinIcon(v.sk||'dot','hsl('+(Number(v.hue)||0)+',75%,45%)')}).bindTooltip(v.name||'Оюнчу').addTo(map)});if($('board').style.display=='block'&&tab=='l')render()})}
-function ping(){if(fs&&cur)fs.collection('players').doc(uid).set({name,hue,lat:cur[0],lon:cur[1],td:Math.round(total),t:Date.now(),sk:skin,skc:JSON.stringify(skc)}).catch(()=>{})}
+ if(on)pm[id]=L.marker([v.lat,v.lon],{icon:skinIcon(v.sk||'dot','hsl('+(Number(v.hue)||0)+',75%,45%)')}).bindTooltip(v.name||'Оюнчу').addTo(map)});if(($('board').style.display=='block'&&tab=='l')||b4!=pdSig())render()})}
+function ping(){if(fs&&cur)fs.collection('players').doc(uid).set({name,hue,lat:cur[0],lon:cur[1],td:Math.round(total),t:Date.now(),sk:skin,tr:trailSel,skc:JSON.stringify(skc)}).catch(()=>{})}
 $('go').onclick=()=>{
 if(watch!=null){navigator.geolocation.clearWatch(watch);watch=null;clearInterval(timer);$('go').textContent='▶ Баштоо';msg('Токтотулду.');return}
 if(!navigator.geolocation){msg('Бул браузерде GPS жок.');return}
