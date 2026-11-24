@@ -362,8 +362,14 @@ SKINS.push(...PREM);
 function h53(str,seed=0){let h1=0xdeadbeef^seed,h2=0x41c6ce57^seed;for(let i=0,ch;i<str.length;i++){ch=str.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677)}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return 4294967296*(2097151&h2)+(h1>>>0)}
 const codeFor=(id,tag)=>h53(id+'|'+tag+'|'+PAY.secret).toString(36).toUpperCase().slice(-7).padStart(7,'0');
 const tagId=()=>String(uid).slice(0,6);
+// === Дос чакыруу: сыйлыктар ===
+const REF_COIN=100,REF_MIN=300,REF_MAX=30,REF_GIFTS=[{n:3,id:'comet'},{n:10,id:'phoenix'}];
+let RF;try{RF=JSON.parse(localStorage.rf||'null')}catch(e){RF=null}
+if(!RF||typeof RF!='object')RF={};RF.done=RF.done||[];RF.gifts=RF.gifts||[];RF.pend=RF.pend||[];
+const rfSave=()=>{try{localStorage.rf=JSON.stringify(RF)}catch(e){}};
+try{const m=/[?&]ref=([A-Za-z0-9]{4,12})/.exec(location.search);if(m&&!localStorage.refUsed)localStorage.pref=m[1]}catch(e){}
 let skc={};try{skc=JSON.parse(localStorage.skc||'{}')||{}}catch(e){skc={}}
-const hasPrem=id=>{const t=tagId();return (skc[id]&&skc[id]==codeFor(id,t))||(skc.vip&&skc.vip==codeFor('vip',t))};
+const hasPrem=id=>{const t=tagId();return RF.gifts.includes(id)||(skc[id]&&skc[id]==codeFor(id,t))||(skc.vip&&skc.vip==codeFor('vip',t))};
 let skOwn=['dot','pulse'];try{const o=JSON.parse(localStorage.sko||'null');if(Array.isArray(o))skOwn=Array.from(new Set(skOwn.concat(o))).filter(id=>SKINS.some(s=>s.id==id))}catch(e){}
 const skOwned=id=>{const x=SKINS.find(v=>v.id==id);return !!x&&(x.r?!!hasPrem(id):skOwn.includes(id))};
 let skin=localStorage.sk||'dot';if(!skOwned(skin))skin='dot';
@@ -618,19 +624,38 @@ else if(tab=='f'){const sc={};list.forEach(e=>sc[e[0]]=e[1]);rows=friendRows(sc)
 else rows=lenList().slice(0,10).map((e,i)=>row(i,e.id,e.name,e.hue,fmt(e.td)));
 const tb=(k,t)=>'<b class="'+(tab==k?'on':'')+'" onclick="setTab(\''+k+'\')">'+t+'</b>';
 let extra='';
-if(tab=='f')extra='<div class="fr">Менин кодум: <b>'+esc(uid.slice(0,6))+'</b> <button onclick="copyCode()">Көчүр</button></div><div class="fr"><input id="fc" placeholder="Достун коду" autocomplete="off"><button onclick="addFriend()">Кош</button></div>'+(friends.length?'<div class="fr"><button style="background:#c0392b" onclick="clearFriends()">Достор тизмесин тазалоо</button></div>':'');
+if(tab=='f')extra='<div class="fr"><button style="flex:1;background:#e8590c" onclick="inviteShare()">📨 Дос чакыр · +'+REF_COIN+' 💰</button></div><small style="display:block;opacity:.75;margin:4px 0">Чакырылган дос '+REF_MIN+' м жүргөндө экөөңө тең +'+REF_COIN+' 💰. 3 дос → 🎁 Комета, 10 дос → 🎁 Феникс. Азыр: '+RF.done.length+' дос.</small><div class="fr">Менин кодум: <b>'+esc(uid.slice(0,6))+'</b> <button onclick="copyCode()">Көчүр</button></div><div class="fr"><input id="fc" placeholder="Достун коду" autocomplete="off"><button onclick="addFriend()">Кош</button></div>'+(friends.length?'<div class="fr"><button style="background:#c0392b" onclick="clearFriends()">Достор тизмесин тазалоо</button></div>':'');
 $('board').innerHTML='<div class="tabs">'+tb('a','📐 Аймак')+tb('l','📏 Жол')+tb('f','👥 Достор')+'</div>'+(rows.join('')||'<p>Азырынча маалымат жок</p>')+extra+accHTML()+IGLINK}
 function copyCode(){const c=uid.slice(0,6);try{navigator.clipboard.writeText(c);msg('Код көчүрүлдү: '+c)}catch(e){msg('Кодуң: '+c)}}
 function clearFriends(){if(confirm('Достор тизмеси тазалансынбы?')){friends=[];localStorage.fr='[]';render()}}
-async function addFriend(){const code=(($('fc')||{}).value||'').trim();if(code.length<4){msg('Достун кодун жаз (кеминде 4 тамга)');return}
+async function addFriend(c0){const code=(c0||(($('fc')||{}).value)||'').trim();if(code.length<4){msg('Достун кодун жаз (кеминде 4 тамга)');return}
  if(!fs){msg('Интернет керек');return}
  try{const FP=firebase.firestore.FieldPath.documentId();const q=await fs.collection('players').orderBy(FP).startAt(code).endAt(code+'\uf8ff').limit(3).get();
   const ids=[];q.forEach(d=>ids.push(d.id));
   if(!ids.length){msg('Мындай код табылган жок. Дос оюнду ачып «Баштоо» басышы керек.');return}
   const id=ids[0];if(id==uid){msg('Бул өзүңдүн кодуң 🙂');return}
   if(friends.includes(id)){msg('Бул дос мурун эле кошулган');return}
-  friends.push(id);localStorage.fr=JSON.stringify(friends);msg('✅ Дос кошулду');render()}
+  friends.push(id);localStorage.fr=JSON.stringify(friends);msg('✅ Дос кошулду');render();refAfterAdd(id)}
  catch(e){msg('Ката: '+(e.code||e.message))}}
+function refGive(fid){if(RF.done.includes(fid)||RF.done.length>=REF_MAX)return false;
+ RF.done.push(fid);RF.pend=RF.pend.filter(x=>x!=fid);roll();Q.coins+=REF_COIN;Q.wc+=REF_COIN;qSave();
+ toast('👥 Дос үчүн +'+REF_COIN+' 💰');
+ REF_GIFTS.forEach(g=>{if(RF.done.length>=g.n&&!RF.gifts.includes(g.id)){RF.gifts.push(g.id);const s=SKINS.find(x=>x.id==g.id);setTimeout(()=>toast('🎁 Белек: '+s.n+' скини ачылды!'),2600)}});
+ rfSave();return true}
+async function refTd(id){const d=await fs.collection('players').doc(id).get();return d.exists?(d.data().td||0):-1}
+async function refAfterAdd(fid){if(!fs)return;
+ try{fs.collection('players').doc(fid).collection('refs').doc(uid).set({at:Date.now()}).catch(()=>{});
+  if(RF.done.includes(fid))return;
+  if((await refTd(fid))>=REF_MIN)refGive(fid);else{if(!RF.pend.includes(fid))RF.pend.push(fid);rfSave();msg('Дос '+REF_MIN+' м жүргөндө сыйлык автоматтык берилет')}}catch(e){}}
+async function claimRefs(){if(!fs)return;
+ try{const ids=RF.pend.slice();const q=await fs.collection('players').doc(uid).collection('refs').limit(50).get();
+  q.forEach(d=>{if(d.id!=uid&&!RF.done.includes(d.id)&&!ids.includes(d.id))ids.push(d.id)});
+  for(const id of ids.slice(0,12)){if(RF.done.includes(id))continue;if((await refTd(id))>=REF_MIN)refGive(id)}
+  rfSave()}catch(e){}}
+function autoRef(){const c=localStorage.pref;if(!c)return;localStorage.refUsed='1';localStorage.removeItem('pref');addFriend(c)}
+function inviteShare(){const c=uid.slice(0,6),u=location.href.split('?')[0].split('#')[0]+'?ref='+c,
+ t='Tera X.kg — шаарды басып жүрүп аймак ээлеген оюн 🗺️ Менин кодум: '+c+'. Кошул, экөөбүзгө тең +'+REF_COIN+' 💰: '+u;
+ if(navigator.share)navigator.share({text:t}).catch(()=>{});else{try{navigator.clipboard.writeText(t);msg('Чакыруу көчүрүлдү 📋 Достуңа жөнөт!')}catch(e){msg(t)}}}
 function setTab(t){tab=t;render()}
 function msg(t){$('msg').textContent=t}
 function save(id,z){zones[id]=z;if(fs)fs.collection('zones').doc(id).set(z).catch(()=>msg('Серверге жазылган жок'));else{const m={};Object.entries(zones).forEach(([k,v])=>{if(v.uid==uid)m[k]=v});localStorage.zones=JSON.stringify(m)}render()}
@@ -707,7 +732,7 @@ auth.onAuthStateChanged(async u=>{
  uid=u.uid;localStorage.uid=uid;lastUid=uid;lastAnon=u.isAnonymous;
  if(!u.isAnonymous&&!name&&u.displayName){name=u.displayName.slice(0,16);localStorage.nm=name}
  try{const d=await fs.collection('players').doc(uid).get();const r=d.exists?(d.data().td||0):0;total=merge?Math.max(total,r):r;localStorage.td=Math.round(total);restorePrem(d)}catch(e){}
- render()})}
+ claimRefs();autoRef();render()})}
 async function glink(){if(!auth){msg('Firebase Auth жок: интернетти текшер');return}const pr=new firebase.auth.GoogleAuthProvider();msg('Google терезесин ачып жатам…');
 try{const u=auth.currentUser;
  if(u&&u.isAnonymous)await u.linkWithPopup(pr);else await auth.signInWithPopup(pr);
