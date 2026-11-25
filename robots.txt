@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hdbhhdvdhdcvvd-creator.github.io/Tera-X/sitemap.xml
