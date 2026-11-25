@@ -327,10 +327,33 @@ button{transition:transform .12s,background .2s,color .2s}button:active{transfor
 .ob-art .emo{font-size:6.5rem;animation:skflt 2s ease-in-out infinite}
 /* Опасная кнопка в справке */
 #rs{display:block;width:100%;margin-top:10px;padding:11px;border-radius:12px;background:transparent;color:#c0392b;border:1.5px solid #e9b9b3;box-shadow:none;font-size:.85rem}
+
+/* ===== v16 ===== */
+.tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tabs b{flex:1 0 auto;white-space:nowrap;padding:8px 12px}
+#toast{top:calc(138px + env(safe-area-inset-top,0px))}
+#evb{display:none;position:absolute;z-index:1001;left:50%;transform:translateX(-50%);top:calc(108px + env(safe-area-inset-top,0px));background:linear-gradient(90deg,#ff8a00,#ffd000);color:#3a2a00;font-weight:800;font-size:.75rem;padding:4px 12px;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.35);white-space:nowrap}
+#atk{display:none;position:absolute;z-index:2500;left:10px;right:10px;top:calc(138px + env(safe-area-inset-top,0px));align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(135deg,#b3122a,#7d0a1d);color:#fff;font-weight:700;font-size:.85rem;padding:10px 12px;border-radius:16px;box-shadow:0 4px 18px rgba(0,0,0,.5);animation:sheet .3s}
+#atk button{flex:none;padding:8px 12px;border-radius:12px;background:#fff;color:#7d0a1d;font-size:.8rem;box-shadow:none}
+#dly{display:none;position:fixed;inset:0;z-index:3900;align-items:center;justify-content:center;background:rgba(5,20,12,.7);padding:16px;box-sizing:border-box}
+.dcard{width:100%;max-width:380px;background:#fff;color:#0f2a1d;border-radius:24px;padding:18px 16px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.5);animation:sheet .3s}
+.dcard h3{margin:0 0 4px;font-size:1.25rem}.dsub{font-size:.82rem;opacity:.7;margin-bottom:12px}
+.dg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.dg div{background:#f1f6f2;border-radius:12px;padding:8px 2px;font-weight:800;font-size:.9rem;border:2px solid transparent}.dg small{display:block;font-weight:600;font-size:.62rem;opacity:.65}
+.dg div.past{background:#d9f2e3}.dg div.now{border-color:#f2b705;background:#fff3cd;animation:gorun 1.4s infinite}.dg div.big7{grid-column:span 1;background:linear-gradient(135deg,#fff3cd,#ffe08a)}
+#dc{width:100%;padding:14px;font-size:1.05rem;background:linear-gradient(135deg,#34c46f,#1f8f52);border-radius:14px}
+.chest{font-size:26px;line-height:34px;text-align:center;width:34px;height:34px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5));animation:skflt 1.6s ease-in-out infinite}
+.chest.gold{filter:drop-shadow(0 0 8px #ffd34d)}
+.lvc{background:#f1f6f2;border-radius:14px;padding:10px 12px;margin-top:12px}.lvh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}.lvh small{opacity:.65}
+.tms{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}.tms span{background:#eaf1ec;border-radius:999px;padding:6px 10px;font-size:.78rem;font-weight:700;cursor:pointer}.tms span.on{background:linear-gradient(135deg,#34c46f,#1f8f52);color:#fff}
+.tg{display:flex;flex-direction:column;gap:8px;margin:12px 0 4px;font-size:.88rem}.tg label{display:flex;align-items:center;gap:8px}.tg input{width:18px;height:18px}
+.duel{background:linear-gradient(135deg,#fff1f1,#fff);border:1.5px solid #f0b8b8;border-radius:14px;padding:10px;margin:8px 0}
+.duel b{display:block}.duel .fr{margin-top:6px}
+.fd{display:flex;justify-content:space-between}
 </style>
 </head>
 <body>
-<div id="splash"><img class="sbg" src="splash.jpg" alt="" onerror="this.style.display='none'"><img class="sfull" src="splash.jpg" alt="Tera X.kg" onerror="this.onerror=null;this.src='icon-512.png'"><div class="sshade"></div><div class="stop"><span class="schip">v15</span></div><div class="sbtm"><div id="stip"></div><div class="sbw"><div id="sbar"></div></div><div class="srow"><span id="stx">Жүктөлүп жатат…</span><b id="spc">0%</b></div><div class="sdev"><div class="sh">Авторлор</div><div id="sauth"></div></div></div></div>
+<div id="splash"><img class="sbg" src="splash.jpg" alt="" onerror="this.style.display='none'"><img class="sfull" src="splash.jpg" alt="Tera X.kg" onerror="this.onerror=null;this.src='icon-512.png'"><div class="sshade"></div><div class="stop"><span class="schip">v16</span></div><div class="sbtm"><div id="stip"></div><div class="sbw"><div id="sbar"></div></div><div class="srow"><span id="stx">Жүктөлүп жатат…</span><b id="spc">0%</b></div><div class="sdev"><div class="sh">Авторлор</div><div id="sauth"></div></div></div></div>
 <div id="map"></div>
 <div id="onb"><div class="ob-card"><div class="ob-art" id="oa"></div><h2 id="ot"></h2><p id="op"></p><div class="ob-dots" id="od"></div><button id="on">Кийинки</button><a id="os">Өткөрүп жиберүү</a></div></div>
 
@@ -358,6 +381,9 @@ button{transition:transform .12s,background .2s,color .2s}button:active{transfor
 <div id="msg">«Баштоо» бас да, сыртка чыгып жүр.</div>
 <div class="bar"><button id="lb" class="nb"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg><span>Рейтинг</span></button><button id="qb" class="nb"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg><span>Тапшырма</span></button><button id="go">▶ Баштоо</button><button id="pf" class="nb"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg><span>Профиль</span></button><button id="ly" class="nb"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5"/></svg><span>Спутник</span></button></div>
 <div id="win"></div>
+<div id="evb"></div>
+<div id="atk"><span id="atkt"></span><button id="atkb">Кайра ал 🎯</button></div>
+<div id="dly"><div class="dcard"><h3>🎁 Күнүмдүк сыйлык</h3><div class="dsub" id="dsub"></div><div class="dg" id="dg"></div><button id="dc">Алуу</button></div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
@@ -460,25 +486,25 @@ const QUESTS=[
  {id:'a3',p:'a',k:'area',n:100000,c:800,t:'💎 100 000 м² жыйна'}];
 const p2=n=>String(n).padStart(2,'0');
 const dayId=(t=new Date())=>t.getFullYear()+'-'+p2(t.getMonth()+1)+'-'+p2(t.getDate());
-function weekId(){const t=new Date();t.setHours(0,0,0,0);t.setDate(t.getDate()+3-(t.getDay()+6)%7);const w1=new Date(t.getFullYear(),0,4);return t.getFullYear()+'-W'+p2(1+Math.round(((t-w1)/864e5-3+(w1.getDay()+6)%7)/7))}
+function weekId(t0){const t=t0?new Date(t0):new Date();t.setHours(0,0,0,0);t.setDate(t.getDate()+3-(t.getDay()+6)%7);const w1=new Date(t.getFullYear(),0,4);return t.getFullYear()+'-W'+p2(1+Math.round(((t-w1)/864e5-3+(w1.getDay()+6)%7)/7))}
 let Q;try{Q=JSON.parse(localStorage.qs||'null')}catch(e){Q=null}
 if(!Q||typeof Q!='object')Q={};
 const z0=()=>({dist:0,claims:0,area:0});
 function roll(){const dk=dayId(),wk=weekId();
  if(Q.d!==dk){Q.d=dk;Q.dm=z0();Q.dn={}}
- if(Q.w!==wk){Q.w=wk;Q.wm=z0();Q.wn={};Q.wc=0}
+ if(Q.w!==wk){if(Q.w&&Q.wm){Q.pw=Q.w;Q.pwa=Math.round(Q.wm.area||0)}Q.w=wk;Q.wm=z0();Q.wn={};Q.wc=0}
  Q.all=Q.all||z0();Q.an=Q.an||{};Q.coins=Q.coins||0;Q.wc=Q.wc||0;Q.streak=Q.streak||0}
 roll();
 const qSave=()=>{try{localStorage.qs=JSON.stringify(Q)}catch(e){}};
 const qDone=q=>q.p=='d'?Q.dn:q.p=='w'?Q.wn:Q.an;
 const qVal=q=>((q.p=='d'?Q.dm:q.p=='w'?Q.wm:Q.all)[q.k])||0;
 let tt=null;function toast(t){const e=$('toast');e.textContent=t;e.style.display='block';clearTimeout(tt);tt=setTimeout(()=>e.style.display='none',3500)}
-function gain(c,t){Q.coins+=c;Q.wc+=c;toast('💰 +'+c+' · '+t);if(navigator.vibrate)navigator.vibrate(120)}
+function gain(c,t){c=Math.round(c*evMult());Q.coins+=c;Q.wc+=c;toast('💰 +'+c+' · '+t);sfx('coin');if(navigator.vibrate)navigator.vibrate(120)}
 function qAdd(k,v){roll();const t=dayId();
  if(Q.act!==t){Q.streak=(Q.act===dayId(new Date(Date.now()-864e5)))?Q.streak+1:1;Q.act=t;if(Q.streak%7==0)gain(100,'🔥 '+Q.streak+' күн катары менен!')}
- Q.dm[k]+=v;Q.wm[k]+=v;Q.all[k]+=v;
+ Q.dm[k]+=v;Q.wm[k]+=v;Q.all[k]+=v;featAdd(k,v);
  QUESTS.forEach(q=>{const m=qDone(q);if(!m[q.id]&&qVal(q)>=q.n){m[q.id]=1;gain(q.c,'✅ '+q.t);const tr=TRAILS.find(x=>x.u==q.id);if(tr)setTimeout(()=>toast('🎁 Жаңы из ачылды: '+tr.n+'!'),2400)}});
- qSave();qRender()}
+ lvCheck();qSave();qRender()}
 const qf=(k,x)=>k=='dist'?fmt(x):k=='area'?Math.round(x)+' м²':Math.floor(x);
 function qItem(q){const v=qVal(q),ok=qDone(q)[q.id],pc=Math.min(100,v/q.n*100);
  return '<div class="qi'+(ok?' ok':'')+'"><div class="qr"><span>'+q.t+'</span><b>'+(ok?'✅ ':'+')+q.c+' 💰</b></div><div class="qg"><i style="width:'+pc+'%"></i></div><small>'+qf(q.k,Math.min(v,q.n))+' / '+qf(q.k,q.n)+(TRAILS.some(x=>x.u==q.id)?' · 🎁 '+TRAILS.find(x=>x.u==q.id).n+' изи':'')+'</small></div>'}
@@ -489,12 +515,13 @@ function qTab(t){qt=t;qRender()}
 function qClose(){$('qp').style.display='none'}
 function qRender(){const p=$('qp');if(p.style.display!='block')return;const ae=document.activeElement;if(ae&&ae.tagName=='INPUT'&&p.contains(ae))return;roll();
  const tb=(k,t)=>'<b class="'+(qt==k?'on':'')+'" onclick="qTab(\''+k+'\')">'+t+'</b>';
- let h='<div class="qh"><span class="qc">💰 '+Q.coins+'</span><span>🔥 '+(Q.streak||0)+' күн катары</span></div><div class="tabs">'+tb('q','🎯 Тапшырма')+tb('s','🎭 Скиндер')+tb('i','🛤️ Из')+'</div>';
+ let h='<div class="qh"><span class="qc">💰 '+Q.coins+'</span><span>🔥 '+(Q.streak||0)+' күн · Lv '+lvInfo().lv+'</span></div><div class="tabs">'+tb('q','🎯 Тапшырма')+tb('s','🎭 Скиндер')+tb('i','🛤️ Из')+tb('h','❤️ Ден соолук')+'</div>';
  if(qt=='q'){
   h+='<div class="qs">📅 Бүгүн</div>'+QUESTS.filter(q=>q.p=='d').map(qItem).join('');
   h+='<div class="qs">🗓️ Бул жума</div>'+QUESTS.filter(q=>q.p=='w').map(qItem).join('');
   h+='<div class="qs">🏅 Жетишкендиктер</div>'+QUESTS.filter(q=>q.p=='a').map(qItem).join('');
   h+='<small style="display:block;opacity:.65;margin-top:8px">7 күн катары менен ойносоң +100 💰 бонус. Тез жүрсөң (32 км/ч жогору) эсептелбейт.</small>'}
+ else if(qt=='h'){h+=healthHTML()}
  else if(qt=='b'){h+=buyHTML(qbuy)}
  else if(qt=='i'){h+=trailShopHTML()}
  else{h+=shopHTML()}
@@ -541,7 +568,7 @@ function kActivate(){const el=$('kc'),v=(el&&el.value||'').trim().toUpperCase(),
 function restorePrem(d){try{const rc=d&&d.exists&&d.data().skc;if(!rc)return;const o=JSON.parse(rc);Object.keys(o).forEach(k=>{if(!skc[k])skc[k]=o[k]});localStorage.skc=JSON.stringify(skc);
  const w=localStorage.sk;if(w&&skOwned(w)&&skin!=w){skin=w;me.setIcon(skinIcon(skin,mc()))}}catch(e){}}
 function showWin(n){const w=$('win');w.textContent='+'+n+' м²';w.classList.remove('on');void w.offsetWidth;w.classList.add('on')}
-function burst(n){if(n)showWin(n);if(!cur)return;let b='';for(let i=0;i<12;i++)b+='<b style="--a:'+(i*30)+'deg"></b>';
+function burst(n){if(n){showWin(n);sfx('win')}if(!cur)return;let b='';for(let i=0;i<12;i++)b+='<b style="--a:'+(i*30)+'deg"></b>';
  const m=L.marker(cur,{icon:L.divIcon({className:'',iconSize:[0,0],html:'<div class="bst"><i></i><i></i><i></i>'+b+'</div>'}),interactive:false,keyboard:false,zIndexOffset:900}).addTo(map);setTimeout(()=>map.removeLayer(m),2000)}
 function skinPick(id){const s=SKINS.find(x=>x.id==id);if(!s)return;
  if(s.r&&!skOwned(id)){qBuy(id);return}
@@ -613,7 +640,7 @@ applyTrail();
 const me=L.marker([0,0],{icon:skinIcon(skin,mc()),interactive:false,keyboard:false,zIndexOffset:1000});
 const startMark=L.circle([0,0],{radius:20,color,dashArray:'6 6',fill:false});
 let total=Number(localStorage.td)||0,pd={},tab='a';
-const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v15</div>';
+const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v16</div>';
 const IGLINK=DEV+'<a class="ig2" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#igs"/></svg>@madalbaev_001</a>';
 let first=true,zones=JSON.parse(localStorage.zones||'{}'),zl=[],trail=[],dist=0,watch=null,lock=null,lastT=0,follow=true,pm={},timer=null,cur=null;
 const mpl=lat=>[111320*Math.cos(lat*Math.PI/180),110574];
@@ -679,23 +706,28 @@ if(c){Object.entries(c.own).forEach(([ou,o])=>{if(!o.mp.length)return;const ll=o
   lb.push(L.marker(pos,{interactive:false,keyboard:false,icon:L.divIcon({className:'',iconSize:[0,0],html:labHTML(o,nm,sid)})}).addTo(map))}catch(e){}}})}
 else{zl=Object.values(zones).sort((a,b)=>a.t-b.t).map(z=>L.polygon(pairs(z),{color:`hsl(${z.hue},75%,40%)`,fillColor:`hsl(${z.hue},75%,50%)`,fillOpacity:.45,weight:2}).addTo(map))}
 const sc=scores(),list=Object.entries(sc).sort((a,b)=>b[1].a-a[1].a);
-$('tot').textContent=Math.round(sc[uid]?sc[uid].a:0);const r=list.findIndex(e=>e[0]==uid);$('rk').textContent=r<0?'–':'#'+(r+1);
+mineA=sc[uid]?sc[uid].a:0;$('tot').textContent=Math.round(sc[uid]?sc[uid].a:0);const r=list.findIndex(e=>e[0]==uid);$('rk').textContent=r<0?'–':'#'+(r+1);
 drawBoard(list);if($('prof').style.display=='block')drawProf()}
 const fmt=m=>m>=1000?(m/1000).toFixed(2)+' км':Math.round(m)+' м';
-const row=(i,id,nm,h,v)=>`<p><span><i class="dot" style="background:hsl(${Number(h)||0},75%,45%)"></i>${i+1}. ${(nm+'').replace(/[<>&]/g,'')}${id==uid?' (сен)':''}</span><b>${v}</b></p>`;
+const row=(i,id,nm,h,v)=>`<p><span><i class="dot" style="background:hsl(${Number(h)||0},75%,45%)"></i>${i+1}. ${(nm+'').replace(/[<>&]/g,'')}${id==uid?' (сен)':''}${badge(id)}</span><b>${v}</b></p>`;
 function lenList(){const m=Object.assign({},pd);m[uid]={name:name||'Оюнчу',hue,td:total};return Object.entries(m).map(([id,v])=>({id,name:v.name||'Оюнчу',hue:v.hue,td:v.td||0})).filter(v=>v.td>0).sort((a,b)=>b.td-a.td)}
 let friends=[];try{friends=JSON.parse(localStorage.fr||'[]')}catch(e){friends=[]}
 function friendRows(sc){const ids=[uid].concat(friends.filter(f=>f!=uid));
  return ids.map(id=>{const s1=sc[id],p1=pd[id]||{};return {id,name:(s1&&s1.name)||p1.name||'Дос',hue:(s1&&s1.hue)!=null?s1.hue:(p1.hue||0),a:s1?s1.a:0,td:id==uid?total:(p1.td||0)}}).sort((x,y)=>y.a-x.a)}
-function drawBoard(list){let rows;
+function drawBoard(list){let rows=[],extra='';
 if(tab=='f'&&document.activeElement&&document.activeElement.id=='fc')return;
+const sc={};list.forEach(e=>sc[e[0]]=e[1]);
 if(tab=='a')rows=list.slice(0,10).map((e,i)=>row(i,e[0],e[1].name,e[1].hue,Math.round(e[1].a)+' м²'));
-else if(tab=='f'){const sc={};list.forEach(e=>sc[e[0]]=e[1]);rows=friendRows(sc).map((e,i)=>row(i,e.id,e.name,e.hue,Math.round(e.a)+' м² · '+fmt(e.td)))}
+else if(tab=='w'){rows=weekList().slice(0,10).map((e,i)=>row(i,e.id,e.name,e.hue,Math.round(e.v)+' м²'));
+ const dd=new Date(),left=7-((dd.getDay()+6)%7);
+ extra='<small style="display:block;opacity:.75;margin:6px 0">🗓️ Бул жумада жаңы алган жериңе карай. Жума аягына '+left+' күн. Топ-3 сыйлык алат: 500 / 300 / 200 💰, №1 дагы 👑 Хан таажысы + таажы белгиси.</small>'}
+else if(tab=='f'){rows=friendRows(sc).map((e,i)=>row(i,e.id,e.name,e.hue,Math.round(e.a)+' м² · '+fmt(e.td)));
+ extra='<div class="fr"><button style="flex:1;background:#e8590c" onclick="inviteShare()">📨 Дос чакыр · +'+REF_COIN+' 💰</button></div><small style="display:block;opacity:.75;margin:4px 0">Чакырылган дос '+REF_MIN+' м жүргөндө экөөңө тең +'+REF_COIN+' 💰. 3 дос → 🎁 Комета, 10 дос → 🎁 Феникс. Азыр: '+RF.done.length+' дос.</small><div class="fr">Менин кодум: <b>'+esc(uid.slice(0,6))+'</b> <button onclick="copyCode()">Көчүр</button></div><div class="fr"><input id="fc" placeholder="Достун коду" autocomplete="off"><button onclick="addFriend()">Кош</button></div>'+(friends.length?'<div class="fr"><button style="background:#c0392b" onclick="clearFriends()">Достор тизмесин тазалоо</button></div>':'')+duelHTML()}
+else if(tab=='t'){rows=teamRows(sc);extra='<div class="qs">Шаарыңды тандап, командаңа упай топто:</div><div class="tms">'+TEAMS.map(x=>'<span class="'+(x.id==localStorage.tm?'on':'')+'" onclick="setTeam(\''+x.id+'\')">'+x.e+' '+x.n+'</span>').join('')+'</div>'}
+else if(tab=='n')rows=feedRows();
 else rows=lenList().slice(0,10).map((e,i)=>row(i,e.id,e.name,e.hue,fmt(e.td)));
 const tb=(k,t)=>'<b class="'+(tab==k?'on':'')+'" onclick="setTab(\''+k+'\')">'+t+'</b>';
-let extra='';
-if(tab=='f')extra='<div class="fr"><button style="flex:1;background:#e8590c" onclick="inviteShare()">📨 Дос чакыр · +'+REF_COIN+' 💰</button></div><small style="display:block;opacity:.75;margin:4px 0">Чакырылган дос '+REF_MIN+' м жүргөндө экөөңө тең +'+REF_COIN+' 💰. 3 дос → 🎁 Комета, 10 дос → 🎁 Феникс. Азыр: '+RF.done.length+' дос.</small><div class="fr">Менин кодум: <b>'+esc(uid.slice(0,6))+'</b> <button onclick="copyCode()">Көчүр</button></div><div class="fr"><input id="fc" placeholder="Достун коду" autocomplete="off"><button onclick="addFriend()">Кош</button></div>'+(friends.length?'<div class="fr"><button style="background:#c0392b" onclick="clearFriends()">Достор тизмесин тазалоо</button></div>':'');
-$('board').innerHTML='<div class="tabs">'+tb('a','📐 Аймак')+tb('l','📏 Жол')+tb('f','👥 Достор')+'</div>'+(rows.join('')||'<p>Азырынча маалымат жок</p>')+extra+accHTML()+IGLINK}
+$('board').innerHTML='<div class="tabs">'+tb('a','📐 Аймак')+tb('w','🗓️ Жума')+tb('l','📏 Жол')+tb('f','👥 Достор')+tb('t','🏙️ Шаар')+tb('n','📰 Лента')+'</div>'+(rows.join('')||'<p>Азырынча маалымат жок</p>')+extra+accHTML()+IGLINK}
 function copyCode(){const c=uid.slice(0,6);try{navigator.clipboard.writeText(c);msg('Код көчүрүлдү: '+c)}catch(e){msg('Кодуң: '+c)}}
 function clearFriends(){if(confirm('Достор тизмеси тазалансынбы?')){friends=[];localStorage.fr='[]';render()}}
 async function addFriend(c0){const code=(c0||(($('fc')||{}).value)||'').trim();if(code.length<4){msg('Достун кодун жаз (кеминде 4 тамга)');return}
@@ -738,7 +770,7 @@ let spd=c.speed;
 if(trail.length){const prev=trail[trail.length-1],dd=d(prev,p);if(dd<Math.max(6,c.accuracy*.6))return;
 if(spd==null)spd=dd/Math.max(.5,(now-lastT)/1000);dist+=dd;total+=dd;localStorage.td=Math.round(total);if((spd||0)<9)qAdd('dist',dd)}
 lastT=now;$('sp').textContent=((spd||0)*3.6).toFixed(1);$('di').textContent=Math.round(dist);
-trail.push(p);setTrail(trail);me.setLatLng(p).addTo(map);
+trail.push(p);setTrail(trail);me.setLatLng(p).addTo(map);checkChests(p);
 if(trail.length===1)startMark.setLatLng(p).addTo(map);
 if(follow)map.panTo(p,{animate:true});
 // өз аймагыбызга канчалык жакынбыз
@@ -764,16 +796,19 @@ if(!claimed&&T&&startNear&&farOut>25&&nearNow&&trail.length>8){
 async function wake(){try{lock=await navigator.wakeLock.request('screen')}catch(e){}}
 // башка оюнчулар
 function live(){if(!fs)return;
-fs.collection('zones').onSnapshot(s=>{s.docChanges().forEach(c=>{if(c.type==='removed')delete zones[c.doc.id];else zones[c.doc.id]=c.doc.data()});render()},()=>msg('Сервер менен байланыш жок'));
-fs.collection('players').onSnapshot(s=>{const b4=pdSig();s.forEach(doc=>{const v=doc.data(),id=doc.id;pd[id]={name:v.name,hue:v.hue,td:v.td||0,sk:v.sk,tr:v.tr};if(id==uid)return;
+fs.collection('zones').onSnapshot(s=>{const before=mineA,adds=[];s.docChanges().forEach(c=>{if(c.type==='removed')delete zones[c.doc.id];else{const z=c.doc.data();zones[c.doc.id]=z;if(c.type==='added'&&z.uid!==uid)adds.push(z)}});render();zonesChanged(before,adds)},()=>msg('Сервер менен байланыш жок'));
+fs.collection('players').onSnapshot(s=>{const b4=pdSig();s.forEach(doc=>{const v=doc.data(),id=doc.id;pd[id]={name:v.name,hue:v.hue,td:v.td||0,sk:v.sk,tr:v.tr,tm:v.tm,lv:v.lv,wk:v.wk,wa:v.wa||0,pw:v.pw,pwa:v.pwa||0,ch:v.ch,du:v.du};if(id==uid)return;
  const on=Date.now()-v.t<60000;if(pm[id]){pm[id].remove();delete pm[id]}
- if(on)pm[id]=L.marker([v.lat,v.lon],{icon:skinIcon(v.sk||'dot','hsl('+(Number(v.hue)||0)+',75%,45%)')}).bindTooltip(v.name||'Оюнчу').addTo(map)});if(($('board').style.display=='block'&&tab=='l')||b4!=pdSig())render()})}
-function ping(){if(fs&&cur)fs.collection('players').doc(uid).set({name,hue,lat:cur[0],lon:cur[1],td:Math.round(total),t:Date.now(),sk:skin,tr:trailSel,skc:JSON.stringify(skc)}).catch(()=>{})}
+ if(on&&!v.hid&&v.lat!=null)pm[id]=L.marker([v.lat,v.lon],{icon:skinIcon(v.sk||'dot','hsl('+(Number(v.hue)||0)+',75%,45%)')}).bindTooltip(v.name||'Оюнчу').addTo(map)});onPD();if($('board').style.display=='block'||b4!=pdSig())render()})}
+function ping(){if(!fs||!cur)return;
+ const o={name,hue,td:Math.round(total),t:Date.now(),sk:skin,tr:trailSel,skc:JSON.stringify(skc),tm:localStorage.tm||'',lv:lvInfo().lv,wk:Q.w,wa:Math.round(Q.wm.area||0),pw:Q.pw||'',pwa:Q.pwa||0,ch:localStorage.ch||'',du:Q.duel?{op:Q.duel.op,st:Q.duel.st,g:Math.round(Q.duel.g)}:null,hid:HIDE?1:0};
+ if(!HIDE){o.lat=cur[0];o.lon=cur[1]}
+ fs.collection('players').doc(uid).set(o).catch(()=>{})}
 $('go').onclick=()=>{
 if(watch!=null){navigator.geolocation.clearWatch(watch);watch=null;clearInterval(timer);$('go').textContent='▶ Баштоо';$('go').classList.remove('run');msg('Токтотулду.');return}
 if(!navigator.geolocation){msg('Бул браузерде GPS жок.');return}
 if(!name){name=(prompt('Сенин атың?','')||'Оюнчу').slice(0,16);localStorage.nm=name}
-trail=[];dist=0;first=true;setTrail([]);wake();
+trail=[];dist=0;first=true;setTrail([]);wake();if(!localStorage.safe){localStorage.safe='1';toast('⚠️ Жолдо этият бол! Унаада же жол кесип өтүп ойнобо.')}
 navigator.geolocation.getCurrentPosition(e=>{if(first){first=false;follow=true;cur=[e.coords.latitude,e.coords.longitude];me.setLatLng(cur).addTo(map);map.setView(cur,18)}},()=>{},{enableHighAccuracy:true,timeout:15000});
 watch=navigator.geolocation.watchPosition(onFix,e=>msg('GPS ката: '+e.message),{enableHighAccuracy:true,maximumAge:0,timeout:20000});
 timer=setInterval(ping,5000);
@@ -832,7 +867,7 @@ function drawProf(){
  '<div class="ph"><div class="av" style="background:hsl('+hue+',75%,45%)">'+av+'</div><div><div class="pn">'+esc(name||'Оюнчу')+' <button onclick="renameMe()">✏️</button></div><small style="opacity:.65">'+(u&&!u.isAnonymous?esc(u.email||'Google аккаунт'):'Коноктук аккаунт')+'</small></div></div>'+
  '<div class="stats"><div>'+Math.round(sc[uid]?sc[uid].a:0)+' м²<small>жалпы аймак</small></div><div>'+(r<0?'–':'#'+(r+1))+'<small>рейтинг</small></div><div>'+fmt(total)+'<small>жалпы жол</small></div><div>'+my.length+'<small>аймак саны</small></div><div style="grid-column:span 2">'+Math.round(best)+' м²<small>эң чоң аймагым</small></div></div>'+
  '<div style="margin-top:12px;font-weight:700;font-size:.85rem">🎨 Түсүм</div><div class="sw">'+HUES.map(h=>'<i class="'+(h==hue?'on':'')+'" style="background:hsl('+h+',75%,45%)" onclick="setHue('+h+')"></i>').join('')+'</div>'+
- accHTML()+DEV+
+ profExtra()+accHTML()+DEV+
  '<button class="gbtn" style="background:#e8efe9;border:0" onclick="$(\'prof\').style.display=\'none\'">Жабуу</button>'}
 $('pf').onclick=()=>{const p=$('prof');if(p.style.display=='block')p.style.display='none';else{$('board').style.display='none';$('qp').style.display='none';drawProf();p.style.display='block'}};
 
@@ -853,6 +888,165 @@ $('pf').onclick=()=>{const p=$('prof');if(p.style.display=='block')p.style.displ
  const done=()=>{try{localStorage.onb='1'}catch(e){}ob.style.display='none'};
  $('on').onclick=()=>{if(i<S.length-1){i++;draw()}else done()};$('os').onclick=done;
  ob.style.display='flex';draw()})();
+
+// ================= v16: жаңы функциялар =================
+let mineA=null,HIDE=localStorage.hide=='1';
+// --- үн ---
+let AC=null;
+function sfx(n){if(localStorage.mute=='1')return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();if(AC.state=='suspended')AC.resume();
+ const S={coin:[[880,.07],[1320,.12]],win:[[523,.11],[659,.11],[784,.11],[1047,.28]],attack:[[300,.16],[200,.3]],chest:[[660,.07],[880,.07],[1100,.07],[1320,.2]],level:[[523,.1],[659,.1],[784,.1],[1047,.1],[1319,.32]]}[n]||[];
+ let t=AC.currentTime;S.forEach(x=>{const o=AC.createOscillator(),g=AC.createGain();o.type=n=='attack'?'sawtooth':'triangle';o.frequency.value=x[0];g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.16,t+.012);g.gain.exponentialRampToValueAtTime(.0001,t+x[1]);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+x[1]+.03);t+=x[1]*.9})}catch(e){}}
+function setMute(v){localStorage.mute=v?'1':'0';if(!v)sfx('coin')}
+function giveCoins(c,t){Q.coins+=c;Q.wc+=c;toast('💰 +'+c+' · '+t);if(navigator.vibrate)navigator.vibrate(120);qSave();qRender()}
+// --- иш-чаралар (2x) ---
+function evInfo(){const t=new Date(),m=t.getMonth()+1,d=t.getDate(),w=t.getDay();
+ if((m==12&&d>=25)||(m==1&&d<=5))return{m:2,t:'🎄 Жаңы жыл иш-чарасы: 2x 💰'};
+ if(m==3&&d>=20&&d<=23)return{m:2,t:'🌷 Нооруз: 2x 💰'};
+ if(m==8&&d>=29&&d<=31)return{m:2,t:'🇰🇬 Эгемендик майрамы: 2x 💰'};
+ if(w==0||w==6)return{m:2,t:'🔥 Дем алыш күнү: 2x 💰'};
+ return null}
+function evMult(){const e=evInfo();return e?e.m:1}
+(()=>{const e=evInfo(),b=$('evb');if(e){b.textContent=e.t;b.style.display='block'}})();
+// --- деңгээл / XP ---
+const LVT=[[20,'Хан'],[15,'Бек'],[11,'Баатыр'],[8,'Жоокер'],[5,'Мергенчи'],[3,'Чабарман'],[1,'Жаңычыл']];
+function xpNow(){const a=Q.all||{};return (a.dist||0)/10+(a.area||0)/20+(a.claims||0)*50+RF.done.length*100}
+function lvInfo(){const xp=xpNow(),lv=Math.floor(Math.sqrt(xp/60))+1,c0=(lv-1)*(lv-1)*60,nx=lv*lv*60,title=(LVT.find(x=>lv>=x[0])||LVT[LVT.length-1])[1];
+ return{xp,lv,next:Math.round(nx),pct:Math.max(0,Math.min(100,(xp-c0)/(nx-c0)*100)),title}}
+function lvCheck(){const l=lvInfo().lv;if(!Q.lv){Q.lv=l;return}
+ if(l>Q.lv){Q.lv=l;const t=lvInfo().title;setTimeout(()=>{giveCoins(20+l*5,'⭐ Lv '+l+' · '+t);sfx('level')},1600)}}
+const badge=id=>{const p=pd[id]||{},lv=id==uid?lvInfo().lv:p.lv;return (p.ch&&p.ch==PREVWK()?' 👑':'')+(lv?' <small style="opacity:.6">Lv'+lv+'</small>':'')};
+// --- дуэль / максат (аймак кошулганда) ---
+function featAdd(k,v){
+ if(k=='area'&&Q.duel&&Date.now()<Q.duel.end)Q.duel.g+=v;
+ if(k=='dist'){const goal=Number(localStorage.goal)||10000;if(Q.wm.dist>=goal&&Q.gw!==Q.w){Q.gw=Q.w;setTimeout(()=>giveCoins(50,'❤️ Жумалык максат аткарылды!'),1200)}}}
+const duelOn=()=>!!(Q.duel&&Date.now()<Q.duel.end);
+function duelChallenge(id){if(duelOn()){toast('Дуэль мурунтан эле бар');return}const st=Date.now();Q.duel={op:id,st,end:st+864e5,g:0,paid:0};qSave();ping();toast('⚔️ Чакыруу жөнөтүлдү! Дос кабыл алышы керек.');render()}
+function duelAccept(id){const o=pd[id];if(!o||!o.du||duelOn())return;Q.duel={op:id,st:o.du.st,end:o.du.st+864e5,g:0,paid:0};qSave();ping();toast('⚔️ Дуэль башталды!');render()}
+function duelCancel(){if(confirm('Дуэль токтотулсунбу?')){Q.duel=null;qSave();ping();render()}}
+function duelHTML(){let h='<div class="qs">⚔️ Дуэль (24 саат, ким көп жаңы жер алат)</div>';
+ const inc=Object.entries(pd).filter(([id,p])=>id!=uid&&p.du&&p.du.op==uid&&Date.now()<p.du.st+864e5&&!(Q.duel&&Q.duel.op==id&&Q.duel.st==p.du.st));
+ if(duelOn()){const o=pd[Q.duel.op]||{},ok=o.du&&o.du.op==uid&&o.du.st==Q.duel.st,left=Math.max(0,Q.duel.end-Date.now()),hh=Math.floor(left/36e5),mm=Math.floor(left%36e5/6e4);
+  h+='<div class="duel"><b>'+esc(o.name||'Дос')+' менен</b><div class="fd"><span>Сен: <b style="display:inline">'+Math.round(Q.duel.g)+' м²</b></span><span>'+(ok?'Ал: <b style="display:inline">'+Math.round(o.du.g||0)+' м²</b>':'⏳ кабыл алганын күтүүдө')+'</span></div><small>'+hh+' с '+mm+' мүн калды · жеңгенге +150 💰</small><div class="fr"><button style="background:#c0392b" onclick="duelCancel()">Токтотуу</button></div></div>'}
+ else{inc.forEach(([id,p])=>{h+='<div class="duel"><b>⚔️ '+esc(p.name||'Оюнчу')+' сени дуэльге чакырды</b><div class="fr"><button onclick="duelAccept(\''+id+'\')">Кабыл алуу</button></div></div>'});
+  const fl=friends.filter(f=>f!=uid&&pd[f]);
+  h+=fl.length?'<small style="opacity:.75">Досуңду чакыр:</small><div class="tms">'+fl.map(f=>'<span onclick="duelChallenge(\''+f+'\')">⚔️ '+esc(pd[f].name||'Дос')+'</span>').join('')+'</div>':'<small style="opacity:.7">Дуэль үчүн алгач дос кош.</small>'}
+ return h}
+function duelCheck(){const d=Q.duel;if(!d||d.paid||Date.now()<d.end+12e4)return;const o=pd[d.op];
+ if(!o||!o.du||o.du.op!=uid||o.du.st!=d.st){Q.duel=null;qSave();return}
+ d.paid=1;const og=o.du.g||0;
+ if(d.g>og){giveCoins(150,'🏆 Дуэльде жеңдиң!');sfx('win')}else if(d.g<og)toast('⚔️ Дуэль бүттү: бул жолу утулдуң');else toast('⚔️ Дуэль тең чыкты');
+ qSave()}
+// --- жума рейтинги жана сыйлык ---
+const PREVWK=()=>weekId(Date.now()-7*864e5);
+function weekList(){const cw=weekId(),m={};
+ Object.entries(pd).forEach(([id,p])=>{if(p.wk==cw&&p.wa>0)m[id]={id,name:p.name||'Оюнчу',hue:p.hue,v:p.wa}});
+ const my=Q.wm.area||0;if(my>0)m[uid]={id:uid,name:name||'Оюнчу',hue,v:my};
+ return Object.values(m).sort((a,b)=>b.v-a.v)}
+let przDone=false;
+function onPD(){if(!przDone){przDone=true;checkPrize()}duelCheck()}
+function checkPrize(){const pw=PREVWK();if(localStorage.prz==pw)return;
+ const m={};Object.entries(pd).forEach(([id,p])=>{const v=p.wk==pw?p.wa:p.pw==pw?p.pwa:0;if(v>0)m[id]=v});
+ const mine=Q.pw==pw?(Q.pwa||0):(Q.w==pw?(Q.wm.area||0):0);if(mine>0)m[uid]=mine;else delete m[uid];
+ localStorage.prz=pw;
+ const rk=Object.entries(m).sort((a,b)=>b[1]-a[1]),i=rk.findIndex(e=>e[0]==uid);
+ if(i<0||i>2)return;
+ const pr=[500,300,200][i];setTimeout(()=>{giveCoins(pr,'🏆 Өткөн жумада №'+(i+1)+'!');sfx('win')},3500);
+ if(i==0){if(!RF.gifts.includes('crown')){RF.gifts.push('crown');rfSave()}localStorage.ch=pw;setTimeout(()=>toast('👑 Хан таажысы скини ачылды!'),6500);ping()}}
+// --- командалар (шаарлар) ---
+const TEAMS=[{id:'bsk',n:'Бишкек',e:'🏛️'},{id:'osh',n:'Ош',e:'⛰️'},{id:'jal',n:'Жалал-Абад',e:'🌳'},{id:'kar',n:'Каракол',e:'🏔️'},{id:'nar',n:'Нарын',e:'🐎'},{id:'tal',n:'Талас',e:'🌾'},{id:'bat',n:'Баткен',e:'🍎'},{id:'chu',n:'Чүй',e:'🌽'},{id:'oth',n:'Башка',e:'🇰🇬'}];
+function setTeam(id){localStorage.tm=id;pd[uid]=Object.assign(pd[uid]||{},{tm:id});if(fs)fs.collection('players').doc(uid).set({tm:id},{merge:true}).catch(()=>{});render();if($('prof').style.display=='block')drawProf()}
+function teamRows(sc){const T={};
+ const add=(id,a)=>{const tm=id==uid?localStorage.tm:(pd[id]&&pd[id].tm);if(!tm)return;const t=T[tm]||(T[tm]={a:0,ids:{}});t.a+=a;t.ids[id]=1};
+ Object.keys(pd).concat([uid]).forEach(id=>add(id,0));Object.entries(sc).forEach(([id,v])=>add(id,v.a));
+ return Object.entries(T).sort((a,b)=>b[1].a-a[1].a).map(([k,v],i)=>{const t=TEAMS.find(x=>x.id==k)||{n:k,e:'🏳️'};
+  return '<p><span>'+(i+1)+'. '+t.e+' '+t.n+(k==localStorage.tm?' (сен)':'')+' <small style="opacity:.6">'+Object.keys(v.ids).length+' оюнчу</small></span><b>'+Math.round(v.a)+' м²</b></p>'})}
+// --- лента ---
+function ago(t){const m=Math.max(0,Math.round((Date.now()-t)/6e4));return m<1?'азыр':m<60?m+' мүн мурун':m<1440?Math.round(m/60)+' саат мурун':Math.round(m/1440)+' күн мурун'}
+function feedRows(){return Object.values(zones).sort((a,b)=>b.t-a.t).slice(0,15).map(z=>{let a=0;try{a=area(pairs(z))}catch(e){}
+ return '<p><span>📍 '+esc(z.name||'Оюнчу')+(z.uid==uid?' (сен)':'')+' <small style="opacity:.6">'+ago(z.t)+'</small></span><b>+'+Math.round(a)+' м²</b></p>'})}
+// --- тынчтык: басып алуу билдирүүсү ---
+let zFirst=true,ATK=null,atkT=null;
+function notifyLoss(lost,z){ATK=z;const nm=esc((z&&z.name)||'Оюнчу'),tx='⚔️ '+nm+' сенин '+Math.round(lost)+' м² жериңди басып алды!';
+ $('atkt').textContent=tx;$('atk').style.display='flex';clearTimeout(atkT);atkT=setTimeout(()=>$('atk').style.display='none',14000);
+ sfx('attack');if(navigator.vibrate)navigator.vibrate([300,100,300]);
+ try{if(document.hidden&&window.Notification&&Notification.permission=='granted')new Notification('Tera X.kg',{body:tx,icon:'icon-192.png'})}catch(e){}}
+$('atkb').onclick=()=>{$('atk').style.display='none';if(ATK&&ATK.pts){try{follow=false;map.fitBounds(L.latLngBounds(pairs(ATK)),{maxZoom:18,padding:[40,40]})}catch(e){}}};
+function zonesChanged(before,adds){const first=zFirst;zFirst=false;const after=mineA||0;
+ if(first){const prev=Number(localStorage.ma),t0=Number(localStorage.mat)||0;
+  if(localStorage.mu==uid&&prev>0&&prev-after>=100){const o=Object.values(zones).filter(z=>z.uid!==uid&&z.t>t0).sort((a,b)=>b.t-a.t)[0];if(o)notifyLoss(prev-after,o)}}
+ else{const fr=adds.filter(z=>Date.now()-z.t<18e4).sort((a,b)=>b.t-a.t);
+  if(fr.length&&before!=null&&before-after>=100)notifyLoss(before-after,fr[0]);
+  fr.forEach(z=>{if(friends.includes(z.uid))toast('📍 '+esc(z.name||'Дос')+' аймак ээледи')})}
+ localStorage.ma=Math.round(after);localStorage.mu=uid;localStorage.mat=Date.now()}
+function notifyToggle(){if(!window.Notification){toast('Бул браузерде билдирүү жок');return}
+ Notification.requestPermission().then(p=>{toast(p=='granted'?'🔔 Билдирүү күйдү (оюн ачык турганда иштейт)':'Билдирүүгө уруксат берилген жок')})}
+function setHide(v){HIDE=!!v;localStorage.hide=v?'1':'0';if(fs){if(v)fs.collection('players').doc(uid).update({lat:firebase.firestore.FieldValue.delete(),lon:firebase.firestore.FieldValue.delete(),hid:1}).catch(()=>{});else ping()}
+ toast(v?'🙈 Сен картада көрүнбөйсүң':'👁️ Сен картада көрүнөсүң')}
+// --- сандыктар жана белгилүү жерлер ---
+const CELL=0.0036;
+// ⚠️ Координатаны өзүң текшер. Жаңы жер кошуу үчүн ушул тизмеге жаз.
+const LANDMARKS=[{id:'alatoo',n:'Ала-Тоо аянты',lat:42.8766,lon:74.6035,r:90,c:100}];
+let CL={};try{CL=JSON.parse(localStorage.cl||'{}')||{}}catch(e){CL={}}
+function clRoll(){const d=dayId();if(CL.d!==d||!Array.isArray(CL.ids))CL={d,ids:[]};return CL}
+const clSave=()=>{try{localStorage.cl=JSON.stringify(CL)}catch(e){}};
+function chestAt(i,j,day){const key=day+'|'+i+'|'+j,h=h53(key,7);if(h%100>=12)return null;
+ const fx=(h53(key,11)%1000)/1000,fy=(h53(key,13)%1000)/1000,gold=(h53(key,17)%100)<6;
+ return{id:key,lat:(i+.1+.8*fx)*CELL,lon:(j+.1+.8*fy)*CELL,c:gold?100:10+(h53(key,19)%26),gold}}
+const chestM={};
+function chestsNear(p,k){const day=dayId(),i0=Math.floor(p[0]/CELL),j0=Math.floor(p[1]/CELL),o=[];
+ for(let i=i0-k;i<=i0+k;i++)for(let j=j0-k;j<=j0+k;j++){const c=chestAt(i,j,day);if(c)o.push(c)}return o}
+function showChests(){try{const z=map.getZoom(),keep={};
+ if(z>=15){const c=map.getCenter(),done=clRoll().ids;chestsNear([c.lat,c.lng],3).forEach(ch=>{if(done.includes(ch.id))return;keep[ch.id]=1;
+  if(!chestM[ch.id])chestM[ch.id]=L.marker([ch.lat,ch.lon],{interactive:false,keyboard:false,icon:L.divIcon({className:'',iconSize:[34,34],iconAnchor:[17,17],html:'<div class="chest'+(ch.gold?' gold':'')+'">'+(ch.gold?'💎':'📦')+'</div>'})}).addTo(map)})}
+ Object.keys(chestM).forEach(id=>{if(!keep[id]){chestM[id].remove();delete chestM[id]}})}catch(e){}}
+function checkChests(p){try{const done=clRoll().ids;
+ chestsNear(p,1).forEach(ch=>{if(done.includes(ch.id)||d(p,[ch.lat,ch.lon])>30)return;done.push(ch.id);clSave();
+  if(chestM[ch.id]){chestM[ch.id].remove();delete chestM[ch.id]}giveCoins(ch.c,ch.gold?'💎 Алтын сандык!':'📦 Сандык табылды');sfx('chest')});
+ LANDMARKS.forEach(m=>{const id='L|'+m.id+'|'+dayId();if(done.includes(id)||d(p,[m.lat,m.lon])>m.r)return;done.push(id);clSave();giveCoins(m.c,'📍 '+m.n+' · бонус');sfx('chest')})}catch(e){}}
+LANDMARKS.forEach(m=>{L.circle([m.lat,m.lon],{radius:m.r,color:'#f2b705',weight:2,dashArray:'6 6',fillColor:'#f2b705',fillOpacity:.15,interactive:false}).addTo(map).bindTooltip('📍 '+m.n+' · +'+m.c+' 💰/күн',{permanent:false})});
+map.on('moveend',showChests);setTimeout(showChests,900);
+// --- күнүмдүк сыйлык ---
+const DAYR=[20,30,40,60,80,120,250];
+function showDaily(){const d=dayId();Q.dl=Q.dl||{last:'',n:0};if(Q.dl.last==d)return;
+ const y=dayId(new Date(Date.now()-864e5)),n=Q.dl.last==y?(Q.dl.n%7)+1:1;
+ $('dsub').textContent=n==1?'Күн сайын кир, сыйлык өсөт!':'🔥 '+n+'-күн катары менен!';
+ $('dg').innerHTML=DAYR.map((c,i)=>'<div class="'+(i+1<n?'past':i+1==n?'now':'')+'">'+(i+1<n?'✅':'💰 '+c)+'<small>'+(i+1)+'-күн</small></div>').join('')+'<div style="background:none"></div>';
+ $('dly').style.display='flex';
+ $('dc').onclick=()=>{Q.dl={last:d,n};$('dly').style.display='none';giveCoins(DAYR[n-1],'🎁 '+n+'-күндүн сыйлыгы');sfx('chest')}}
+setTimeout(showDaily,3300);
+// --- ден соолук ---
+function setGoal(g){localStorage.goal=g;qRender()}
+function healthHTML(){const dd=Q.dm.dist||0,wd=Q.wm.dist||0,goal=Number(localStorage.goal)||10000,pc=Math.min(100,wd/goal*100),al=Q.all.dist||0;
+ return '<div class="qs">📅 Бүгүн</div><div class="stats"><div>'+Math.round(dd/.75).toLocaleString()+'<small>кадам</small></div><div>'+Math.round(dd/1000*60)+'<small>ккал</small></div><div>'+fmt(dd)+'<small>жол</small></div><div>'+fmt(al)+'<small>бардыгы</small></div></div>'
+ +'<div class="qs">🎯 Жумалык максат: '+fmt(goal)+' (аткарсаң +50 💰)</div><div class="qg"><i style="width:'+pc+'%"></i></div><small>'+fmt(wd)+' / '+fmt(goal)+'</small>'
+ +'<div class="fr">'+[5000,10000,20000,30000].map(g=>'<button style="'+(g==goal?'':'background:#e8efe9;color:#0f2a1d')+'" onclick="setGoal('+g+')">'+(g/1000)+' км</button>').join('')+'</div>'
+ +'<small style="display:block;opacity:.6;margin-top:8px">Болжолдуу эсеп: 1 кадам ≈ 0,75 м, 1 км ≈ 60 ккал. Тез жүрсөң (унаа) эсептелбейт.</small>'}
+// --- профилге кошумча ---
+function profExtra(){const l=lvInfo(),t=TEAMS.find(x=>x.id==localStorage.tm);
+ return '<div class="lvc"><div class="lvh"><b>Lv '+l.lv+' · '+l.title+'</b><small>'+Math.floor(l.xp)+' / '+l.next+' XP</small></div><div class="qg"><i style="width:'+l.pct+'%"></i></div></div>'
+ +'<div class="fr"><button style="flex:1;background:#e8590c" onclick="shareCard()">📤 Аймагымды бөлүшүү</button></div>'
+ +'<div class="qs">🏙️ Шаарым: '+(t?t.e+' '+t.n:'тандала элек')+'</div><div class="tms">'+TEAMS.map(x=>'<span class="'+(x.id==localStorage.tm?'on':'')+'" onclick="setTeam(\''+x.id+'\')">'+x.e+' '+x.n+'</span>').join('')+'</div>'
+ +'<div class="tg"><label><input type="checkbox" '+(HIDE?'checked':'')+' onchange="setHide(this.checked)"> 🙈 Картада мени жашыр</label><label><input type="checkbox" '+(localStorage.mute=='1'?'checked':'')+' onchange="setMute(this.checked)"> 🔇 Үнсүз режим</label><label><input type="checkbox" '+((window.Notification&&Notification.permission=='granted')?'checked':'')+' onchange="if(this.checked)notifyToggle()"> 🔔 Басып алуу билдирүүсү (оюн ачык турганда)</label></div>'}
+// --- аймакты бөлүшүү (сүрөт) ---
+function shareCard(){try{const W=1080,H=1350,cv=document.createElement('canvas');cv.width=W;cv.height=H;const g=cv.getContext('2d');
+ const gr=g.createLinearGradient(0,0,W,H);gr.addColorStop(0,'#0f2a1d');gr.addColorStop(1,'#1d6b44');g.fillStyle=gr;g.fillRect(0,0,W,H);
+ g.strokeStyle='rgba(255,255,255,.05)';g.lineWidth=2;for(let x=0;x<W;x+=60){g.beginPath();g.moveTo(x,0);g.lineTo(x,H);g.stroke()}for(let y=0;y<H;y+=60){g.beginPath();g.moveTo(0,y);g.lineTo(W,y);g.stroke()}
+ const sc=scores(),me_=sc[uid],A=Math.round(me_?me_.a:0),list=Object.entries(sc).sort((a,b)=>b[1].a-a[1].a),r=list.findIndex(e=>e[0]==uid),l=lvInfo(),t=TEAMS.find(x=>x.id==localStorage.tm);
+ g.textAlign='center';g.fillStyle='#fff';g.font='800 70px system-ui,sans-serif';g.fillText('Tera X',W/2-50,130);g.fillStyle='#52d68a';g.fillText('.kg',W/2+130,130);
+ const mp=terr();
+ if(mp){let la0=1e9,la1=-1e9,lo0=1e9,lo1=-1e9;mp.forEach(po=>po.forEach(ri=>ri.forEach(q=>{la0=Math.min(la0,q[1]);la1=Math.max(la1,q[1]);lo0=Math.min(lo0,q[0]);lo1=Math.max(lo1,q[0])})));
+  const k=Math.cos((la0+la1)/2*Math.PI/180),bw=Math.max(1e-9,(lo1-lo0)*k),bh=Math.max(1e-9,la1-la0),bx=90,by=190,bW=900,bH=600,sc2=Math.min(bW/bw,bH/bh),ox=bx+(bW-bw*sc2)/2,oy=by+(bH-bh*sc2)/2;
+  g.beginPath();mp.forEach(po=>po.forEach(ri=>ri.forEach((q,i)=>{const x=ox+(q[0]-lo0)*k*sc2,y=oy+(la1-q[1])*sc2;i?g.lineTo(x,y):g.moveTo(x,y)})));
+  g.fillStyle='hsla('+hue+',75%,55%,.6)';g.fill('evenodd');g.lineWidth=6;g.lineJoin='round';g.strokeStyle='hsl('+hue+',85%,70%)';g.stroke()}
+ else{g.fillStyle='rgba(255,255,255,.6)';g.font='600 42px system-ui,sans-serif';g.fillText('Азырынча аймак жок',W/2,480)}
+ g.fillStyle='#ffe27a';g.font='900 130px system-ui,sans-serif';g.fillText(A.toLocaleString()+' м²',W/2,950);
+ g.fillStyle='#fff';g.font='800 52px system-ui,sans-serif';g.fillText((name||'Оюнчу'),W/2,1030);
+ g.font='600 40px system-ui,sans-serif';g.fillStyle='rgba(255,255,255,.85)';g.fillText('Lv '+l.lv+' · '+l.title+(r>=0?'  ·  рейтинг №'+(r+1):'')+(t?'  ·  '+t.n:''),W/2,1095);
+ const url=location.href.split('?')[0].split('#')[0]+'?ref='+uid.slice(0,6);
+ g.font='600 36px system-ui,sans-serif';g.fillStyle='#52d68a';g.fillText('Кошул, мени жеңип көр! 🏴',W/2,1200);g.fillStyle='rgba(255,255,255,.7)';g.font='500 30px system-ui,sans-serif';g.fillText(url.replace(/^https?:\/\//,''),W/2,1250);
+ cv.toBlob(b=>{if(!b){toast('Сүрөт жасалган жок');return}const f=new File([b],'tera-x.png',{type:'image/png'}),txt='Менин аймагым: '+A+' м² 🗺️ Tera X.kg: '+url;
+  if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f],text:txt}).catch(()=>{});
+  else{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='tera-x.png';document.body.appendChild(a);a.click();a.remove();toast('📥 Сүрөт жүктөлдү')}},'image/png')}catch(e){toast('Бөлүшүү ката: '+(e.message||e))}}
 render();live();initAuth();
 if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
 const zv=Object.values(zones);if(zv.length)map.fitBounds(L.latLngBounds(zv.flatMap(pairs)));
