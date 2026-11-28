@@ -173,12 +173,12 @@ button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:14px;bac
 .sk-phoenix .sp{inset:auto;left:12px;bottom:12px;margin:0;width:3px;height:3px;border-radius:50%;background:#ffd34d;opacity:0;animation:skspk 1.1s linear infinite}
 .sk-phoenix .s2{left:30px;animation-delay:.4s}.sk-phoenix .s3{left:21px;animation-delay:.75s}
 .sk-blackhole{perspective:160px}
-.sk-blackhole .bh-l{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle,transparent 38%,var(--c) 58%,transparent 72%);opacity:.55;animation:skpg 2s ease-in-out infinite alternate}
-.sk-blackhole .bh-d{width:46px;height:46px;border-radius:50%;background:conic-gradient(from 0deg,var(--c),#ffd27a,#fff,var(--l),var(--c));-webkit-mask:radial-gradient(circle,transparent 9px,#000 10px,#000 19px,transparent 23px);mask:radial-gradient(circle,transparent 9px,#000 10px,#000 19px,transparent 23px);animation:skbh 2.2s linear infinite;filter:drop-shadow(0 0 5px var(--c))}
+.sk-blackhole .bh-l{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle,transparent 38%,#ff1e1e 58%,transparent 72%);opacity:.55;animation:skpg 2s ease-in-out infinite alternate}
+.sk-blackhole .bh-d{width:46px;height:46px;border-radius:50%;background:conic-gradient(from 0deg,#8a0000,#ff2a1a,#ff8a6a,#fff1ea,#ff2a1a,#8a0000);-webkit-mask:radial-gradient(circle,transparent 9px,#000 10px,#000 19px,transparent 23px);mask:radial-gradient(circle,transparent 9px,#000 10px,#000 19px,transparent 23px);animation:skbh 2.2s linear infinite;filter:drop-shadow(0 0 6px #ff1a1a)}
 .sk-blackhole .bh-e{width:32px;height:32px;-webkit-mask:radial-gradient(circle,transparent 8px,#000 9px,#000 14px,transparent 16px);mask:radial-gradient(circle,transparent 8px,#000 9px,#000 14px,transparent 16px);animation:skbh2 1.3s linear infinite}
 @keyframes skbh{from{transform:rotateX(68deg) rotateZ(0)}to{transform:rotateX(68deg) rotateZ(360deg)}}
 @keyframes skbh2{from{transform:rotateX(68deg) rotateZ(360deg)}to{transform:rotateX(68deg) rotateZ(0)}}
-.sk-blackhole .bh-c{width:15px;height:15px;border-radius:50%;background:#000;box-shadow:0 0 0 2px rgba(255,255,255,.9),0 0 12px 3px var(--c)}
+.sk-blackhole .bh-c{width:15px;height:15px;border-radius:50%;background:#000;box-shadow:0 0 0 2px rgba(255,140,120,.95),0 0 14px 4px #ff1a1a}
 .sk-ufo svg{overflow:visible;filter:drop-shadow(0 0 5px var(--c));animation:skuf 2.4s ease-in-out infinite alternate}
 @keyframes skuf{from{transform:translateY(-2px) rotate(-6deg)}to{transform:translateY(2px) rotate(6deg)}}
 .sk-ufo .beam{fill:var(--l);transform-origin:22px 27px;animation:skbm 1.1s ease-in-out infinite alternate}
@@ -362,18 +362,101 @@ button{transition:transform .12s,background .2s,color .2s}button:active{transfor
 .duel{background:linear-gradient(135deg,#fff1f1,#fff);border:1.5px solid #f0b8b8;border-radius:14px;padding:10px;margin:8px 0}
 .duel b{display:block}.duel .fr{margin-top:6px}
 .fd{display:flex;justify-content:space-between}
+
+/* ===== v17 ===== */
+.xpr{pointer-events:auto;display:flex;align-items:center;gap:8px;margin-top:6px;padding:5px 11px;border-radius:12px;background:rgba(15,42,29,.74);border:1px solid rgba(255,255,255,.13);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;font-size:.72rem;font-weight:800;box-shadow:0 2px 10px rgba(0,0,0,.25);cursor:pointer}
+.xpr i{flex:1;height:6px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden}
+.xpr b{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#34c46f,#ffe27a);transition:width .6s}
+#xc{color:#ffe27a;white-space:nowrap}#xl{white-space:nowrap}
+#evb{top:calc(138px + env(safe-area-inset-top,0px))}
+#toast,#atk{top:calc(168px + env(safe-area-inset-top,0px))}
+#rc{position:absolute;z-index:999;right:12px;bottom:calc(var(--dock) + 78px + env(safe-area-inset-bottom,0px));width:46px;height:46px;border-radius:50%;padding:0;display:flex;align-items:center;justify-content:center;background:rgba(15,42,29,.88);color:#52d68a;border:1px solid rgba(255,255,255,.16);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 4px 14px rgba(0,0,0,.4)}
+#rc svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#rc.off{color:#fff;box-shadow:0 0 0 2px rgba(255,226,122,.75),0 4px 14px rgba(0,0,0,.4)}
+#sum{display:none;position:fixed;inset:0;z-index:3900;align-items:center;justify-content:center;background:rgba(5,20,12,.7);padding:16px;box-sizing:border-box}
+#sum .stats{margin:10px 0 14px}
+.mdl{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px;margin:6px 0}
+.mdl div{background:#f1f6f2;border-radius:14px;padding:8px 4px;text-align:center;opacity:.55;filter:grayscale(1)}
+.mdl div.on{opacity:1;filter:none;background:linear-gradient(160deg,#fff6d6,#fff);box-shadow:0 0 0 1px rgba(242,183,5,.4)}
+.mdl span{display:block;font-size:1.7rem;line-height:1.25}
+.mdl small{display:block;font-size:.66rem;font-weight:700;line-height:1.2}
+.mdl .mt{font-weight:500;opacity:.75;margin-top:2px}
+.bch{display:flex;gap:6px;height:110px;margin:8px 0 4px}
+.bch>div{flex:1;display:flex;flex-direction:column;align-items:center;min-width:0}
+.bch .bw{flex:1;width:100%;display:flex;align-items:flex-end}
+.bch i{display:block;width:100%;border-radius:6px 6px 2px 2px;background:linear-gradient(#52d68a,#2a9d5c);opacity:.65}
+.bch i.tdy{opacity:1;background:linear-gradient(#ffe27a,#f2b705)}
+.bch small{font-size:.62rem;font-weight:700;opacity:.7;margin-top:3px;white-space:nowrap}.bch .bv{opacity:.5;font-weight:500;min-height:1em}
+
+/* ===== v17: жаңы Premium скиндер ===== */
+.kn.pr{position:relative}
+.kn.pr::after{content:"";position:absolute;top:0;bottom:0;width:30px;left:-50px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-20deg);animation:vipsh 3.4s ease-in-out infinite;pointer-events:none}
+/* лава шары */
+.sk-lava .lv-g{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle,#ff5a00 0,rgba(255,90,0,.35) 45%,transparent 72%);animation:skpg 1s ease-in-out infinite alternate}
+.sk-lava .lv-b{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#fff3a0 0,#ffb300 22%,#ff5a00 50%,#b01800 78%,#400800 100%);box-shadow:0 0 14px 3px #ff4d00,inset -3px -4px 8px rgba(60,0,0,.65);animation:nxlv 1.4s ease-in-out infinite alternate}
+.sk-lava .lv-r{width:30px;height:30px;border-radius:50%;background:conic-gradient(from 0deg,rgba(40,6,0,.9) 0 10%,transparent 10% 28%,rgba(40,6,0,.85) 28% 36%,transparent 36% 58%,rgba(40,6,0,.9) 58% 70%,transparent 70% 86%,rgba(40,6,0,.8) 86% 92%,transparent 92%);-webkit-mask:radial-gradient(circle,transparent 5px,#000 6px,#000 14px,transparent 15px);mask:radial-gradient(circle,transparent 5px,#000 6px,#000 14px,transparent 15px);animation:sks 7s linear infinite}
+.sk-lava .lv-h{width:12px;height:12px;border-radius:50%;background:radial-gradient(circle,#fff 0,#ffe14d 55%,transparent 72%);animation:skpc .7s ease-in-out infinite alternate}
+@keyframes nxlv{from{filter:brightness(1)}to{filter:brightness(1.4) saturate(1.25)}}
+.sk-lava .sp{inset:auto;left:15px;bottom:12px;margin:0;width:3px;height:3px;border-radius:50%;background:#ffd34d;box-shadow:0 0 4px #ff7a00;opacity:0;animation:skspk 1.1s linear infinite}
+.sk-lava .s2{left:28px;animation-delay:.4s}.sk-lava .s3{left:21px;animation-delay:.75s}
+/* сатурн */
+.sk-saturn{perspective:140px}
+.sk-saturn .st-g{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle,rgba(255,215,130,.55) 0,transparent 68%);animation:skpg 1.8s ease-in-out infinite alternate}
+.sk-saturn .st-r{width:46px;height:46px;border-radius:50%;background:conic-gradient(from 0deg,#fff1b8,#e8b04a,#8a5a1a,#f6d88a,#fff1b8,#e8b04a,#8a5a1a,#f6d88a,#fff1b8);-webkit-mask:radial-gradient(circle,transparent 13px,#000 14px,#000 17px,transparent 18px,transparent 19px,#000 20px,#000 22px,transparent 23px);mask:radial-gradient(circle,transparent 13px,#000 14px,#000 17px,transparent 18px,transparent 19px,#000 20px,#000 22px,transparent 23px);animation:nxsr 5s linear infinite;filter:drop-shadow(0 0 3px #ffcf6a)}
+@keyframes nxsr{from{transform:rotateX(70deg) rotateZ(0)}to{transform:rotateX(70deg) rotateZ(360deg)}}
+.sk-saturn .st-p{width:20px;height:20px;border-radius:50%;background:repeating-linear-gradient(0deg,#f0cf8a 0 2.5px,#c8964a 2.5px 5px,#e0b56a 5px 7px),#d9a850;box-shadow:inset -5px -5px 8px rgba(60,30,0,.7),inset 2px 2px 4px rgba(255,255,255,.35),0 0 8px rgba(255,200,100,.7);animation:skflt 2.4s ease-in-out infinite}
+.sk-saturn .st-m{width:44px;height:44px;animation:sks 2.6s linear infinite}
+.sk-saturn .st-m b{position:absolute;left:50%;top:-3px;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#9fc4ff);box-shadow:0 0 6px 2px #9fc4ff}
+/* радуга куюн */
+.sk-vortex .vx-g{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.55) 0,rgba(160,90,255,.4) 40%,transparent 70%);animation:skpg 1.3s ease-in-out infinite alternate}
+.sk-vortex .vx-a{width:44px;height:44px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 42%,#ff2d55 55%,#ffcc00 68%,#34ff6a 80%,#00e5ff 92%,#7a5cff 100%);-webkit-mask:radial-gradient(circle,transparent 7px,#000 8px,#000 21px,transparent 22px);mask:radial-gradient(circle,transparent 7px,#000 8px,#000 21px,transparent 22px);animation:sks 1.5s linear infinite,skhue 4s linear infinite}
+.sk-vortex .vx-b{width:32px;height:32px;-webkit-mask:radial-gradient(circle,transparent 5px,#000 6px,#000 15px,transparent 16px);mask:radial-gradient(circle,transparent 5px,#000 6px,#000 15px,transparent 16px);animation:skr 1.1s linear infinite,skhue 4s linear infinite reverse}
+.sk-vortex .vx-c{width:20px;height:20px;-webkit-mask:radial-gradient(circle,transparent 3px,#000 4px,#000 9px,transparent 10px);mask:radial-gradient(circle,transparent 3px,#000 4px,#000 9px,transparent 10px);animation:sks .8s linear infinite,skhue 2s linear infinite}
+.sk-vortex .vx-k{width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 10px 4px #fff,0 0 18px 8px rgba(160,90,255,.8);animation:skpc .8s ease-in-out infinite alternate}
+/* аждаар көзү */
+.sk-eye svg{filter:drop-shadow(0 0 5px #ff7a00)}
+.sk-eye .ey-b{transform-origin:22px 22px;animation:nxbl 3.4s ease-in-out infinite}
+@keyframes nxbl{0%,88%,100%{transform:scaleY(1)}93%{transform:scaleY(.08)}}
+.sk-eye .ey-p{transform-origin:22px 22px;animation:nxpu 2.2s ease-in-out infinite alternate}
+@keyframes nxpu{from{transform:scaleX(1)}to{transform:scaleX(2)}}
+.sk-eye .ey-f{fill:none;stroke:#ffe14d;stroke-width:1.2;stroke-linecap:round;stroke-dasharray:3 5;--o:-16;animation:trk .8s linear infinite}
+.sk-eye .ey-g{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle,rgba(255,120,0,.45) 0,transparent 68%);animation:skpg 1.4s ease-in-out infinite alternate}
+/* жаңы жылдыз */
+.sk-nova svg{filter:drop-shadow(0 0 6px #ffb300)}
+.sk-nova .nv-r{width:20px;height:20px;border-radius:50%;border:2px solid #ffe27a;box-sizing:border-box;opacity:0;animation:skrg 1.6s ease-out infinite}.sk-nova .nv-r2{animation-delay:.8s;border-color:#ff7ab8}
+.sk-nova .nv-a{transform-origin:22px 22px;animation:sks 6s linear infinite}
+.sk-nova .nv-b{transform-origin:22px 22px;animation:skr 4s linear infinite}
+.sk-nova .nv-c{transform-box:fill-box;transform-origin:center;animation:skpc .6s ease-in-out infinite alternate}
+/* бороон шары */
+.sk-storm .sm-g{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle,rgba(120,160,255,.55) 0,transparent 70%);animation:skpg 1.2s ease-in-out infinite alternate}
+.sk-storm .sm-b{width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8a9bff,#2b2f7a 55%,#0b0d2e);box-shadow:inset -3px -4px 8px rgba(0,0,10,.7),0 0 10px #5a7bff}
+.sk-storm .sm-w{width:32px;height:32px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 20%,rgba(255,255,255,.5) 30%,transparent 42%,transparent 60%,rgba(180,200,255,.55) 72%,transparent 84%);-webkit-mask:radial-gradient(circle,transparent 3px,#000 4px,#000 15px,transparent 16px);mask:radial-gradient(circle,transparent 3px,#000 4px,#000 15px,transparent 16px);animation:sks 2.4s linear infinite}
+.sk-storm .sm-e{width:42px;height:42px;border-radius:50%;border:2px dashed #bcd0ff;box-sizing:border-box;filter:drop-shadow(0 0 4px #7aa2ff);animation:skr 3s linear infinite,skfl .9s steps(1) infinite}
+.sk-storm .sm-z{fill:#fff7a0;stroke:#fff;stroke-width:1;stroke-linejoin:round;filter:drop-shadow(0 0 5px #ffe14d);animation:skfl .9s steps(1) infinite}
+
+/* ===== v17: Premium күчү (нур + учкундар) ===== */
+.sk.prem{--ac:#ffd34d}
+.sk.prem::before{content:"";position:absolute;left:-7px;top:-7px;right:-7px;bottom:-7px;border-radius:50%;background:radial-gradient(circle,transparent 50%,var(--ac) 74%,transparent 100%);opacity:.22;animation:nxau 1.9s ease-in-out infinite alternate;pointer-events:none}
+.sk.prem::after{content:"";position:absolute;left:-5px;top:-5px;right:-5px;bottom:-5px;border-radius:50%;background:repeating-conic-gradient(var(--ac) 0 3deg,transparent 3deg 30deg);-webkit-mask:radial-gradient(circle,transparent 24px,#000 24.5px,#000 27px,transparent 27.5px);mask:radial-gradient(circle,transparent 24px,#000 24.5px,#000 27px,transparent 27.5px);animation:sks 10s linear infinite,trtw 1.3s ease-in-out infinite;pointer-events:none}
+@keyframes nxau{from{transform:scale(.92);opacity:.14}to{transform:scale(1.08);opacity:.45}}
+.sk-plasma.prem{--ac:#d36bff}.sk-comet.prem{--ac:#6fd6ff}.sk-frost.prem{--ac:#9fe8ff}.sk-horns.prem{--ac:#ffc83d}.sk-ufo.prem{--ac:#6dffb0}.sk-lava.prem{--ac:#ff6a1a}
+.sk-phoenix.prem{--ac:#ff9d00}.sk-blackhole.prem{--ac:#ff2a1a}.sk-saturn.prem{--ac:#ffcf6a}.sk-vortex.prem{--ac:#b68cff}.sk-eye.prem{--ac:#ff9d00}.sk-nova.prem{--ac:#ffe27a}.sk-crown.prem{--ac:#ffd34d}.sk-storm.prem{--ac:#7aa2ff}
+.tr-s{stroke-linecap:round;stroke-linejoin:round;pointer-events:none;animation:nxsp 1.2s linear infinite,trtw .5s steps(1) infinite}
+@keyframes nxsp{to{stroke-dashoffset:-24}}
+.bst.big i{border-width:4px;border-color:#fff3b0}.bst.big i:nth-child(2){border-color:#ff7ab8}.bst.big i:nth-child(3){border-color:#7aa2ff}
+.bst.big b{width:8px;height:8px;left:-4px;top:-4px;box-shadow:0 0 8px #ffe27a}
 </style>
 </head>
 <body>
 <noscript><main style="padding:20px;font-family:system-ui,sans-serif"><h1>Tera X.kg — GPS менен жер ээлөөчү оюн</h1><p>Tera X.kg оюнунда сыртка чыгып жүрөсүң, жолуңду жапсаң ичиндеги жер сенин аймагың болот. Башка оюнчулардын аймагын кесип алсаң болот, рейтингде аймак, жол жана достор боюнча жарышасың, күнүмдүк тапшырмаларды аткарып тыйын жыйнап скин сатып аласың. Оюнга JavaScript керек.</p></main></noscript>
-<div id="splash"><img class="sbg" src="splash.jpg" alt="" onerror="this.style.display='none'"><img class="sfull" src="splash.jpg" alt="Tera X.kg" onerror="this.onerror=null;this.src='icon-512.png'"><div class="sshade"></div><div class="stop"><span class="schip">v16</span></div><div class="sbtm"><div id="stip"></div><div class="sbw"><div id="sbar"></div></div><div class="srow"><span id="stx">Жүктөлүп жатат…</span><b id="spc">0%</b></div><div class="sdev"><div class="sh">Авторлор</div><div id="sauth"></div></div></div></div>
+<div id="splash"><img class="sbg" src="splash.jpg" alt="" onerror="this.style.display='none'"><img class="sfull" src="splash.jpg" alt="Tera X.kg" onerror="this.onerror=null;this.src='icon-512.png'"><div class="sshade"></div><div class="stop"><span class="schip">v17</span></div><div class="sbtm"><div id="stip"></div><div class="sbw"><div id="sbar"></div></div><div class="srow"><span id="stx">Жүктөлүп жатат…</span><b id="spc">0%</b></div><div class="sdev"><div class="sh">Авторлор</div><div id="sauth"></div></div></div></div>
 <div id="map"></div>
 <div id="onb"><div class="ob-card"><div class="ob-art" id="oa"></div><h2 id="ot"></h2><p id="op"></p><div class="ob-dots" id="od"></div><button id="on">Кийинки</button><a id="os">Өткөрүп жиберүү</a></div></div>
 
 <svg width="0" height="0" style="position:absolute"><defs><linearGradient id="igg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fdf497"/><stop offset=".3" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset="1" stop-color="#285AEB"/></linearGradient><symbol id="igs" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igg)"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="#fff"/></symbol></defs></svg>
 <a class="ig" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#igs"/></svg>@madalbaev_001</a>
 <div class="top"><div class="brand">Tera X<span>.kg</span></div>
-<div class="hud"><div><span id="sp">0.0</span><small>км/ч</small></div><div><span id="di">0</span><small>м жол</small></div><div><span id="tot">0</span><small>упай (м²)</small></div><div><span id="rk">–</span><small>рейтинг</small></div></div></div>
+<div class="hud"><div><span id="sp">0.0</span><small>км/ч</small></div><div><span id="di">0</span><small>м жол</small></div><div><span id="tot">0</span><small>упай (м²)</small></div><div><span id="rk">–</span><small>рейтинг</small></div></div><div class="xpr" id="xpr"><span id="xl">Lv 1</span><i><b id="xb"></b></i><span id="xc">💰 0</span></div></div>
 <div id="scrim"></div>
 <div id="board"></div>
 <div id="qp"></div>
@@ -396,6 +479,8 @@ button{transition:transform .12s,background .2s,color .2s}button:active{transfor
 <div id="win"></div>
 <div id="evb"></div>
 <div id="atk"><span id="atkt"></span><button id="atkb">Кайра ал 🎯</button></div>
+<div id="sum"></div>
+<button id="rc" aria-label="Өзүмө кайтуу"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></svg></button>
 <div id="dly"><div class="dcard"><h3>🎁 Күнүмдүк сыйлык</h3><div class="dsub" id="dsub"></div><div class="dg" id="dg"></div><button id="dc">Алуу</button></div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
@@ -460,9 +545,15 @@ const PREM=[
  {id:'frost',n:'Кар кристаллы',p:0,r:59,h:'<i class="fr-g"></i><svg viewBox="0 0 44 44"><g class="fa">'+SNOWARM+'</g><circle class="fm" cx="22" cy="22" r="2.6"/><path class="tw" d="'+STAR(37,7,4)+'" fill="#fff"/><path class="tw tw2" d="'+STAR(7,36,3.2)+'" fill="#fff"/></svg>'},
  {id:'horns',n:'Кошкар мүйүз',p:0,r:69,h:'<i class="ho"></i><svg viewBox="0 0 44 44"><g class="hr">'+HORN+'</g><circle class="hc" cx="22" cy="22" r="3.2"/></svg>'},
  {id:'ufo',n:'НЛО',p:0,r:79,h:'<svg viewBox="0 0 44 44"><path class="beam" d="M17 27L9 44H35L27 27Z"/><ellipse class="dome" cx="22" cy="15" rx="7" ry="6"/><ellipse cx="22" cy="22" rx="18" ry="6" fill="url(#skgm)" stroke="#fff" stroke-width=".8"/><circle class="lt l1" cx="10" cy="22.5" r="1.7"/><circle class="lt l2" cx="22" cy="25" r="1.7"/><circle class="lt l3" cx="34" cy="22.5" r="1.7"/></svg>'},
+ {id:'lava',n:'Лава шары',p:0,r:89,h:'<i class="lv-g"></i><i class="lv-b"></i><i class="lv-r"></i><i class="lv-h"></i><i class="sp"></i><i class="sp s2"></i><i class="sp s3"></i>'},
  {id:'phoenix',n:'Феникс',p:0,r:99,h:'<i class="px-g"></i><svg viewBox="0 0 44 44"><path class="pw pl" d="M21 22C14 11 4 9 1 14C5 14 8 16 9 20C11 18 14 19 15 22C17 21 19 22 21 26Z"/><path class="pw pr" d="M23 22C30 11 40 9 43 14C39 14 36 16 35 20C33 18 30 19 29 22C27 21 25 22 23 26Z"/><path class="pt" d="M22 26C18 32 19 38 22 43C25 38 26 32 22 26Z"/><path d="M22 11C25.5 15 26.5 21 24.5 28H19.5C17.5 21 18.5 15 22 11Z" fill="#ff9d00"/><circle cx="22" cy="12" r="3" fill="#ffe14d"/><circle cx="22.8" cy="11.4" r=".7" fill="#222"/></svg><i class="sp"></i><i class="sp s2"></i><i class="sp s3"></i>'},
  {id:'blackhole',n:'Кара тешик',p:0,r:99,h:'<i class="bh-l"></i><i class="bh-d"></i><i class="bh-d bh-e"></i><i class="bh-c"></i>'},
- {id:'crown',n:'Хан таажысы',p:0,r:149,h:'<svg viewBox="0 0 44 44"><path d="M7 31L5 14L14 22L22 8L30 22L39 14L37 31Z" fill="url(#skgg)" stroke="#fff3b0" stroke-width="1.2" stroke-linejoin="round"/><path d="M7 31H37V36H7Z" fill="url(#skgg)" stroke="#fff3b0" stroke-width="1.2"/><g clip-path="url(#skcc)"><g class="sh"><rect x="-6" y="0" width="8" height="44" transform="skewX(-20)" fill="#fff" opacity=".8"/></g></g><circle class="gm" cx="22" cy="8" r="2.3" fill="#ff3b5c"/><circle class="gm g2" cx="5" cy="14" r="2" fill="#3bd1ff"/><circle class="gm g3" cx="39" cy="14" r="2" fill="#4dff88"/><circle cx="22" cy="33.5" r="1.7" fill="#fff"/><path class="tw" d="'+STAR(37,4,4)+'" fill="#fff"/><path class="tw tw2" d="'+STAR(6,39,3.2)+'" fill="#fff"/></svg>'}];
+ {id:'saturn',n:'Сатурн',p:0,r:109,h:'<i class="st-g"></i><i class="st-r"></i><i class="st-p"></i><i class="st-m"><b></b></i>'},
+ {id:'vortex',n:'Радуга куюн',p:0,r:119,h:'<i class="vx-g"></i><i class="vx-a"></i><i class="vx-a vx-b"></i><i class="vx-a vx-c"></i><i class="vx-k"></i>'},
+ {id:'eye',n:'Аждаар көзү',p:0,r:129,h:'<i class="ey-g"></i><svg viewBox="0 0 44 44"><g class="ey-b"><path d="M2 22Q22 3 42 22Q22 41 2 22Z" fill="#2a0600" stroke="#ff7a00" stroke-width="1.6" stroke-linejoin="round"/><circle cx="22" cy="22" r="8.5" fill="#ff9d00"/><circle cx="22" cy="22" r="6" fill="#ffd23a"/><ellipse class="ey-p" cx="22" cy="22" rx="2.2" ry="8" fill="#0d0200"/><circle cx="18.6" cy="18.6" r="1.7" fill="#fff" opacity=".9"/></g><path class="ey-f" d="M2 22Q22 3 42 22Q22 41 2 22Z"/></svg>'},
+ {id:'nova',n:'Жаңы жылдыз',p:0,r:139,h:'<i class="nv-r"></i><i class="nv-r nv-r2"></i><svg viewBox="0 0 44 44"><g class="nv-a"><path d="'+STAR(22,22,21)+'" fill="#ffe27a"/></g><g class="nv-b"><path d="'+STAR(22,22,16)+'" fill="#ff5fa8" transform="rotate(45 22 22)"/></g><circle class="nv-c" cx="22" cy="22" r="4.2" fill="#fff"/></svg>'},
+ {id:'crown',n:'Хан таажысы',p:0,r:149,h:'<svg viewBox="0 0 44 44"><path d="M7 31L5 14L14 22L22 8L30 22L39 14L37 31Z" fill="url(#skgg)" stroke="#fff3b0" stroke-width="1.2" stroke-linejoin="round"/><path d="M7 31H37V36H7Z" fill="url(#skgg)" stroke="#fff3b0" stroke-width="1.2"/><g clip-path="url(#skcc)"><g class="sh"><rect x="-6" y="0" width="8" height="44" transform="skewX(-20)" fill="#fff" opacity=".8"/></g></g><circle class="gm" cx="22" cy="8" r="2.3" fill="#ff3b5c"/><circle class="gm g2" cx="5" cy="14" r="2" fill="#3bd1ff"/><circle class="gm g3" cx="39" cy="14" r="2" fill="#4dff88"/><circle cx="22" cy="33.5" r="1.7" fill="#fff"/><path class="tw" d="'+STAR(37,4,4)+'" fill="#fff"/><path class="tw tw2" d="'+STAR(6,39,3.2)+'" fill="#fff"/></svg>'},
+ {id:'storm',n:'Бороон шары',p:0,r:199,h:'<i class="sm-g"></i><i class="sm-b"></i><i class="sm-w"></i><i class="sm-e"></i><svg viewBox="0 0 44 44"><path class="sm-z" d="M25 6L12 25H21L18 38L32 18H23Z"/></svg>'}];
 SKINS.push(...PREM);
 // ---- код тутуу: код = hash(скин + оюнчунун ID + PAY.secret). Төлөгөндөн кийин өзүң kod-generator.html менен жасайсың ----
 function h53(str,seed=0){let h1=0xdeadbeef^seed,h2=0x41c6ce57^seed;for(let i=0,ch;i<str.length;i++){ch=str.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677)}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return 4294967296*(2097151&h2)+(h1>>>0)}
@@ -481,7 +572,7 @@ const skOwned=id=>{const x=SKINS.find(v=>v.id==id);return !!x&&(x.r?!!hasPrem(id
 let skin=localStorage.sk||'dot';if(!skOwned(skin))skin='dot';
 const mc=()=>'hsl('+hue+',75%,45%)';
 function skinHTML(id,col){const s=SKINS.find(x=>x.id==id)||SKINS[0],m=/hsl\(\s*([\d.]+)/.exec(col),h=m?Number(m[1]):0;
- return '<div class="sk sk-'+s.id+'" style="--c:'+col+';--l:hsl('+h+',90%,72%);--d:hsl('+h+',70%,28%)">'+s.h+'</div>'}
+ return '<div class="sk sk-'+s.id+(s.r?' prem':'')+'" style="--c:'+col+';--l:hsl('+h+',90%,72%);--d:hsl('+h+',70%,28%)">'+s.h+'</div>'}
 const skinIcon=(id,col)=>L.divIcon({className:'',iconSize:[44,44],iconAnchor:[22,22],html:'<div class="skw">'+skinHTML(id,col)+'</div>'});
 
 // === Тапшырмалар жана сыйлыктар ===
@@ -653,7 +744,7 @@ applyTrail();
 const me=L.marker([0,0],{icon:skinIcon(skin,mc()),interactive:false,keyboard:false,zIndexOffset:1000});
 const startMark=L.circle([0,0],{radius:20,color,dashArray:'6 6',fill:false});
 let total=Number(localStorage.td)||0,pd={},tab='a';
-const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v16</div>';
+const DEV='<div style="text-align:center;font-size:.8rem;color:#555;margin-top:8px">Иштеп чыгуучу: <b>Мадалбаев Дастан</b> · v17</div>';
 const IGLINK=DEV+'<a class="ig2" href="https://instagram.com/madalbaev_001" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#igs"/></svg>@madalbaev_001</a>';
 let first=true,zones=JSON.parse(localStorage.zones||'{}'),zl=[],trail=[],dist=0,watch=null,lock=null,lastT=0,follow=true,pm={},timer=null,cur=null;
 const mpl=lat=>[111320*Math.cos(lat*Math.PI/180),110574];
@@ -1063,6 +1154,92 @@ function shareCard(){try{const W=1080,H=1350,cv=document.createElement('canvas')
 render();live();initAuth();
 if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
 const zv=Object.values(zones);if(zv.length)map.fitBounds(L.latLngBounds(zv.flatMap(pairs)));
+// ================= v17: жаңы функциялар (мурунку кодго тийбей кошулган) =================
+(()=>{
+ // --- 1) Жогорку тилкеде: деңгээл, XP жана тыйын ---
+ const xl=$('xl'),xb=$('xb'),xc=$('xc');
+ const hudUpd=()=>{try{const l=lvInfo();xl.textContent='Lv '+l.lv+' · '+l.title;xb.style.width=l.pct+'%';xc.textContent='💰 '+Q.coins}catch(e){}};
+ $('xpr').onclick=()=>{if($('qp').style.display!='block')$('qb').click()};
+ // --- 2) 🎯 Өзүңө кайтуу баскычы ---
+ const rc=$('rc');
+ rc.onclick=()=>{follow=true;rc.classList.remove('off');
+  if(cur)map.setView(cur,Math.max(map.getZoom(),17),{animate:true});
+  else if(navigator.geolocation){toast('📍 Ордуңду издеп жатам…');navigator.geolocation.getCurrentPosition(e=>map.setView([e.coords.latitude,e.coords.longitude],17),()=>toast('GPS'+"'ке уруксат бер"),{enableHighAccuracy:true,timeout:12000})}};
+ map.on('dragstart',()=>rc.classList.add('off'));
+ // --- 3) Жүрүштүн жыйынтыгы («Токтотуу» басканда) ---
+ let S=null,sc=0;
+ const _gain=gain,_gc=giveCoins;
+ gain=function(c,t){const b=Q.coins;_gain(c,t);if(S)sc+=Q.coins-b};
+ giveCoins=function(c,t){const b=Q.coins;_gc(c,t);if(S)sc+=Q.coins-b};
+ const fmtT=s=>{s=Math.round(s);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),c=s%60;return h?h+' с '+p2(m)+' мүн':m+' мүн '+c+' сек'};
+ function showSum(s,coins){
+  const dist=Math.max(0,Q.all.dist-s.d),el=(Date.now()-s.t)/1000;if(el<30&&dist<30)return;
+  const area=Math.max(0,Q.all.area-s.a),cl=Math.max(0,Q.all.claims-s.c),kmh=el>0?dist/el*3.6:0,B=$('sum'),cell=(v,l)=>'<div>'+v+'<small>'+l+'</small></div>';
+  B.innerHTML='<div class="dcard"><h3>🏁 Жүрүш аяктады</h3><div class="dsub">'+(area>0?'🎉 Сонун! +'+Math.round(area)+' м² жаңы жер':'Жакшы жүрүш! Кийинки жолу баштаган жериңе кайтып кел 😉')+'</div>'
+   +'<div class="stats">'+cell(fmtT(el),'убакыт')+cell(fmt(dist),'жол')+cell(kmh.toFixed(1),'орточо км/ч')+cell(Math.round(dist/.75).toLocaleString(),'кадам')+cell(cl,'аймак')+cell('+'+Math.round(coins),'тыйын 💰')+'</div>'
+   +'<button class="gbtn" id="sum1" style="margin-bottom:8px">📤 Аймагымды бөлүшүү</button><button id="sumc" style="width:100%;padding:14px;font-size:1.05rem;background:linear-gradient(135deg,#34c46f,#1f8f52);border-radius:14px" onclick="$(\'sum\').style.display=\'none\'">Жабуу</button></div>';
+  B.style.display='flex';$('sum1').onclick=()=>shareCard()}
+ const go=$('go'),og=go.onclick;
+ go.onclick=function(ev){const was=watch!=null;
+  if(!was){S={t:Date.now(),d:Q.all.dist,a:Q.all.area,c:Q.all.claims};sc=0}
+  const r=og.call(this,ev);
+  if(was&&S){const s=S,c=sc;S=null;setTimeout(()=>showSum(s,c),250)}
+  return r};
+ // --- 4) Акыркы 7 күндүн диаграммасы (ден соолук өтмөгүндө) ---
+ let DH={};try{DH=JSON.parse(localStorage.dh||'{}')||{}}catch(e){DH={}}
+ const dhSave=()=>{try{const k=Object.keys(DH).sort();while(k.length>30)delete DH[k.shift()];localStorage.dh=JSON.stringify(DH)}catch(e){}};
+ DH[dayId()]=Math.max(DH[dayId()]||0,Q.dm.dist||0);dhSave();
+ const _qa=qAdd;
+ qAdd=function(k,v){_qa(k,v);if(k=='dist'){const t=dayId();DH[t]=(DH[t]||0)+v;dhSave()}};
+ const WD=['Жек','Дүй','Шей','Шар','Бей','Жум','Ише'];
+ const chartHTML=()=>{const days=[];for(let i=6;i>=0;i--){const t=new Date(Date.now()-i*864e5);days.push({w:WD[t.getDay()],v:DH[dayId(t)]||0})}
+  const mx=Math.max(1000,...days.map(x=>x.v)),tot=days.reduce((s,x)=>s+x.v,0);
+  return '<div class="qs">📊 Акыркы 7 күн · '+fmt(tot)+'</div><div class="bch">'+days.map((x,i)=>'<div><div class="bw"><i class="'+(i==6?'tdy':'')+'" style="height:'+Math.max(3,x.v/mx*100)+'%"></i></div><small>'+x.w+'</small><small class="bv">'+(x.v>=1000?(x.v/1000).toFixed(1)+'к':x.v>=10?Math.round(x.v)+'м':'')+'</small></div>').join('')+'</div>'};
+ const _hh=healthHTML;healthHTML=function(){return _hh()+chartHTML()};
+ // --- 5) Медалдар (профилде) ---
+ const MEDALS=[
+  {id:'m1',e:'🥾',n:'Биринчи кадам',t:'500 м жүр',ok:()=>Q.all.dist>=500},
+  {id:'m2',e:'🚶',n:'5 км',t:'Жалпы 5 км жүр',ok:()=>Q.all.dist>=5000},
+  {id:'m3',e:'🏃',n:'Марафончу',t:'Жалпы 42 км жүр',ok:()=>Q.all.dist>=42195},
+  {id:'m4',e:'📐',n:'Биринчи аймак',t:'1 аймак ээле',ok:()=>Q.all.claims>=1},
+  {id:'m5',e:'🏴',n:'Жер ээси',t:'10 аймак ээле',ok:()=>Q.all.claims>=10},
+  {id:'m6',e:'🗺️',n:'Чоң аймак',t:'50 000 м² жаңы жер',ok:()=>Q.all.area>=50000},
+  {id:'m7',e:'🔥',n:'7 күн катары',t:'7 күн катары ойно',ok:()=>(Q.streak||0)>=7},
+  {id:'m8',e:'👥',n:'Достор',t:'3 дос чакыр',ok:()=>RF.done.length>=3},
+  {id:'m9',e:'⭐',n:'Мергенчи',t:'Lv 5 жет',ok:()=>lvInfo().lv>=5},
+  {id:'m10',e:'👑',n:'Баатыр',t:'Lv 11 жет',ok:()=>lvInfo().lv>=11}];
+ let MD=[];try{const o=JSON.parse(localStorage.md||'[]');if(Array.isArray(o))MD=o}catch(e){}
+ function medalCheck(quiet){const nw=[];MEDALS.forEach(m=>{try{if(!MD.includes(m.id)&&m.ok()){MD.push(m.id);nw.push(m)}}catch(e){}});
+  try{localStorage.md=JSON.stringify(MD)}catch(e){}
+  if(!quiet)nw.forEach((m,i)=>setTimeout(()=>{toast('🏅 Жаңы медаль: '+m.n+'!');sfx('level')},i*2600+900))}
+ const medalsHTML=()=>{const n=MEDALS.filter(m=>MD.includes(m.id)).length;
+  return '<div class="qs">🏅 Медалдар · '+n+' / '+MEDALS.length+'</div><div class="mdl">'+MEDALS.map(m=>{const on=MD.includes(m.id);return '<div class="'+(on?'on':'')+'"><span>'+m.e+'</span><small>'+m.n+'</small>'+(on?'':'<small class="mt">'+m.t+'</small>')+'</div>'}).join('')+'</div>'};
+ const _pe=profExtra;profExtra=function(){return _pe()+medalsHTML()};
+ medalCheck(true);
+ // --- 6) Телефонго орнотуу ---
+ let dip=null;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e});
+ const standalone=()=>{try{return matchMedia('(display-mode: standalone)').matches||navigator.standalone}catch(e){return false}};
+ const rs=$('rs');
+ if(rs){rs.insertAdjacentHTML('beforebegin','<p><b>9. Деңгээл жана медаль.</b> Жүрүп, аймак ээлеп XP жыйна. Жогорудагы тилкеде деңгээлиң көрүнөт, медалдар профилде.</p><p><b>10. 🎯 баскыч.</b> Картаны жылдырып жиберсең, оң жактагы 🎯 басып кайра өзүңө кайтасың.</p><p><b>11. Жыйынтык.</b> «■ Токтотуу» бассаң, жүрүшүңдүн жыйынтыгы чыгат.</p>');
+  if(!standalone()){const b=document.createElement('button');b.className='gbtn';b.style.cssText='background:#e8efe9;border:0;color:#0f2a1d';b.textContent='📲 Оюнду телефонго орнотуу';
+   b.onclick=()=>{if(dip){dip.prompt();dip=null}else toast('📲 Safari: Бөлүшүү ⬆️ → «Үй экранына кошуу». Chrome: ⋮ → «Орнотуу»')};rs.parentNode.insertBefore(b,rs)}}
+ hudUpd();setInterval(()=>{hudUpd();medalCheck(false)},1000);
+})();
+
+// ================= v17: Premium күчү =================
+(()=>{
+ // Premium из: үстүнө жылтылдаган учкундар катмары
+ const trailS=L.polyline([],{className:'tr-s',interactive:false,lineCap:'round',lineJoin:'round'}).addTo(map);
+ const _st=setTrail;setTrail=function(a){_st(a);trailS.setLatLngs(a)};
+ const _at=applyTrail;applyTrail=function(){_at();const t=TRAILS.find(x=>x.id==trailSel);
+  if(t&&t.r)trailS.setStyle({color:'#fff',weight:5,opacity:.95,dashArray:'1 11'});else trailS.setStyle({opacity:0,weight:0})};
+ applyTrail();
+ // Premium скин менен аймак алганда чоң салют
+ const _bu=burst;burst=function(n){_bu(n);
+  try{const s=SKINS.find(x=>x.id==skin);if(!(s&&s.r)||!cur)return;let b='';for(let i=0;i<24;i++)b+='<b style="--a:'+(i*15)+'deg"></b>';
+   const m=L.marker(cur,{icon:L.divIcon({className:'',iconSize:[0,0],html:'<div class="bst big"><i></i><i></i><i></i>'+b+'</div>'}),interactive:false,keyboard:false,zIndexOffset:950}).addTo(map);
+   setTimeout(()=>map.removeLayer(m),2300);sfx('chest')}catch(e){}};
+})();
 </script>
 </body>
 </html>
